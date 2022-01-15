@@ -333,7 +333,7 @@
     "pinned_symbol_libs": []
   },
   "meta": {
-    "filename": "CleverCoffe_ESP32_PidOnly_Plus.kicad_pro",
+    "filename": "CleverCoffee_ESP32.kicad_pro",
     "version": 1
   },
   "net_settings": {
@@ -366,7 +366,7 @@
       "gencad": "",
       "idf": "",
       "netlist": "",
-      "specctra_dsn": "CleverCoffe_ESP32_PidOnly_Plus.dsn",
+      "specctra_dsn": "",
       "step": "",
       "vrml": ""
     },

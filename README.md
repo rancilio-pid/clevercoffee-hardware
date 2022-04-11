@@ -1,16 +1,13 @@
 # Clever Coffee
 
 <div align="center">
-<img src="https://img.shields.io/github/workflow/status/rancilio-pid/ranciliopid/Build/main">
-<img src="https://img.shields.io/github/last-commit/rancilio-pid/ranciliopid/main"><br>
-<a href='https://ko-fi.com/clevercoffee' target='_blank'><img height='35' style='border:0px;height:46px;' src='https://az743702.vo.msecnd.net/cdn/kofi3.png?v=0' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
-<br>
-  <br>
-  How to Video:<br>
-  https://youtu.be/KZPjisOEcQ4
-
+  <img src="https://img.shields.io/github/workflow/status/rancilio-pid/clevercoffee/Build/main">
+  <img src="https://img.shields.io/github/last-commit/rancilio-pid/clevercoffee/main"><br><br>
+  <a href='https://ko-fi.com/clevercoffee' target='_blank'><img height='35' style='border:0px;height:46px;' src='https://az743702.vo.msecnd.net/cdn/kofi3.png?v=0' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
+  <br><br>
 </div>
 
+[How to Build Video (German)](https://youtu.be/KZPjisOEcQ4)
 
 ## Hinweise
 Unsere Projektwebseite findet ihr hier: [Clever Coffee Website](https://clevercoffee.de).

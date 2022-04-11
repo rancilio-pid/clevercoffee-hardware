@@ -1,0 +1,14 @@
+# ignore actual user config
+src/userConfig.h
+
+# ignore PlatformIO build folder
+.pio/*
+
+# ignore Visual Studio Code configuration files
+**/.vscode
+
+# ignore macOS Finder configuration storage files
+**/.DS_Store
+
+platformio.ini
+**/rancilio-pid.ino.cpp

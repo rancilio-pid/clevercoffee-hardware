@@ -1,0 +1,152 @@
+/**
+ * @file Displaytemplatescale.h
+ *
+ * @brief Display template with brew scale
+ */
+
+/**
+ * @brief Send data to display
+ */
+void printScreen() {
+    if ((machinestate == kSetPointNegative || machinestate == kPidNormal || machinestate == kBrewDetectionTrailing) ||
+        ((machinestate == kBrew || machinestate == kShotTimerAfterBrew) && SHOTTIMER == 0) ||  // shottimer == 0, auch Bezug anzeigen
+        machinestate == kCoolDown || ((machinestate == kInit || machinestate == kColdStart) &&
+        HEATINGLOGO == 0) || ((machinestate == kPidOffline) && OFFLINEGLOGO == 0))
+    {
+        u8g2.clearBuffer();
+        u8g2.setFont(u8g2_font_profont11_tf);
+        u8g2.drawXBMP(0, 0, logo_width, logo_height, logo_bits_u8g2);  // draw temp icon
+        u8g2.setCursor(32, 14);
+        u8g2.print("T:  ");
+        u8g2.print(Input, 1);
+
+        u8g2.print("/");
+        u8g2.print(setPoint, 1);
+
+        // Draw heat bar
+        u8g2.drawLine(15, 58, 117, 58);
+        u8g2.drawLine(15, 58, 15, 61);
+        u8g2.drawLine(117, 58, 117, 61);
+
+        u8g2.drawLine(16, 59, (Output / 10) + 16, 59);
+        u8g2.drawLine(16, 60, (Output / 10) + 16, 60);
+        u8g2.drawLine(15, 61, 117, 61);
+
+        // draw current temp in icon
+        if (fabs(Input - setPoint) < 0.3) {
+            if (isrCounter < 500) {
+                u8g2.drawLine(9, 48, 9, 58 - (Input / 2));
+                u8g2.drawLine(10, 48, 10, 58 - (Input / 2));
+                u8g2.drawLine(11, 48, 11, 58 - (Input / 2));
+                u8g2.drawLine(12, 48, 12, 58 - (Input / 2));
+                u8g2.drawLine(13, 48, 13, 58 - (Input / 2));
+            }
+        } else if (Input > 106) {
+            u8g2.drawLine(9, 48, 9, 5);
+            u8g2.drawLine(10, 48, 10, 4);
+            u8g2.drawLine(11, 48, 11, 3);
+            u8g2.drawLine(12, 48, 12, 4);
+            u8g2.drawLine(13, 48, 13, 5);
+        } else {
+            u8g2.drawLine(9, 48, 9, 58 - (Input / 2));
+            u8g2.drawLine(10, 48, 10, 58 - (Input / 2));
+            u8g2.drawLine(11, 48, 11, 58 - (Input / 2));
+            u8g2.drawLine(12, 48, 12, 58 - (Input / 2));
+            u8g2.drawLine(13, 48, 13, 58 - (Input / 2));
+        }
+
+        // draw setPoint line
+        u8g2.drawLine(18, 58 - (setPoint / 2), 23, 58 - (setPoint / 2));
+
+        // Brew
+        u8g2.setCursor(32, 34);
+        u8g2.print("t: ");
+        u8g2.print(brewTime / 1000, 0);
+        u8g2.print("/");
+
+        if (ONLYPID == 1) {
+            u8g2.print(brewtimersoftware, 0);   // deaktivieren wenn Preinfusion ( // voransetzen )
+        } else {
+            u8g2.print(totalbrewtime / 1000, 1);    // aktivieren wenn Preinfusion und eine Nachkommastelle
+                                                    // oder alternativ keine
+        }
+
+        u8g2.setCursor(32, 24);
+        u8g2.print("W: ");
+
+        if (scaleFailure) {
+            u8g2.print("fault");
+        } else {
+            if (brewswitch == LOW) {
+                u8g2.print(weight, 0);
+            } else {
+                u8g2.print(weightBrew, 0);
+            }
+
+            u8g2.print("/");
+            u8g2.print(weightSetpoint, 0);
+            u8g2.print(" (");
+            u8g2.print(weightBrew, 1);
+            u8g2.print(")");
+        }
+
+        #if (PRESSURESENSOR == 1)  // Pressure sensor connected
+            u8g2.setCursor(32, 44);
+            u8g2.print("P: ");
+            u8g2.print(inputPressure, 1);
+        #endif
+
+        // draw box
+        u8g2.drawFrame(0, 0, 128, 64);
+
+        // Für Statusinfos
+        u8g2.drawFrame(32, 0, 128, 12);
+
+        if (Offlinemodus == 0) {
+            getSignalStrength();
+
+            if (WiFi.status() == WL_CONNECTED) {
+                u8g2.drawXBMP(40, 2, 8, 8, antenna_OK_u8g2);
+
+                for (int b = 0; b <= bars; b++) {
+                    u8g2.drawVLine(45 + (b * 2), 10 - (b * 2), b * 2);
+                }
+            } else {
+                u8g2.drawXBMP(40, 2, 8, 8, antenna_NOK_u8g2);
+                u8g2.setCursor(88, 2);
+                u8g2.print("RC: ");
+                u8g2.print(wifiReconnects);
+            }
+
+            if (BLYNK == 1) {
+                if (Blynk.connected()) {
+                    u8g2.drawXBMP(60, 2, 11, 8, blynk_OK_u8g2);
+                } else {
+                    u8g2.drawXBMP(60, 2, 8, 8, blynk_NOK_u8g2);
+                }
+            }
+
+            if (MQTT == 1) {
+                if (mqtt.connected() == 1) {
+                    u8g2.setCursor(77, 1);
+                    u8g2.setFont(u8g2_font_profont11_tf);
+                    u8g2.print("MQTT");
+                } else {
+                    u8g2.setCursor(77, 2);
+                    u8g2.print("");
+                }
+            }
+        } else {
+            u8g2.setCursor(40, 2);
+            u8g2.print("Offlinemodus");
+        }
+
+        if (TOF == 1) {
+            u8g2.setCursor(100, 2);
+            u8g2.printf("%.0f\n", percentage);  // display water level
+            u8g2.print((char)37);
+        }
+
+        u8g2.sendBuffer();
+    }
+}

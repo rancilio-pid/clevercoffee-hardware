@@ -38,7 +38,7 @@ void printScreen() {
                 numDecimalsSetPoint = 0;
             }
 
-            //draw (blinking) temp
+            // draw (blinking) temp
             if (fabs(Input - setPoint) < 0.3) {
                 if (isrCounter < 500) {
                     // limit to 4 characters
@@ -86,9 +86,9 @@ void printScreen() {
             u8g2.print("/");
 
             if (ONLYPID == 1) {
-                u8g2.print(brewtimersoftware, 0); // deaktivieren wenn Preinfusion ( // voransetzen )
+                u8g2.print(brewtimersoftware, 0); // deactivate with preinfusion
             } else {
-                u8g2.print(totalbrewtime / 1000, 0); // aktivieren wenn Preinfusion
+                u8g2.print(totalbrewtime / 1000, 0); // activate with preinfusion
             }
 
             if (timerBrewdetection == 1 && brewcounter == 10) {
@@ -102,20 +102,12 @@ void printScreen() {
                 u8g2.print(brewtimersoftware, 0);
             }
 
-            // Für Statusinfos
-            if (Offlinemodus == 0) {
+            if (offlineMode == 0) {
                 getSignalStrength();
 
                 if (WiFi.status() != WL_CONNECTED) {
                     u8g2.drawFrame(116, 28, 12, 12);
                     u8g2.drawXBMP(118, 30, 8, 8, antenna_NOK_u8g2);
-                } else {
-                    if (BLYNK == 1) {
-                        if (!Blynk.connected()) {
-                            u8g2.drawFrame(116, 28, 12, 12);
-                            u8g2.drawXBMP(118, 30, 8, 8, blynk_NOK_u8g2);
-                        }
-                    }
                 }
             } else {
                 u8g2.drawFrame(116, 28, 12, 12);

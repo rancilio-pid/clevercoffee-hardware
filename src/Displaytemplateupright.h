@@ -106,7 +106,7 @@ void printScreen() {
             // Für Statusinfos
             u8g2.drawFrame(0, 0, 64, 12);
 
-            if (Offlinemodus == 0) {
+            if (offlineMode == 0) {
                 getSignalStrength();
 
                 if (WiFi.status() == WL_CONNECTED) {
@@ -120,14 +120,6 @@ void printScreen() {
                     u8g2.setCursor(56, 2);
                     u8g2.print("RC: ");
                     u8g2.print(wifiReconnects);
-                }
-
-                if (BLYNK == 1) {
-                    if (Blynk.connected()) {
-                        u8g2.drawXBMP(24, 2, 11, 8, blynk_OK_u8g2);
-                    } else {
-                        u8g2.drawXBMP(24, 2, 8, 8, blynk_NOK_u8g2);
-                    }
                 }
 
                 if (MQTT == 1) {

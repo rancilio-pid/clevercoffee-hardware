@@ -45,9 +45,7 @@ enum MACHINE {
 
 // Connectivity
 #define CONNECTMODE 1              // 0 = offline 1 = WIFI-MODE 2 = AP-MODE (not working in the moment)
-#define BLYNK 0                    // 0 = no Blynk , 1 = Blynk
 #define MQTT 0                     // 1 = MQTT enabled, 0 = MQTT disabled
-#define GRAFANA 0                 // 2= custom Grafana 1 = grafana visualisation (access required), 0 = off (default)
 #define INFLUXDB 0                // 1 = INFLUX enabled, 0 = INFLUX disabled
 
 // PID & Hardware
@@ -56,19 +54,12 @@ enum MACHINE {
 #define BREWMODE 1                 // 1 = NORMAL preinfusion ; 2 = Scale with weight
 #define BREWDETECTION 1            // 0 = off, 1 = Software (Onlypid 1), 2 = Hardware (Onlypid 0), 3 = Sensor/Hardware for Only PID
 #define BREWSWITCHTYPE 1           // 1 = normal Switch, 2 = Trigger Switch
-#define COLDSTART_PID 1            // 1 = default coldstart values, 2 = custom values via blynk (expert mode activated)
+#define COLDSTART_PID 1            // 1 = default coldstart values, 2 = custom values
 #define TRIGGERTYPE HIGH           // LOW = low trigger, HIGH = high trigger relay
 #define VOLTAGESENSORTYPE HIGH     // BREWDETECTION 3 configuration
 #define PINMODEVOLTAGESENSOR INPUT // Mode INPUT_PULLUP, INPUT or INPUT_PULLDOWN_16 (Only Pin 16)
 #define PRESSURESENSOR 0           // 1 = pressure sensor connected to A0; PINBREWSWITCH must be set to the connected input!
 #define TEMPLED 1                  // set led pin high when brew or steam set point is within range
-
-// TOF sensor for water level
-#define TOF 0                      // 0 = no TOF sensor connected; 1 = water level by TOF sensor
-#define TOF_I2C 0x29               // I2C address of TOF sensor; 0x29 by default
-#define CALIBRATION_MODE 0         // 1 = enable to obtain water level calibration values; 0 = disable for normal PID operation; can also be done in Blynk
-#define WATER_FULL 102             // value for full water tank (=100%) obtained in calibration procedure (in mm); can also be set in Blynk
-#define WATER_EMPTY 205            // value for empty water tank (=0%) obtained in calibration procedure (in mm); can also be set in Blynk
 
 // E-Trigger
 #define ETRIGGER 0                 // 0 = no trigger (for Rancilio except Rancilio E), 1 = trigger for CPU of Rancilio E
@@ -90,10 +81,6 @@ enum MACHINE {
 #define FULLSCALE   922            // 90% of ADC input @3.3V supply = 922
 #define MAXPRESSURE 200
 
-// Accesspoint
-#define APWIFISSID "Rancilio"
-#define APWIFIKEY "Rancilio"
-
 /// Wifi
 #define HOSTNAME "wifi-hostname"
 #define D_SSID "myssid"
@@ -112,11 +99,6 @@ enum MACHINE {
 #define MQTT_TOPIC_PREFIX "custom/Küche."  // topic will be "<MQTT_TOPIC_PREFIX><HOSTNAME>/<READING>"
 #define MQTT_SERVER_IP "XXX.XXX.XXX.XXX"   // IP-Address of locally installed mqtt server
 #define MQTT_SERVER_PORT 1883
-
-// BLYNK
-#define AUTH "blynk_auth"
-#define BLYNKADDRESS "blynk.clevercoffee.de"    // blynk-server IP-Address
-#define BLYNKPORT 8080                          // blynk-server portver
 
 // INFLUXDB
 #define INFLUXDB_URL ""            // InfluxDB server address

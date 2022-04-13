@@ -23,9 +23,6 @@ static const char *langstring_wasserleer =    "Wasser leer";
 
 static const char *langstring_wifirecon =     "Wifi reconnect:";
 static const char *langstring_connectwifi1 =  "1: Connect Wifi to:";
-// static const char *langstring_connectwifi2[] =  {"2: Wifi connected, ", "try Blynk   "};
-// static const char *langstring_connectblynk1[] =  {"Connect to Blynk", "no Fallback"};
-static const char *langstring_connectblynk2[] =  {"3: Blynk connected", "sync all variables..."};
 static const char *langstring_nowifi[] = {"No ", "WIFI"};
 
 static const char *langstring_error_tsensor[] = {"Error, Temp: ", "Check Temp. Sensor!"};
@@ -48,13 +45,9 @@ static const char *langstring_bckfrunning[] = {"Backflush running:", "from"};
 #endif
 
 static const char *langstring_offlinemod =    "Offline mode";
-static const char *langstring_wasserleer =    "Empty water";
 
 static const char *langstring_wifirecon =     "Wifi reconnect:";
 static const char *langstring_connectwifi1 =  "1: Connect Wifi to:";
-// static const char *langstring_connectwifi2[] =  {"2: Wifi connected, ", "try Blynk   "};
-// static const char *langstring_connectblynk1[] =  {"Connect to Blynk", "no Fallback"};
-static const char *langstring_connectblynk2[] =  {"3: Blynk connected", "sync all variables..."};
 static const char *langstring_nowifi[] = {"No ", "WIFI"};
 
 static const char *langstring_error_tsensor[] = {"Error, Temp: ", "Check Temp. Sensor!"};
@@ -81,9 +74,6 @@ static const char *langstring_wasserleer =    "Agua vacía";
 
 static const char *langstring_wifirecon =     "Reconecta wifi:";
 static const char *langstring_connectwifi1 =  "1: Wifi conectado :";
-// static const char *langstring_connectwifi2[] =  {"2: Wifi conectado, ", "proba. Blynk"};
-// static const char *langstring_connectblynk1[] =  {"Conect. a Blynk ", "no Fallback"};
-static const char *langstring_connectblynk2[] =  {"3: Conect. a Blynk", "sincron. variables..."};
 static const char *langstring_nowifi[] = {"No ", "WIFI"};
 
 static const char *langstring_error_tsensor[] = {"Error, Temp: ", "Comprueba sensor T!"};

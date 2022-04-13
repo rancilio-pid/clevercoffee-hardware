@@ -273,7 +273,6 @@ void serverSetup() {
                 m += "<br />";
             }
         }
-         // ms to s
 
         request->send(200, "text/html", m);
 
@@ -287,8 +286,6 @@ void serverSetup() {
             }
         }
 
-        // Write to Blynk and MQTT the new values
-        writeSysParamsToBlynk();
         writeSysParamsToMQTT();
     });
 

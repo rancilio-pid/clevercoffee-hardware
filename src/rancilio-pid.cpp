@@ -53,10 +53,6 @@ MACHINE machine = (enum MACHINE)MACHINEID;
 
 #define HIGH_ACCURACY
 
-#include "PeriodicTrigger.h"
-PeriodicTrigger writeDebugTrigger(5000);  // returns true every 5000 ms
-PeriodicTrigger logbrew(500);
-
 
 enum MachineState {
     kInit = 0,
@@ -468,11 +464,6 @@ const unsigned long intervalDisplay = 500;
     }
 #endif
 
-// Trigger for Rancilio E Machine
-unsigned long previousMillisETrigger;  // initialisation at the end of init()
-const unsigned long intervalETrigger = ETRIGGERTIME;  // in Seconds
-int relayETriggerON, relayETriggerOFF;
-
 // Emergency stop if temp is too high
 void testEmergencyStop() {
     if (Input > EmergencyStopTemp && emergencyStop == false) {
@@ -881,7 +872,6 @@ void brewdetection() {
                         lastbrewTime = 0;
                         brewSteamDetectedQM = 1;
                         Serial.println("Quick Mill: setting brewSteamDetectedQM = 1");
-                        logbrew.reset();
                     }
 
                     if (brewSteamDetectedQM == 1) {
@@ -1015,30 +1005,6 @@ void mqtt_callback(char *topic, byte *data, unsigned int length) {
     sscanf(data_str, "%lf", &data_double);
 
     assignMQTTParam(configVar, data_double);
-}
-
-/**
- * @brief E-Trigger for Silvia E
- */
-void handleETrigger() {
-    // Static variable only one time is 0
-    static int ETriggeractive = 0;
-    unsigned long currentMillisETrigger = millis();
-
-    if (ETRIGGER == 1) {  // E Trigger is active from userconfig
-        if (currentMillisETrigger - previousMillisETrigger >= (1000 * intervalETrigger))  { // s to ms * 1000
-            ETriggeractive = 1;
-            previousMillisETrigger = currentMillisETrigger;
-
-            digitalWrite(PINETRIGGER, relayETriggerON);
-        }
-
-        // 10 Seconds later
-        else if (ETriggeractive == 1 && previousMillisETrigger + (10 * 1000) < (currentMillisETrigger)) {
-            digitalWrite(PINETRIGGER, relayETriggerOFF);
-            ETriggeractive = 0;
-        }
-    }
 }
 
 /**
@@ -1269,11 +1235,6 @@ void machinestatevoid() {
 
         case kBrew:
             brewdetection();
-            // Ausgabe waehrend des Bezugs von Bruehzeit, Temp und heatrateaverage
-            if (logbrew.check())
-                Serial.printf("(tB,T,hra) --> %5.2f %6.2f %8.2f\n",
-                            (double)(millis() - startingTime) / 1000, Input,
-                            heatrateaverage);
 
             if ((brewTime > 35 * 1000 && Brewdetection == 1 &&
                 ONLYPID == 1) ||  // 35 sec later and BD PID active SW Solution
@@ -1500,32 +1461,6 @@ void machinestatevoid() {
     }
 }
 
-void debugVerboseOutput() {
-    static PeriodicTrigger trigger(10000);
-
-    if (trigger.check()) {
-        Serial.printf(
-            "Tsoll=%5.1f  Tist=%5.1f Machinestate=%2i KP=%4.2f "
-            "KI=%4.2f KD=%4.2f\n",
-            BrewSetPoint, Input, machinestate, bPID.GetKp(), bPID.GetKi(),
-            bPID.GetKd());
-    }
-}
-
-/**
- * @brief TODO
- */
-void tempLed() {
-    if (TEMPLED == 1) {
-        pinMode(LEDPIN, OUTPUT);
-        digitalWrite(LEDPIN, LOW);
-
-        // inner Tempregion
-        if ((machinestate == kPidNormal && (fabs(Input - setPoint) < 0.5)) || (Input > 115 && fabs(Input - BrewSetPoint) < 5))  {
-            digitalWrite(LEDPIN, HIGH);
-        }
-    }
-}
 
 /**
  * @brief Set up internal WiFi hardware
@@ -1625,13 +1560,6 @@ void setup() {
         relayOFF = HIGH;
     }
 
-    if (TRIGGERRELAYTYPE) {
-        relayETriggerON = HIGH;
-        relayETriggerOFF = LOW;
-    } else {
-        relayETriggerON = LOW;
-        relayETriggerOFF = HIGH;
-    }
     if (VOLTAGESENSORTYPE) {
         VoltageSensorON = HIGH;
         VoltageSensorOFF = LOW;
@@ -1648,13 +1576,6 @@ void setup() {
     digitalWrite(PINVALVE, relayOFF);
     digitalWrite(PINPUMP, relayOFF);
     digitalWrite(PINHEATER, LOW);
-
-    // IF Etrigger selected
-    if (ETRIGGER == 1) {
-        pinMode(PINETRIGGER, OUTPUT);
-        digitalWrite(PINETRIGGER, relayETriggerOFF);  // Set the E-Trigger OFF its,
-                                                        // important for LOW Trigger Relais
-    }
 
     // IF Voltage sensor selected
     if (BREWDETECTION == 3) {
@@ -1776,7 +1697,6 @@ void setup() {
     previousMillisDisplay = currentTime;
     previousMillisMQTT = currentTime;
     previousMillisInflux = currentTime;
-    previousMillisETrigger = currentTime;
     previousMillisVoltagesensorreading = currentTime;
     lastMQTTConnectionAttempt = currentTime;
 
@@ -1843,14 +1763,9 @@ void loop() {
     checkSteamON();             // check for steam
     setEmergencyStopTemp();
     machinestatevoid();         // calculate machinestate
-    tempLed();
 
     if (INFLUXDB == 1) {
         sendInflux();
-    }
-
-    if (ETRIGGER == 1) {
-        handleETrigger();
     }
 
     #if (ONLYPIDSCALE == 1)  // only by shottimer 2, scale

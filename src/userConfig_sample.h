@@ -129,13 +129,13 @@ enum MACHINE {
 
 // Pin Layout
 #define ONE_WIRE_BUS 2             // Temp sensor pin
-#define PINPRESSURESENSOR 99       // Pressuresensor 0: A0 (ESP8266), >0 ONLY ESP32
+#define PINPRESSURESENSOR 99       // Pressuresensor
 #define PINVALVE 12                // Output pin for 3-way-valve
 #define PINPUMP 13                 // Output pin for pump
 #define PINHEATER 14               // Output pin for heater
 #define PINVOLTAGESENSOR  15       //Input pin for volatage sensor
 #define PINETRIGGER 16             // PIN for E-Trigger relay
-#define PINBREWSWITCH 0            // 0: A0 (ESP8266) ; >0 : DIGITAL PIN, ESP32 OR ESP8266: ONLY USE PIN15 AND PIN16!
+#define PINBREWSWITCH 0            // Digital Pin, ONLY USE PIN15 AND PIN16!
 #define PINSTEAMSWITCH 17          // STEAM active
 #define LEDPIN    18               // LED PIN ON near setpoint
 #define OLED_SCL 5                 // Output pin for dispaly clock pin
@@ -147,13 +147,7 @@ enum MACHINE {
 
 // Historic (no settings)
 #define PONE 1                     // 1 = P_ON_E (default), 0 = P_ON_M (special PID mode, other PID-parameter are needed)
-#define TEMPSENSOR 2               // 2 = TSIC306 1=DS18B20
-
-// Check BrewSwitch
-#if (defined(ESP8266) && ((PINBREWSWITCH != 15 && PINBREWSWITCH != 0 && PINBREWSWITCH != 16 )))
-  #error("WRONG Brewswitch PIN for ESP8266, Only PIN 15 and PIN 16");
-#endif
-
+#define TEMPSENSORTYPE 2           // 2 = TSIC306 1=DS18B20
 
 // defined compiler errors
 #if (PRESSURESENSOR == 1) && (PINPRESSURESENSOR == 0) && (PINBREWSWITCH == 0)

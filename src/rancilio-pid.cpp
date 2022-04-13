@@ -3,7 +3,6 @@
  *
  * @brief Main sketch
  *
- * @version 3.0.1 Alpha
  */
 
 
@@ -31,11 +30,10 @@
 #include "PID_v1.h"     // for PID calculation
 #include "TSIC.h"       // library for TSIC temp sensor
 
+#include <os.h>
 
-#if defined(ESP32)
-    #include <os.h>
-    hw_timer_t *timer = NULL;
-#endif
+hw_timer_t *timer = NULL;
+
 
 #if (BREWMODE == 2 || ONLYPIDSCALE == 1)
     #include <HX711_ADC.h>
@@ -83,7 +81,7 @@ int connectmode = CONNECTMODE;
 
 int offlineMode = 0;
 const int OnlyPID = ONLYPID;
-const int TempSensor = TEMPSENSOR;
+const int TempSensorType = TEMPSENSORTYPE;
 const int Brewdetection = BREWDETECTION;
 const int triggerType = TRIGGERTYPE;
 const int VoltageSensorType = VOLTAGESENSORTYPE;
@@ -265,11 +263,8 @@ DeviceAddress sensorDeviceAddress;      // arrays to hold device address
 uint16_t temperature = 0;   // internal variable used to read temeprature
 float Temperature_C = 0;    // internal variable that holds the converted temperature in °C
 
-#if (ONE_WIRE_BUS == 16 && TEMPSENSOR == 2 && defined(ESP8266))
-    TSIC Sensor1(ONE_WIRE_BUS);  // only Signalpin, VCCpin unused by default
-#else
-    ZACwire Sensor2(ONE_WIRE_BUS, 306);  // set OneWire pin to receive signal from the TSic "306"
-#endif
+
+ZACwire TempSensor(ONE_WIRE_BUS, 306);  // set OneWire pin to receive signal from the TSic "306"
 
 
 // MQTT
@@ -565,7 +560,7 @@ void refreshTemp() {
   unsigned long currentMillistemp = millis();
   previousInput = Input;
 
-    if (TempSensor == 1) {
+    if (TempSensorType == 1) {
         if (currentMillistemp - previousMillistemp >= intervaltempmesds18b20) {
             previousMillistemp = currentMillistemp;
             sensors.requestTemperatures();
@@ -584,7 +579,7 @@ void refreshTemp() {
         }
     }
 
-    if (TempSensor == 2) {
+    if (TempSensorType == 2) {
         if (currentMillistemp - previousMillistemp >= intervaltempmestsic) {
             previousMillistemp = currentMillistemp;
 
@@ -594,18 +589,9 @@ void refreshTemp() {
             */
             temperature = 0;
 
-        #if (ONE_WIRE_BUS == 16 && defined(ESP8266))
-            Sensor1.getTemperature(&temperature);
-            Temperature_C = Sensor1.calc_Celsius(&temperature);
-        #endif
-
-        #if ((ONE_WIRE_BUS != 16 && defined(ESP8266)) || defined(ESP32))
-            Temperature_C = Sensor2.getTemp();
-        #endif
-
-        if (!checkSensor(Temperature_C) && firstreading == 0)
-            return; // if sensor data is not valid, abort function; Sensor must
-                    // be read at least one time at system startup
+            if (!checkSensor(Temperature_C) && firstreading == 0)
+                return; // if sensor data is not valid, abort function; Sensor must
+                        // be read at least one time at system startup
 
             Input = Temperature_C;
 
@@ -1468,25 +1454,15 @@ void machinestatevoid() {
 void wiFiSetup() {
     unsigned long started = millis();
 
-    #if defined(ESP8266)
-        WiFi.hostname(hostname);
-    #endif
-
     #if OLED_DISPLAY != 0
         displayLogo(langstring_connectwifi1, ssid);
     #endif
 
-    /* Explicitly set the ESP8266 to be a WiFi-client, otherwise, it by default,
-     * would try to act as both a client and an access-point and could cause
-     * network-issues with your other WiFi-devices on your WiFi-network.
-     */
     WiFi.mode(WIFI_STA);
     WiFi.persistent(false);  // needed, otherwise exceptions are triggered \o.O/
     WiFi.begin(ssid, pass);
 
-    #if defined(ESP32)
-        WiFi.setHostname(hostname);
-    #endif
+    WiFi.setHostname(hostname);
 
     Serial.printf("Connecting to %s ...\n", ssid);
 
@@ -1584,31 +1560,10 @@ void setup() {
 
     // IF PINBREWSWITCH & Steam selected
     if (PINBREWSWITCH > 0) {
-        #if (defined(ESP8266) && PINBREWSWITCH == 16)
-            pinMode(PINBREWSWITCH, INPUT_PULLDOWN_16);
-        #endif
-
-        #if (defined(ESP8266) && PINBREWSWITCH == 15)
-            pinMode(PINBREWSWITCH, INPUT);
-        #endif
-
-        #if defined(ESP32)
-            pinMode(PINBREWSWITCH, INPUT_PULLDOWN);
-            ;
-        #endif
+        pinMode(PINBREWSWITCH, INPUT_PULLDOWN);
     }
 
-    #if (defined(ESP8266) && PINSTEAMSWITCH == 16)
-        pinMode(PINSTEAMSWITCH, INPUT_PULLDOWN_16);
-    #endif
-
-    #if (defined(ESP8266) && PINSTEAMSWITCH == 15)
-        pinMode(PINSTEAMSWITCH, INPUT);
-    #endif
-
-    #if defined(ESP32)
-        pinMode(PINSTEAMSWITCH, INPUT_PULLDOWN);
-    #endif
+    pinMode(PINSTEAMSWITCH, INPUT_PULLDOWN);
 
     #if OLED_DISPLAY != 0
         u8g2.setI2CAddress(oled_i2c * 2);
@@ -1659,7 +1614,7 @@ void setup() {
     bPID.SetMode(AUTOMATIC);
 
     // Temp sensor
-    if (TempSensor == 1) {
+    if (TempSensorType == 1) {
         sensors.begin();
         sensors.getAddress(sensorDeviceAddress, 0);
         sensors.setResolution(sensorDeviceAddress, 10);
@@ -1667,17 +1622,9 @@ void setup() {
         Input = sensors.getTempCByIndex(0);
     }
 
-    if (TempSensor == 2) {
+    if (TempSensorType == 2) {
         temperature = 0;
-
-        #if (ONE_WIRE_BUS == 16 && defined(ESP8266))
-            Sensor1.getTemperature(&temperature);
-            Input = Sensor1.calc_Celsius(&temperature);
-        #endif
-
-        #if ((ONE_WIRE_BUS != 16 && defined(ESP8266)) || defined(ESP32))
-            Input = Sensor2.getTemp();
-        #endif
+        Input = TempSensor.getTemp();
     }
 
     // moving average ini array

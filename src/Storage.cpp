@@ -208,7 +208,7 @@ static inline int32_t getItemAddr(sto_item_id_t itemId, uint16_t* maxItemSize = 
          case STO_ITEM_PID_KP_STEAM:
             addr = offsetof(sto_data_t, steamkp);
             size = STRUCT_MEMBER_SIZE(sto_data_t, steamkp);
-            break;    
+            break;
 
         default:
             Serial.printf("%s(): invalid item ID %i!\n", __FUNCTION__, itemId);
@@ -281,15 +281,13 @@ static void setDefaults(void) {
  *         <0 - failed
  */
 int storageSetup(void) {
-    #if defined(ESP8266)
-        EEPROM.begin(sizeof(sto_data_t));
-    #elif defined(ESP32)
+    #if defined(ESP32)
         if (!EEPROM.begin(sizeof(sto_data_t))) {
             Serial.printf("%s(): EEPROM initialization failed!\n", __FUNCTION__);
             return -1;
         }
     #else
-        #error("not supported MCU");
+        #error("MCU not supported");
     #endif
 
     /* It's not necessary here to check if any valid data are stored,
@@ -501,17 +499,7 @@ int storageGet(sto_item_id_t itemId, String& itemValue) {
         return -1;
     }
 
-    #if defined(ESP8266)
-        const uint8_t* storageDataPtr;
-        storageDataPtr = EEPROM.getConstDataPtr() + itemAddr;
-
-        if (isString(storageDataPtr, maxItemSize))  { // exist a null terminator?
-            itemValue = String((const char*)storageDataPtr); // convert to C++ string
-        } else {
-            Serial.printf("%s(): storage empty -> returning default\n", __FUNCTION__);
-            itemValue = String((PGM_P)&itemDefaults + itemAddr);  // set default string
-        }
-    #elif defined(ESP32)
+    #if defined(ESP32)
         // The ESP32 EEPROM class does not support getConstDataPtr()!
         uint8_t buf[maxItemSize];
         EEPROM.readBytes(itemAddr, buf, maxItemSize);

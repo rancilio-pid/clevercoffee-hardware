@@ -59,12 +59,6 @@ enum MACHINE {
 #define VOLTAGESENSORTYPE HIGH     // BREWDETECTION 3 configuration
 #define PINMODEVOLTAGESENSOR INPUT // Mode INPUT_PULLUP, INPUT or INPUT_PULLDOWN_16 (Only Pin 16)
 #define PRESSURESENSOR 0           // 1 = pressure sensor connected to A0; PINBREWSWITCH must be set to the connected input!
-#define TEMPLED 1                  // set led pin high when brew or steam set point is within range
-
-// E-Trigger
-#define ETRIGGER 0                 // 0 = no trigger (for Rancilio except Rancilio E), 1 = trigger for CPU of Rancilio E
-#define ETRIGGERTIME 600           // seconds, time between trigger signal
-#define TRIGGERRELAYTYPE HIGH      // LOW = low trigger, HIGH = high trigger relay for E-Trigger
 
 //Weight SCALE
 #define SCALE_WEIGHTSETPOINT 30             // In grams

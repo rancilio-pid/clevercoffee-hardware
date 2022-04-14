@@ -62,43 +62,34 @@ void printScreen()
             u8g2.drawLine(13, 48, 13, 58 - (Input  / 2));
         }
 
-        //draw setPoint line
+        // draw setPoint line
         u8g2.drawLine(18, 58 - (setPoint / 2), 23, 58 - (setPoint / 2));
+        u8g2.setCursor(40, 48);
 
-        // PID Werte ueber heatbar , TOF wenn aktiv
-        if (percentage < 10.00 && TOF == 1) {
-            if (isrCounter < 500) {
-                u8g2.setCursor(40, 48);
-                u8g2.print(langstring_wasserleer);
-
-            }
-        } else {
-            u8g2.setCursor(40, 48);
-
-            u8g2.print(bPID.GetKp(), 0); // P
-            u8g2.print("|");
-            if (bPID.GetKi() != 0) {
-            u8g2.print(bPID.GetKp() / bPID.GetKi(), 0);;
-            } // I
-            else
-            {
-            u8g2.print("0");
-            }
-            u8g2.print("|");
-            u8g2.print(bPID.GetKd() / bPID.GetKp(), 0); // D
-            u8g2.setCursor(98, 48);
-            if (Output < 99) {
-            u8g2.print(Output / 10, 1);
-            } else {
-            u8g2.print(Output / 10, 0);
-            }
-            u8g2.print("%");
+        u8g2.print(bPID.GetKp(), 0); // P
+        u8g2.print("|");
+        if (bPID.GetKi() != 0) {
+        u8g2.print(bPID.GetKp() / bPID.GetKi(), 0);;
+        } // I
+        else
+        {
+        u8g2.print("0");
         }
-            // Brew
-            u8g2.setCursor(32, 34);
-            u8g2.print(langstring_brew);
-            u8g2.print(brewTime / 1000, 0);
-            u8g2.print("/");
+        u8g2.print("|");
+        u8g2.print(bPID.GetKd() / bPID.GetKp(), 0); // D
+        u8g2.setCursor(98, 48);
+        if (Output < 99) {
+        u8g2.print(Output / 10, 1);
+        } else {
+        u8g2.print(Output / 10, 0);
+        }
+        u8g2.print("%");
+
+        // Brew
+        u8g2.setCursor(32, 34);
+        u8g2.print(langstring_brew);
+        u8g2.print(brewTime / 1000, 0);
+        u8g2.print("/");
 
         if (ONLYPID == 1) {
             u8g2.print(brewtimersoftware, 0);   // deaktivieren wenn Preinfusion
@@ -141,12 +132,6 @@ void printScreen()
         } else {
             u8g2.setCursor(40, 2);
             u8g2.print(langstring_offlinemod);
-        }
-
-        if (TOF == 1) {
-            u8g2.setCursor(100, 2);
-            u8g2.printf("%.0f\n",percentage);   //display water level
-            u8g2.print((char)37);
         }
 
         u8g2.sendBuffer();

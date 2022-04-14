@@ -1,7 +1,6 @@
 /**
  * @file    userConfig_sample.h
  * @brief   Values must be configured by the user
- * @version 3.0.1 Alpha
  *
  */
 
@@ -11,11 +10,6 @@
 #ifndef _userConfig_H
 #define _userConfig_H
 
-// firmware version (must match with definitions in the main source file)
-#define USR_FW_VERSION    3
-#define USR_FW_SUBVERSION 0
-#define USR_FW_HOTFIX     1
-#define USR_FW_BRANCH     "ALPHA"
 
 // List of supported machines
 enum MACHINE {

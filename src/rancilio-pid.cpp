@@ -6,12 +6,6 @@
  */
 
 
-// Firmware version
-#define FW_VERSION    3
-#define FW_SUBVERSION 0
-#define FW_HOTFIX     1
-#define FW_BRANCH     "ALPHA"
-
 // Includes
 #include <ArduinoOTA.h>
 #include "rancilio-pid.h"
@@ -38,14 +32,6 @@ hw_timer_t *timer = NULL;
 #if (BREWMODE == 2 || ONLYPIDSCALE == 1)
     #include <HX711_ADC.h>
 #endif
-
-// Version of userConfig need to match, checked by preprocessor
-#if (FW_VERSION != USR_FW_VERSION) || \
-    (FW_SUBVERSION != USR_FW_SUBVERSION) || \
-    (FW_HOTFIX != USR_FW_HOTFIX)
-    #error Version of userConfig file and rancilio-pid.cpp need to match!
-#endif
-
 
 MACHINE machine = (enum MACHINE)MACHINEID;
 
@@ -588,6 +574,8 @@ void refreshTemp() {
             * "temperature" will still hold old values
             */
             temperature = 0;
+
+            Temperature_C = TempSensor.getTemp();
 
             if (!checkSensor(Temperature_C) && firstreading == 0)
                 return; // if sensor data is not valid, abort function; Sensor must
@@ -1519,8 +1507,6 @@ void websiteSetup() {
 }
 
 void setup() {
-    const String sysVersion = "Version " + String(getFwVersion()) + " " + FW_BRANCH;
-
     Serial.begin(115200);
 
     initTimer1();
@@ -1569,7 +1555,7 @@ void setup() {
         u8g2.setI2CAddress(oled_i2c * 2);
         u8g2.begin();
         u8g2_prepare();
-        displayLogo(sysVersion, "");
+        displayLogo("Revision: ", AUTO_VERSION);
         delay(2000);
     #endif
 
@@ -1972,21 +1958,6 @@ void writeSysParamsToMQTT(void) {
         }
     }
 }
-
-/**
- * @brief Returns the firmware version as string (x.y.z).
- *
- * @return firmware version string
- */
-const char* getFwVersion(void)
-{
-    static const String sysVersion = String(FW_VERSION) + "." +
-                                     String(FW_SUBVERSION) + "." +
-                                     String(FW_HOTFIX);
-    return sysVersion.c_str();
-}
-
-
 
 /**
  * @brief Performs a factory reset.

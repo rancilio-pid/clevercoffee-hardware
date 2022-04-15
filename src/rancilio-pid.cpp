@@ -16,13 +16,15 @@
 #include "userConfig.h"  // needs to be configured by the user
 
 // Libraries
-#include <DallasTemperature.h>  // Library for dallas temp sensor
+#include <DallasTemperature.h>
+#include <WiFiManager.h>
 #include <InfluxDbClient.h>
 #include <PubSubClient.h>
 #include <U8g2lib.h>    // i2c display
 #include <ZACwire.h>    // new TSIC bus library
 #include "PID_v1.h"     // for PID calculation
 #include "TSIC.h"       // library for TSIC temp sensor
+
 
 #include <os.h>
 
@@ -64,7 +66,6 @@ int lastmachinestatepid = -1;
 
 // Definitions below must be changed in the userConfig.h file
 int connectmode = CONNECTMODE;
-
 int offlineMode = 0;
 const int OnlyPID = ONLYPID;
 const int TempSensorType = TEMPSENSORTYPE;
@@ -72,8 +73,6 @@ const int Brewdetection = BREWDETECTION;
 const int triggerType = TRIGGERTYPE;
 const int VoltageSensorType = VOLTAGESENSORTYPE;
 const boolean ota = OTA;
-const unsigned long wifiConnectionDelay = WIFICINNECTIONDELAY;
-const unsigned int maxWifiReconnects = MAXWIFIRECONNECTS;
 const unsigned long brewswitchDelay = BREWSWITCHDELAY;
 int BrewMode = BREWMODE;
 
@@ -81,8 +80,10 @@ int BrewMode = BREWMODE;
 uint8_t oled_i2c = OLED_I2C;
 
 // WiFi
+WiFiManager wm;
+const unsigned long wifiConnectionDelay = WIFICINNECTIONDELAY;
+const unsigned int maxWifiReconnects = MAXWIFIRECONNECTS;
 const char *hostname = HOSTNAME;
-const char *ssid = D_SSID;
 const char *pass = PASS;
 unsigned long lastWifiConnectionAttempt = millis();
 unsigned int wifiReconnects = 0;  // actual number of reconnects
@@ -626,7 +627,7 @@ void initOfflineMode() {
 void checkWifi() {
     if (offlineMode == 1 || brewcounter > 11) return;
 
-    /* if kaltstart ist still true when checkWifi() is called, then there was no WIFI connection
+    /* If the machine is still in the cold start state when checkWifi() is called, then there was no WIFI connection
      * at boot -> connect or offlinemode
      */
     do {
@@ -644,8 +645,8 @@ void checkWifi() {
                     #endif
                 }
 
-                WiFi.disconnect();
-                WiFi.begin(ssid, pass);  // attempt to connect to Wifi network
+                wm.disconnect();
+                wm.autoConnect(hostname, pass);
 
                 int count = 1;
 
@@ -662,7 +663,7 @@ void checkWifi() {
 
 
     if (wifiReconnects >= maxWifiReconnects && !setupDone) {  // no wifi connection after boot, initiate offline mode
-        // (only directly after boot)
+        // only directly after boot
         initOfflineMode();
     }
 }
@@ -1440,26 +1441,22 @@ void machinestatevoid() {
  * @brief Set up internal WiFi hardware
  */
 void wiFiSetup() {
-    unsigned long started = millis();
+    wm.setBreakAfterConfig(true);
 
-    #if OLED_DISPLAY != 0
-        displayLogo(langstring_connectwifi1, ssid);
-    #endif
+    if (!wm.autoConnect(hostname, pass)) {
+        Serial.println("WiFi connection timed out, restarting...");
+        delay(2000);
 
-    WiFi.mode(WIFI_STA);
-    WiFi.persistent(false);  // needed, otherwise exceptions are triggered \o.O/
-    WiFi.begin(ssid, pass);
-
-    WiFi.setHostname(hostname);
-
-    Serial.printf("Connecting to %s ...\n", ssid);
-
-    // wait up to 20 seconds for connection:
-    while ((WiFi.status() != WL_CONNECTED) && (millis() - started < 20000)) {
-        yield();  // Prevent Watchdog trigger
+        ESP.restart();
     }
 
-    checkWifi();  // try to reconnect
+    #if OLED_DISPLAY != 0
+        displayLogo(langstring_connectwifi1, wm.getWiFiSSID(true));
+    #endif
+
+    Serial.printf("Connecting to %s ...\n", wm.getWiFiSSID(true).c_str());
+
+    // checkWifi();  // try to reconnect
 
     if (WiFi.status() == WL_CONNECTED) {
         Serial.printf("WiFi connected - IP = %i.%i.%i.%i\n", WiFi.localIP()[0],
@@ -1475,13 +1472,14 @@ void wiFiSetup() {
         String macaddr5 = number2string(mac[5]);
         String completemac = macaddr0 + macaddr1 + macaddr2 + macaddr3 + macaddr4 + macaddr5;
         Serial.printf("MAC-ADRESSE: %s\n", completemac.c_str());
+
     } else {  // No WiFi
         #if OLED_DISPLAY != 0
             displayLogo(langstring_nowifi[0], langstring_nowifi[1]);
         #endif
 
         Serial.println("No WIFI");
-        WiFi.disconnect(true);
+        wm.disconnect();
         delay(1000);
     }
 }
@@ -1672,7 +1670,7 @@ void loop() {
 
         wifiReconnects = 0;  // reset wifi reconnects if connected
     } else {
-        checkWifi();
+        // checkWifi();
     }
 
     refreshTemp();        // update temperature values

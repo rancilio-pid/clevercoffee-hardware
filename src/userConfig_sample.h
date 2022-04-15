@@ -70,15 +70,14 @@ enum MACHINE {
 #define MAXPRESSURE 200
 
 /// Wifi
-#define HOSTNAME "wifi-hostname"
-#define D_SSID "myssid"
-#define PASS "mypass"
+#define HOSTNAME "silvia"
+#define PASS "rancilio"            // default password for WiFiManager
 #define MAXWIFIRECONNECTS 5        // maximum number of reconnection attempts, use -1 to deactivate
 #define WIFICINNECTIONDELAY 10000  // delay between reconnects in ms
 
 // OTA
 #define OTA true                   // true = OTA activated, false = OTA deactivated
-#define OTAHOST "ota_hostname"     // Name to be shown in ARUDINO IDE Port
+#define OTAHOST "silvia"           // Name to be shown in ARUDINO IDE Port
 #define OTAPASS "otapass"          // Password for OTA updtates
 
 // MQTT

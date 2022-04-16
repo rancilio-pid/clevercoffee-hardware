@@ -1,9 +1,10 @@
 /**
  * @file icon.h
  *
- * @version 1.2
- * @date 2020-03-01
+ * @brief Icon bitmaps
  */
+
+#pragma once
 
 #define logo_width 23
 #define logo_height 58

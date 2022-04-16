@@ -1,5 +1,5 @@
 /**
- * @file    userConfig_sample.h
+ * @file    userConfig.h
  * @brief   Values must be configured by the user
  *
  */
@@ -7,8 +7,8 @@
 /**
  * Define area, do not change anything here
  */
-#ifndef _userConfig_H
-#define _userConfig_H
+
+#pragma once
 
 
 // List of supported machines
@@ -71,14 +71,14 @@ enum MACHINE {
 
 /// Wifi
 #define HOSTNAME "silvia"
-#define PASS "rancilio"            // default password for WiFiManager
+#define PASS "CleverCoffee"        // default password for WiFiManager
 #define MAXWIFIRECONNECTS 5        // maximum number of reconnection attempts, use -1 to deactivate
 #define WIFICINNECTIONDELAY 10000  // delay between reconnects in ms
 
 // OTA
 #define OTA true                   // true = OTA activated, false = OTA deactivated
 #define OTAHOST "silvia"           // Name to be shown in ARUDINO IDE Port
-#define OTAPASS "otapass"          // Password for OTA updtates
+#define OTAPASS "CleverCoffeeOTA"  // Password for OTA updtates
 
 // MQTT
 #define MQTT_USERNAME "mymqttuser"
@@ -147,4 +147,3 @@ enum MACHINE {
     #error Change PINBREWSWITCH or PRESSURESENSOR!
 #endif
 
-#endif

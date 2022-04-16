@@ -4,6 +4,7 @@
  * @brief
  */
 
+
 #if (BREWMODE == 2 || ONLYPIDSCALE == 1)
 /**
  * @brief Check measured weight

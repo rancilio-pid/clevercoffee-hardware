@@ -1,11 +1,10 @@
 /**
- * @file RancilioServer.h
+ * @file EmbeddedWebserver.h
  *
  * @brief Embedded webserver
  */
 
-#ifndef rancilioserver_h
-#define rancilioserver_h
+#pragma once
 
 #include <Arduino.h>
 
@@ -321,5 +320,3 @@ void sendTempEvent(float currentTemp, float targetTemp, float heaterPower) {
     events.send("ping", NULL, millis());
     events.send(getTempString().c_str(), "new_temps", millis());
 }
-
-#endif

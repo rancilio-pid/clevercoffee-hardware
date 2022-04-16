@@ -1,5 +1,5 @@
 /**
- * @file rancilio-pid.cpp
+ * @file main.cpp
  *
  * @brief Main sketch
  *
@@ -8,7 +8,6 @@
 
 // Includes
 #include <ArduinoOTA.h>
-#include "rancilio-pid.h"
 #include "Storage.h"
 #include "SysPara.h"
 #include "icon.h"        // user icons for display
@@ -142,11 +141,13 @@ char *number2string(float in);
 char *number2string(int in);
 char *number2string(unsigned int in);
 int filter(int input);
+int readSysParamsFromStorage(void);
+int writeSysParamsToStorage(void);
 
 // Variable declarations
 uint8_t pidON = 1;               // 1 = control loop in closed loop
 int relayON, relayOFF;           // used for relay trigger type. Do not change!
-boolean kaltstart = true;        // true = Rancilio started for first time
+boolean coldStart = true;        // true = machine just switched on
 boolean emergencyStop = false;   // Notstop bei zu hoher Temperatur
 double EmergencyStopTemp = 120;  // Temp EmergencyStopTemp
 int inX = 0, inY = 0, inOld = 0, inSum = 0; // used for filter()
@@ -323,7 +324,7 @@ std::vector<mqttVars_t> mqttVars = {
 };
 
 // Embedded HTTP Server
-#include "RancilioServer.h"
+#include "EmbeddedWebserver.h"
 
 std::vector<editable_t> editableVars = {
     {"PID_ON", "Enable PID Controller", kUInt8, (void *)&pidON},
@@ -621,52 +622,6 @@ void initOfflineMode() {
     }
 }
 
-/**
- * @brief Check if Wifi is connected, if not reconnect abort function if offline, or brew is running
- */
-void checkWifi() {
-    if (offlineMode == 1 || brewcounter > 11) return;
-
-    /* If the machine is still in the cold start state when checkWifi() is called, then there was no WIFI connection
-     * at boot -> connect or offlinemode
-     */
-    do {
-        if ((millis() - lastWifiConnectionAttempt >= wifiConnectionDelay) && (wifiReconnects <= maxWifiReconnects)) {
-            int statusTemp = WiFi.status();
-
-            if (statusTemp != WL_CONNECTED) {  // check WiFi connection status
-                lastWifiConnectionAttempt = millis();
-                wifiReconnects++;
-                Serial.printf("Attempting WIFI reconnection: %i\n", wifiReconnects);
-
-                if (!setupDone) {
-                    #if OLED_DISPLAY != 0
-                        displayMessage("", "", "", "", langstring_wifirecon, String(wifiReconnects));
-                    #endif
-                }
-
-                wm.disconnect();
-                wm.autoConnect(hostname, pass);
-
-                int count = 1;
-
-                while (WiFi.status() != WL_CONNECTED && count <= 20) {
-                    delay(100); // give WIFI some time to connect
-                    count++;    // reconnect counter, maximum waiting time for
-                                // reconnect = 20*100ms
-                }
-            }
-        }
-
-        yield();  // Prevent WDT trigger
-    } while (!setupDone && wifiReconnects < maxWifiReconnects && WiFi.status() != WL_CONNECTED);
-
-
-    if (wifiReconnects >= maxWifiReconnects && !setupDone) {  // no wifi connection after boot, initiate offline mode
-        // only directly after boot
-        initOfflineMode();
-    }
-}
 
 void sendInflux() {
     unsigned long currentMillisInflux = millis();
@@ -1405,14 +1360,14 @@ void machinestatevoid() {
 
         case kPidOffline:
             if (pidON == 1) {
-                if (kaltstart) {
+                if (coldStart) {
                     machinestate = kColdStart;
-                } else if (!kaltstart && (Input > (BrewSetPoint - 10))) {  // Input higher BrewSetPoint-10, normal PID
+                } else if (!coldStart && (Input > (BrewSetPoint - 10))) {  // Input higher BrewSetPoint-10, normal PID
                     machinestate = kPidNormal;
                 } else if (Input <= (BrewSetPoint - 10)) {
                     machinestate =
                         kColdStart;  // Input 10C below set point, enter cold start
-                    kaltstart = true;
+                    coldStart = true;
                 }
             }
 
@@ -1441,6 +1396,7 @@ void machinestatevoid() {
  * @brief Set up internal WiFi hardware
  */
 void wiFiSetup() {
+    wm.setCleanConnect(true);
     wm.setBreakAfterConfig(true);
 
     if (!wm.autoConnect(hostname, pass)) {
@@ -1455,8 +1411,6 @@ void wiFiSetup() {
     #endif
 
     Serial.printf("Connecting to %s ...\n", wm.getWiFiSSID(true).c_str());
-
-    // checkWifi();  // try to reconnect
 
     if (WiFi.status() == WL_CONNECTED) {
         Serial.printf("WiFi connected - IP = %i.%i.%i.%i\n", WiFi.localIP()[0],
@@ -1553,7 +1507,7 @@ void setup() {
         u8g2.setI2CAddress(oled_i2c * 2);
         u8g2.begin();
         u8g2_prepare();
-        displayLogo("Revision: ", AUTO_VERSION);
+        displayLogo("Firmware Revision: ", AUTO_VERSION);
         delay(2000);
     #endif
 
@@ -1667,10 +1621,6 @@ void loop() {
 
         // Enable interrupts if OTA is finished
         ArduinoOTA.onEnd([]() { enableTimer1(); });
-
-        wifiReconnects = 0;  // reset wifi reconnects if connected
-    } else {
-        // checkWifi();
     }
 
     refreshTemp();        // update temperature values
@@ -1767,7 +1717,7 @@ void loop() {
         }
 
         bPID.SetTunings(aggKp, aggKi, aggKd, PonE);
-        kaltstart = false;
+        coldStart = false;
     }
 
     // BD PID

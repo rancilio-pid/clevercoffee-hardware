@@ -4,8 +4,8 @@
  * @brief Class of system parameter
  */
 
-#ifndef _SYS_PARA_H_
-#define _SYS_PARA_H_
+#pragma once
+
 
 #include <Arduino.h>
 #include <stdint.h>
@@ -119,6 +119,3 @@ class SysPara {
         T _dummyCur;
 };
 
-
-
-#endif

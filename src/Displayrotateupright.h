@@ -4,6 +4,9 @@
  * @brief
  */
 
+#pragma once
+
+
 #if (OLED_DISPLAY == 1 || OLED_DISPLAY == 2)
 /**
  * @brief initialize display

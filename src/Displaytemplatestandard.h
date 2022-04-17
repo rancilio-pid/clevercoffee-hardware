@@ -121,7 +121,7 @@ void printScreen()
                 u8g2.print(wifiReconnects);
             }
 
-            if (MQTT == 1) {
+            #if MQTT
                 if (mqtt.connected() == 1) {
                     u8g2.setCursor(77, 1);
                     u8g2.setFont(u8g2_font_profont11_tf);
@@ -130,10 +130,10 @@ void printScreen()
                     u8g2.setCursor(77, 2);
                     u8g2.print("");
                 }
-            }
-        } else {
-            u8g2.setCursor(40, 2);
-            u8g2.print(langstring_offlinemod);
+            # else
+                u8g2.setCursor(40, 2);
+                u8g2.print(langstring_offlinemod);
+            #endif
         }
 
         u8g2.sendBuffer();

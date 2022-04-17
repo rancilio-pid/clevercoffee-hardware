@@ -17,15 +17,13 @@
 // Libraries
 #include <DallasTemperature.h>
 #include <WiFiManager.h>
-#include <InfluxDbClient.h>
-#include <PubSubClient.h>
 #include <U8g2lib.h>    // i2c display
 #include <ZACwire.h>    // new TSIC bus library
 #include "PID_v1.h"     // for PID calculation
 #include "TSIC.h"       // library for TSIC temp sensor
 
-
 #include <os.h>
+
 
 hw_timer_t *timer = NULL;
 
@@ -96,12 +94,6 @@ const unsigned long fillTime = FILLTIME;
 const unsigned long flushTime = FLUSHTIME;
 int maxflushCycles = MAXFLUSHCYCLES;
 
-// InfluxDB Client
-InfluxDBClient influxClient(INFLUXDB_URL, INFLUXDB_DB_NAME);
-Point influxSensor("machinestate");
-const unsigned long intervalInflux = INFLUXDB_INTERVAL;
-unsigned long previousMillisInflux;  // initialisation at the end of init()
-
 // Voltage Sensor
 unsigned long previousMillisVoltagesensorreading = millis();
 const unsigned long intervalVoltagesensor = 200;
@@ -116,8 +108,7 @@ bool steamQM_active = false;        // steam-mode is active
 bool brewSteamDetectedQM = false;   // brew/steam detected, not sure yet what it is
 bool coolingFlushDetectedQM = false;
 
-// Pressure sensor
-#if (PRESSURESENSOR == 1)   // Pressure sensor connected
+#if PRESSURESENSOR
     int offset = OFFSET;
     int fullScale = FULLSCALE;
     int maxPressure = MAXPRESSURE;
@@ -127,7 +118,6 @@ bool coolingFlushDetectedQM = false;
 #endif
 
 // Method forward declarations
-bool mqtt_publish(const char *reading, char *payload);
 void setSteamMode(int steamMode);
 void setPidStatus(int pidStatus);
 void setBackflush(int backflush);
@@ -135,7 +125,6 @@ void loopcalibrate();
 void looppid();
 void initSteamQM();
 boolean checkSteamOffQM();
-void writeSysParamsToMQTT(void);
 char *number2string(double in);
 char *number2string(float in);
 char *number2string(int in);
@@ -143,6 +132,11 @@ char *number2string(unsigned int in);
 int filter(int input);
 int readSysParamsFromStorage(void);
 int writeSysParamsToStorage(void);
+
+#if MQTT
+    bool mqtt_publish(const char *reading, char *payload);
+    void writeSysParamsToMQTT(void);
+#endif
 
 // Variable declarations
 uint8_t pidON = 1;               // 1 = control loop in closed loop
@@ -255,25 +249,7 @@ float Temperature_C = 0;    // internal variable that holds the converted temper
 ZACwire TempSensor(ONE_WIRE_BUS, 306);  // set OneWire pin to receive signal from the TSic "306"
 
 
-// MQTT
-unsigned long previousMillisMQTT;   // initialisation at the end of init()
-const unsigned long intervalMQTT = 5000;
-
-WiFiClient net;
-PubSubClient mqtt(net);
-const char *mqtt_server_ip = MQTT_SERVER_IP;
-const int mqtt_server_port = MQTT_SERVER_PORT;
-const char *mqtt_username = MQTT_USERNAME;
-const char *mqtt_password = MQTT_PASSWORD;
-const char *mqtt_topic_prefix = MQTT_TOPIC_PREFIX;
-char topic_will[256];
-char topic_set[256];
-unsigned long lastMQTTConnectionAttempt = millis();
-unsigned int MQTTReCnctFlag;
-unsigned int MQTTReCnctCount = 0;
-
-
-// system parameters (current value as pointer to variable, minimum, maximum, optional storage ID)
+// System parameters (current value as pointer to variable, minimum, maximum, optional storage ID)
 SysPara<double> sysParaPidKpStart(&startKp, 0, 200, STO_ITEM_PID_KP_START);
 SysPara<double> sysParaPidTnStart(&startTn, 0, 999, STO_ITEM_PID_TN_START);
 SysPara<double> sysParaPidKpReg(&aggKp, 0, 200, STO_ITEM_PID_KP_REGULAR);
@@ -291,37 +267,6 @@ SysPara<double> sysParaPreInfPause(&preinfusionpause, 0, 20, STO_ITEM_PRE_INFUSI
 SysPara<double> sysParaWeightSetPoint(&weightSetpoint, 0, 500, STO_ITEM_WEIGHTSETPOINT);
 SysPara<double> sysParaPidKpSteam(&steamKp, 0, 500, STO_ITEM_PID_KP_STEAM);
 SysPara<uint8_t> sysParaPidOn(&pidON, 0, 1, STO_ITEM_PID_ON);
-
-
-enum MQTTSettableType {
-    tUInt8,
-    tDouble,
-};
-
-
-struct mqttVars_t {
-    String mqttParamName;
-    MQTTSettableType type;
-    int minValue;
-    int maxValue;
-    void *mqttVarPtr;
-};
-
-std::vector<mqttVars_t> mqttVars = {
-    {"BrewSetPoint", tDouble, 20, 105, (void *)&BrewSetPoint},
-    {"brewtime", tDouble, 0, 60, (void *)&brewtime},
-    {"preinfusion", tDouble, 0, 10, (void *)&preinfusion},
-    {"preinfusionpause", tDouble, 0, 20, (void *)&preinfusionpause},
-    {"pidON", tUInt8, 0, 1, (void *)&pidON},
-    {"backflushON", tUInt8, 0, 1, (void *)&backflushON},
-    {"aggKp", tDouble, 0, 100, (void *)&aggKp},
-    {"aggTn", tDouble, 0, 999, (void *)&aggTn},
-    {"aggTv", tDouble, 0, 999, (void *)&aggTv},
-    {"aggbKp", tDouble, 0, 100, (void *)&aggbKp},
-    {"aggbTn", tDouble, 0, 999, (void *)&aggbTn},
-    {"aggbTv", tDouble, 0, 999, (void *)&aggbTv},
-    {"steamKp", tDouble, 0, 500, (void *)&steamKp},
-};
 
 // Embedded HTTP Server
 #include "EmbeddedWebserver.h"
@@ -352,11 +297,38 @@ std::vector<editable_t> editableVars = {
 unsigned long lastTempEvent = 0;
 unsigned long tempEventInterval = 1000;
 
+// MQTT includes and data structure
+#if MQTT
+    #include "mqtt.h"
+
+    std::vector<mqttVars_t> mqttVars = {
+        {"BrewSetPoint", tDouble, 20, 105, (void *)&BrewSetPoint},
+        {"brewtime", tDouble, 0, 60, (void *)&brewtime},
+        {"preinfusion", tDouble, 0, 10, (void *)&preinfusion},
+        {"preinfusionpause", tDouble, 0, 20, (void *)&preinfusionpause},
+        {"pidON", tUInt8, 0, 1, (void *)&pidON},
+        {"backflushON", tUInt8, 0, 1, (void *)&backflushON},
+        {"aggKp", tDouble, 0, 100, (void *)&aggKp},
+        {"aggTn", tDouble, 0, 999, (void *)&aggTn},
+        {"aggTv", tDouble, 0, 999, (void *)&aggTv},
+        {"aggbKp", tDouble, 0, 100, (void *)&aggbKp},
+        {"aggbTn", tDouble, 0, 999, (void *)&aggbTn},
+        {"aggbTv", tDouble, 0, 999, (void *)&aggbTv},
+        {"steamKp", tDouble, 0, 500, (void *)&steamKp},
+    };
+#endif
+
+// InfluxDB includes
+#if INFLUXDB
+    #include "influxdb.h"
+#endif
+
+
 /**
  * @brief Get Wifi signal strength and set bars for display
  */
 void getSignalStrength() {
-    if (offlineMode == 1) return;
+    if (offlineMode) return;
 
     long rssi;
 
@@ -422,7 +394,7 @@ const unsigned long intervalDisplay = 500;
     #endif
 #endif
 
-#if (PRESSURESENSOR == 1)  // Pressure sensor connected
+#if (PRESSURESENSOR)  // Pressure sensor connected
     /**
      * Pressure sensor
      * Verify before installation: meassured analog input value (should be 3,300 V
@@ -447,7 +419,10 @@ const unsigned long intervalDisplay = 500;
     }
 #endif
 
-// Emergency stop if temp is too high
+
+/**
+ * @brief Emergency stop if temp is too high
+ */
 void testEmergencyStop() {
     if (Input > EmergencyStopTemp && emergencyStop == false) {
         emergencyStop = true;
@@ -456,11 +431,12 @@ void testEmergencyStop() {
     }
 }
 
+
 /**
  * @brief Moving average - brewdetection (SW)
  */
 void movAvg() {
-    if (firstreading == 1) {
+    if (firstreading) {
         for (int thisReading = 0; thisReading < numReadings; thisReading++) {
             readingstemp[thisReading] = Input;
             readingstime[thisReading] = 0;
@@ -623,108 +599,6 @@ void initOfflineMode() {
 }
 
 
-void sendInflux() {
-    unsigned long currentMillisInflux = millis();
-
-    if (currentMillisInflux - previousMillisInflux >= intervalInflux) {
-        previousMillisInflux = currentMillisInflux;
-        influxSensor.clearFields();
-        influxSensor.addField("value", Input);
-        influxSensor.addField("setPoint", setPoint);
-        influxSensor.addField("HeaterPower", Output);
-        influxSensor.addField("Kp", bPID.GetKp());
-        influxSensor.addField("Ki", bPID.GetKi());
-        influxSensor.addField("Kd", bPID.GetKd());
-        influxSensor.addField("pidON", pidON);
-        influxSensor.addField("brewtime", brewtime);
-        influxSensor.addField("preinfusionpause", preinfusionpause);
-        influxSensor.addField("preinfusion", preinfusion);
-        influxSensor.addField("SteamON", SteamON);
-
-        byte mac[6];
-        WiFi.macAddress(mac);
-        String macaddr0 = number2string(mac[0]);
-        String macaddr1 = number2string(mac[1]);
-        String macaddr2 = number2string(mac[2]);
-        String macaddr3 = number2string(mac[3]);
-        String macaddr4 = number2string(mac[4]);
-        String macaddr5 = number2string(mac[5]);
-        String completemac = macaddr0 + macaddr1 + macaddr2 + macaddr3 + macaddr4 + macaddr5;
-        influxSensor.addField("mac", completemac);
-
-        // Write point
-        if (!influxClient.writePoint(influxSensor)) {
-            Serial.printf("InfluxDB write failed: %s\n", influxClient.getLastErrorMessage().c_str());
-        }
-    }
-}
-
-
-/**
- * @brief Check if MQTT is connected, if not reconnect abort function if offline, or brew is running
- *      MQTT is also using maxWifiReconnects!
- */
-void checkMQTT() {
-    if (offlineMode == 1 || brewcounter > 11) return;
-
-    if ((millis() - lastMQTTConnectionAttempt >= wifiConnectionDelay) && (MQTTReCnctCount <= maxWifiReconnects)) {
-        int statusTemp = mqtt.connected();
-
-        if (statusTemp != 1) {
-            lastMQTTConnectionAttempt = millis();  // Reconnection Timer Function
-            MQTTReCnctCount++;                     // Increment reconnection Counter
-            Serial.printf("Attempting MQTT reconnection: %i\n", MQTTReCnctCount);
-
-            if (mqtt.connect(hostname, mqtt_username, mqtt_password, topic_will, 0, 0,"exit") == true) {
-                mqtt.subscribe(topic_set);
-                Serial.println("Subscribe to MQTT Topics");
-            }   // Try to reconnect to the server; connect() is a blocking
-                // function, watch the timeout!
-        }
-    }
-}
-
-char number2string_double[22];
-
-char *number2string(double in) {
-    snprintf(number2string_double, sizeof(number2string_double), "%0.2f", in);
-    return number2string_double;
-}
-
-char number2string_float[22];
-
-char *number2string(float in) {
-    snprintf(number2string_float, sizeof(number2string_float), "%0.2f", in);
-    return number2string_float;
-}
-
-char number2string_int[22];
-
-char *number2string(int in) {
-    snprintf(number2string_int, sizeof(number2string_int), "%d", in);
-    return number2string_int;
-}
-
-char number2string_uint[22];
-
-char *number2string(unsigned int in) {
-  snprintf(number2string_uint, sizeof(number2string_uint), "%u", in);
-  return number2string_uint;
-}
-
-/**
- * @brief Publish Data to MQTT
- */
-bool mqtt_publish(const char *reading, char *payload) {
-    #if MQTT
-        char topic[120];
-        snprintf(topic, 120, "%s%s/%s", mqtt_topic_prefix, hostname, reading);
-        return mqtt.publish(topic, payload, true);
-    #else
-        return false;
-    #endif
-}
-
 /**
  * @brief Brewdetection
  */
@@ -846,6 +720,43 @@ void brewdetection() {
     }
 }
 
+
+char number2string_double[22];
+
+char *number2string(double in) {
+    snprintf(number2string_double, sizeof(number2string_double), "%0.2f", in);
+
+    return number2string_double;
+}
+
+
+char number2string_float[22];
+
+char *number2string(float in) {
+    snprintf(number2string_float, sizeof(number2string_float), "%0.2f", in);
+
+    return number2string_float;
+}
+
+
+char number2string_int[22];
+
+char *number2string(int in) {
+    snprintf(number2string_int, sizeof(number2string_int), "%d", in);
+
+    return number2string_int;
+}
+
+
+char number2string_uint[22];
+
+char *number2string(unsigned int in) {
+    snprintf(number2string_uint, sizeof(number2string_uint), "%u", in);
+
+    return number2string_uint;
+}
+
+
 /**
  * @brief after ~28 cycles the input is set to 99,66% if the real input value sum of inX and inY
  *      multiplier must be 1 increase inX multiplier to make the filter faster
@@ -859,83 +770,6 @@ int filter(int input) {
     return inSum;
 }
 
-/**
- * @brief Assign the value of the mqtt parameter to the associated variable
- *
- * @param param MQTT parameter name
- * @param value MQTT value
- */
-void assignMQTTParam(char *param, double value) {
-    String key = String(param);
-    boolean paramValid = false;
-    boolean paramInRange = false;
-
-    for (mqttVars_t m : mqttVars) {
-        if (m.mqttParamName.equals(key)) {
-            if (value >= m.minValue && value <= m.maxValue) {
-                switch (m.type) {
-                    case tDouble:
-                        *(double *)m.mqttVarPtr = value;
-                        paramValid = true;
-                        break;
-                    case tUInt8:
-                        *(uint8_t *)m.mqttVarPtr = value;
-                        paramValid = true;
-                        break;
-                    default:
-                        Serial.println(String(m.type) + " is not a recognized type for this MQTT parameter.");
-                }
-
-                paramInRange = true;
-            }
-            else {
-                Serial.println("Value out of range for MQTT parameter "+ key + ".");
-                paramInRange = false;
-            }
-
-            break;
-        }
-    }
-
-    if (paramValid && paramInRange) {
-        mqtt_publish(param, number2string(value));
-        writeSysParamsToStorage();
-    }
-    else {
-        Serial.println(key + " is not a valid MQTT parameter.");
-    }
-}
-
-/**
- * @brief MQTT Callback Function: set Parameters through MQTT
- */
-void mqtt_callback(char *topic, byte *data, unsigned int length) {
-    char topic_str[256];
-    os_memcpy(topic_str, topic, sizeof(topic_str));
-    topic_str[255] = '\0';
-    char data_str[length + 1];
-    os_memcpy(data_str, data, length);
-    data_str[length] = '\0';
-    char topic_pattern[255];
-    char configVar[120];
-    char cmd[64];
-    double data_double;
-
-    snprintf(topic_pattern, sizeof(topic_pattern), "%s%s/%%[^\\/]/%%[^\\/]", mqtt_topic_prefix, hostname);
-    Serial.println(topic_pattern);
-
-    if ((sscanf(topic_str, topic_pattern, &configVar, &cmd) != 2) || (strcmp(cmd, "set") != 0)) {
-        Serial.println(topic_str);
-        return;
-    }
-
-    Serial.println(topic_str);
-    Serial.println(data_str);
-
-    sscanf(data_str, "%lf", &data_double);
-
-    assignMQTTParam(configVar, data_double);
-}
 
 /**
  * @brief SteamON & Quickmill
@@ -964,11 +798,11 @@ void checkSteamON() {
         }
     }
 
-    if (SteamON == 1) {
+    if (SteamON) {
         setPoint = SteamSetPoint;
     }
 
-    if (SteamON == 0) {
+    if (!SteamON) {
         setPoint = BrewSetPoint;
     }
 }
@@ -1006,6 +840,7 @@ boolean checkSteamOffQM() {
     return false;
 }
 
+
 /**
  * @brief State machine
  */
@@ -1029,7 +864,7 @@ void machinestatevoid() {
                 bPID.SetMode(pidMode);
             }
 
-            if (pidON == 0) {
+            if (!pidON) {
                 machinestate = kPidOffline;
             }
 
@@ -1074,7 +909,7 @@ void machinestatevoid() {
                     break;
             }
 
-            if (SteamON == 1) {
+            if (SteamON) {
                 machinestate = kSteam;
             }
 
@@ -1083,7 +918,7 @@ void machinestatevoid() {
                 machinestate = kBrew;
             }
 
-            if (SteamON == 1) {
+            if (SteamON) {
                 machinestate = kSteam;
             }
 
@@ -1091,7 +926,7 @@ void machinestatevoid() {
                 machinestate = kBackflush;
             }
 
-            if (pidON == 0) {
+            if (!pidON) {
                 machinestate = kPidOffline;
             }
 
@@ -1113,7 +948,7 @@ void machinestatevoid() {
                 machinestate = kBrew;
             }
 
-            if (SteamON == 1) {
+            if (SteamON) {
                 machinestate = kSteam;
             }
 
@@ -1121,11 +956,11 @@ void machinestatevoid() {
                 machinestate = kBackflush;
             }
 
-            if (SteamON == 1) {
+            if (SteamON) {
                 machinestate = kSteam;
             }
 
-            if (pidON == 0) {
+            if (!pidON) {
                 machinestate = kPidOffline;
             }
 
@@ -1142,7 +977,7 @@ void machinestatevoid() {
                 machinestate = kBrew;
             }
 
-            if (SteamON == 1) {
+            if (SteamON) {
                 machinestate = kSteam;
             }
 
@@ -1154,7 +989,7 @@ void machinestatevoid() {
                 machinestate = kEmergencyStop;
             }
 
-            if (pidON == 0) {
+            if (!pidON) {
                 machinestate = kPidOffline;
             }
 
@@ -1183,7 +1018,7 @@ void machinestatevoid() {
                 }
             }
 
-            if (SteamON == 1) {
+            if (SteamON) {
                 machinestate = kSteam;
             }
 
@@ -1191,7 +1026,7 @@ void machinestatevoid() {
                 machinestate = kEmergencyStop;
             }
 
-            if (pidON == 0) {
+            if (!pidON) {
                 machinestate = kPidOffline;
             }
 
@@ -1209,7 +1044,7 @@ void machinestatevoid() {
                 lastbrewTime = 0;
             }
 
-            if (SteamON == 1) {
+            if (SteamON) {
                 machinestate = kSteam;
             }
 
@@ -1221,7 +1056,7 @@ void machinestatevoid() {
                 machinestate = kEmergencyStop;
             }
 
-            if (pidON == 0) {
+            if (!pidON) {
                 machinestate = kPidOffline;
             }
 
@@ -1242,7 +1077,7 @@ void machinestatevoid() {
                 machinestate = kBrew;
             }
 
-            if (SteamON == 1) {
+            if (SteamON) {
                 machinestate = kSteam;
             }
 
@@ -1254,7 +1089,7 @@ void machinestatevoid() {
                 machinestate = kEmergencyStop;
             }
 
-            if (pidON == 0) {
+            if (!pidON) {
                 machinestate = kPidOffline;
             }
 
@@ -1264,7 +1099,7 @@ void machinestatevoid() {
             break;
 
         case kSteam:
-            if (SteamON == 0) {
+            if (!SteamON) {
                 machinestate = kCoolDown;
             }
 
@@ -1276,7 +1111,7 @@ void machinestatevoid() {
                 machinestate = kBackflush;
             }
 
-            if (pidON == 0) {
+            if (!pidON) {
                 machinestate = kPidOffline;
             }
 
@@ -1305,7 +1140,7 @@ void machinestatevoid() {
                 machinestate = kPidNormal;
             }
 
-            if (SteamON == 1) {
+            if (SteamON) {
                 machinestate = kSteam;
             }
 
@@ -1317,7 +1152,7 @@ void machinestatevoid() {
                 machinestate = kEmergencyStop;
             }
 
-            if (pidON == 0) {
+            if (!pidON) {
                 machinestate = kPidOffline;
             }
 
@@ -1335,7 +1170,7 @@ void machinestatevoid() {
                 machinestate = kEmergencyStop;
             }
 
-            if (pidON == 0) {
+            if (!pidON) {
                 machinestate = kPidOffline;
             }
 
@@ -1349,7 +1184,7 @@ void machinestatevoid() {
                 machinestate = kPidNormal;
             }
 
-            if (pidON == 0) {
+            if (!pidON) {
                 machinestate = kPidOffline;
             }
 
@@ -1359,7 +1194,7 @@ void machinestatevoid() {
             break;
 
         case kPidOffline:
-            if (pidON == 1) {
+            if (pidON) {
                 if (coldStart) {
                     machinestate = kColdStart;
                 } else if (!coldStart && (Input > (BrewSetPoint - 10))) {  // Input higher BrewSetPoint-10, normal PID
@@ -1399,20 +1234,7 @@ void wiFiSetup() {
     wm.setCleanConnect(true);
     wm.setBreakAfterConfig(true);
 
-    if (!wm.autoConnect(hostname, pass)) {
-        Serial.println("WiFi connection timed out, restarting...");
-        delay(2000);
-
-        ESP.restart();
-    }
-
-    #if OLED_DISPLAY != 0
-        displayLogo(langstring_connectwifi1, wm.getWiFiSSID(true));
-    #endif
-
-    Serial.printf("Connecting to %s ...\n", wm.getWiFiSSID(true).c_str());
-
-    if (WiFi.status() == WL_CONNECTED) {
+    if (wm.autoConnect(hostname, pass)) {
         Serial.printf("WiFi connected - IP = %i.%i.%i.%i\n", WiFi.localIP()[0],
                     WiFi.localIP()[1], WiFi.localIP()[2], WiFi.localIP()[3]);
 
@@ -1427,15 +1249,22 @@ void wiFiSetup() {
         String completemac = macaddr0 + macaddr1 + macaddr2 + macaddr3 + macaddr4 + macaddr5;
         Serial.printf("MAC-ADRESSE: %s\n", completemac.c_str());
 
-    } else {  // No WiFi
+    } else {
+        Serial.println("WiFi connection timed out...");
+
         #if OLED_DISPLAY != 0
             displayLogo(langstring_nowifi[0], langstring_nowifi[1]);
         #endif
 
-        Serial.println("No WIFI");
         wm.disconnect();
         delay(1000);
+
+        offlineMode = 1;
     }
+
+    #if OLED_DISPLAY != 0
+        displayLogo(langstring_connectwifi1, wm.getWiFiSSID(true));
+    #endif
 }
 
 
@@ -1457,6 +1286,7 @@ void websiteSetup() {
 
   serverSetup();
 }
+
 
 void setup() {
     Serial.begin(115200);
@@ -1493,7 +1323,7 @@ void setup() {
 
     // IF Voltage sensor selected
     if (BREWDETECTION == 3) {
-    pinMode(PINVOLTAGESENSOR, PINMODEVOLTAGESENSOR);
+        pinMode(PINVOLTAGESENSOR, PINMODEVOLTAGESENSOR);
     }
 
     // IF PINBREWSWITCH & Steam selected
@@ -1528,22 +1358,17 @@ void setup() {
             ArduinoOTA.begin();
         }
 
-        if (MQTT == 1) {
+        #if MQTT
             snprintf(topic_will, sizeof(topic_will), "%s%s/%s", mqtt_topic_prefix, hostname, "will");
             snprintf(topic_set, sizeof(topic_set), "%s%s/+/%s", mqtt_topic_prefix, hostname, "set");
             mqtt.setServer(mqtt_server_ip, mqtt_server_port);
             mqtt.setCallback(mqtt_callback);
             checkMQTT();
-        }
+        #endif
 
-        if (INFLUXDB == 1) {
-            if (INFLUXDB_AUTH_TYPE == 1) {
-                influxClient.setConnectionParams(INFLUXDB_URL, INFLUXDB_ORG_NAME, INFLUXDB_DB_NAME, INFLUXDB_API_TOKEN);
-            }
-            else if (INFLUXDB_AUTH_TYPE == 2 && (strlen(INFLUXDB_USER) > 0) && (strlen(INFLUXDB_PASSWORD) > 0)) {
-                influxClient.setConnectionParamsV1(INFLUXDB_URL, INFLUXDB_DB_NAME, INFLUXDB_USER, INFLUXDB_PASSWORD);
-            }
-        }
+        #if INFLUXDB
+            influxDbSetup();
+        #endif
     }
 
     // Initialize PID controller
@@ -1580,14 +1405,21 @@ void setup() {
     previousMillistemp = currentTime;
     windowStartTime = currentTime;
     previousMillisDisplay = currentTime;
-    previousMillisMQTT = currentTime;
-    previousMillisInflux = currentTime;
     previousMillisVoltagesensorreading = currentTime;
-    lastMQTTConnectionAttempt = currentTime;
+
+    #if MQTT
+        lastMQTTConnectionAttempt = currentTime;
+        previousMillisMQTT = currentTime;
+    #endif
+
+    #if INFLUXDB
+        previousMillisInflux = currentTime;
+    #endif
 
     #if (BREWMODE == 2)
         previousMillisScale = currentTime;
     #endif
+
     #if (PRESSURESENSOR == 1)
         previousMillisPressure = currentTime;
     #endif
@@ -1600,14 +1432,14 @@ void setup() {
 void loop() {
     // Only do Wifi stuff, if Wifi is connected
     if (WiFi.status() == WL_CONNECTED && offlineMode == 0) {
-        if (MQTT == 1) {
+        #if MQTT
             checkMQTT();
             writeSysParamsToMQTT();
 
             if (mqtt.connected() == 1) {
                 mqtt.loop();
             }
-        }
+        #endif
 
         ArduinoOTA.handle();  // For OTA
 
@@ -1636,7 +1468,7 @@ void loop() {
         checkWeight();  // Check Weight Scale in the loop
     #endif
 
-    #if (PRESSURESENSOR == 1)
+    #if PRESSURESENSOR
         checkPressure();
     #endif
 
@@ -1645,9 +1477,9 @@ void loop() {
     setEmergencyStopTemp();
     machinestatevoid();         // calculate machinestate
 
-    if (INFLUXDB == 1) {
+    #if INFLUXDB
         sendInflux();
-    }
+    #endif
 
     #if (ONLYPIDSCALE == 1)  // only by shottimer 2, scale
         shottimerscale();
@@ -1655,17 +1487,21 @@ void loop() {
 
     // Check if PID should run or not. If not, set to manuel and force output to zero
     #if OLED_DISPLAY != 0
-    unsigned long currentMillisDisplay = millis();
-    if (currentMillisDisplay - previousMillisDisplay >= 100) {
-        displayShottimer();
-    }
-    if (currentMillisDisplay - previousMillisDisplay >= intervalDisplay) {
-        previousMillisDisplay = currentMillisDisplay;
-    #if DISPLAYTEMPLATE < 20  // not in vertikal template
-        Displaymachinestate();
-    #endif
-        printScreen();  // refresh display
-    }
+        unsigned long currentMillisDisplay = millis();
+
+        if (currentMillisDisplay - previousMillisDisplay >= 100) {
+            displayShottimer();
+        }
+
+        if (currentMillisDisplay - previousMillisDisplay >= intervalDisplay) {
+            previousMillisDisplay = currentMillisDisplay;
+
+            #if DISPLAYTEMPLATE < 20  // not in vertikal template
+                Displaymachinestate();
+            #endif
+
+            printScreen();  // refresh display
+        }
     #endif
 
     if (machinestate == kPidOffline || machinestate == kSensorError || machinestate == kEmergencyStop || machinestate == keepromError) {
@@ -1697,7 +1533,6 @@ void loop() {
         }
 
         bPID.SetTunings(startKp, startKi, 0, P_ON_M);
-        // normal PID
     }
 
     if (machinestate == kPidNormal) {
@@ -1787,11 +1622,11 @@ void setBackflush(int backflush) {
 void setSteamMode(int steamMode) {
     SteamON = steamMode;
 
-    if (SteamON == 1) {
+    if (SteamON) {
         SteamFirstON = 1;
     }
 
-    if (SteamON == 0) {
+    if (!SteamON) {
         SteamFirstON = 0;
     }
 }
@@ -1853,59 +1688,6 @@ int writeSysParamsToStorage(void) {
     return storageCommit();
 }
 
-/**
- * @brief Send all current system parameter values to MQTT
- *
- * @return TODO 0 = success, < 0 = failure
- */
-void writeSysParamsToMQTT(void) {
-    unsigned long currentMillisMQTT = millis();
-    if ((currentMillisMQTT - previousMillisMQTT >= intervalMQTT) && (MQTT == 1)) {
-        previousMillisMQTT = currentMillisMQTT;
-
-        if (mqtt.connected() == 1) {
-            mqtt_publish("temperature", number2string(Input));
-            mqtt_publish("setPoint", number2string(setPoint));
-            mqtt_publish("BrewSetPoint", number2string(BrewSetPoint));
-            mqtt_publish("SteamSetPoint", number2string(SteamSetPoint));
-            mqtt_publish("HeaterPower", number2string(Output));
-            mqtt_publish("currentKp", number2string(bPID.GetKp()));
-            mqtt_publish("currentKi", number2string(bPID.GetKi()));
-            mqtt_publish("currentKd", number2string(bPID.GetKd()));
-            mqtt_publish("pidON", number2string(pidON));
-            mqtt_publish("brewtime", number2string(brewtime));
-            mqtt_publish("preinfusionpause", number2string(preinfusionpause));
-            mqtt_publish("preinfusion", number2string(preinfusion));
-            mqtt_publish("SteamON", number2string(SteamON));
-            mqtt_publish("backflushON", number2string(backflushON));
-
-            // Normal PID
-            mqtt_publish("aggKp", number2string(aggKp));
-            mqtt_publish("aggTn", number2string(aggTn));
-            mqtt_publish("aggTv", number2string(aggTv));
-
-            // BD PID
-            mqtt_publish("aggbKp", number2string(aggbKp));
-            mqtt_publish("aggbTn", number2string(aggbTn));
-            mqtt_publish("aggbTv", number2string(aggbTv));
-
-            // Start PI
-            mqtt_publish("startKp", number2string(startKp));
-            mqtt_publish("startTn", number2string(startTn));
-
-             // Steam P
-            mqtt_publish("steamKp", number2string(steamKp));
-
-            //BD Parameter
-            mqtt_publish("BrewTimer", number2string(brewtimersoftware));
-            mqtt_publish("BrewLimit", number2string(brewboarder));
-
-            #if (BREWMODE == 2)
-                mqtt_publish("weightSetpoint(g)", number2string(weightSetpoint));
-            #endif
-        }
-    }
-}
 
 /**
  * @brief Performs a factory reset.

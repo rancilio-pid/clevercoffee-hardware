@@ -279,7 +279,9 @@ void serverSetup() {
             }
         }
 
-        writeSysParamsToMQTT();
+        #if MQTT
+            writeSysParamsToMQTT();
+        #endif
     });
 
     SPIFFS.begin();

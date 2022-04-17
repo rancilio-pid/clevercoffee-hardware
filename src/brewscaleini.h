@@ -4,6 +4,9 @@
  * @brief
  */
 
+#pragma once
+
+
 // Analog Input
 #if PINBREWSWITCH == 0
     const int analogPin = 0; // AI0 will be used

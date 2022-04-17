@@ -256,7 +256,7 @@ void brew() {
                         brewcounter = 20;
                     }
 
-                    kaltstart = false;  // force reset kaltstart if shot is pulled
+                    coldStart = false;  // force reset kaltstart if shot is pulled
                 } else {
                     backflush();
                 }

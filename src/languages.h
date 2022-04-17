@@ -4,6 +4,9 @@
  * @brief Localized strings
  */
 
+#pragma once
+
+
 #include "userConfig.h"
 
 #if (LANGUAGE == 0) // DE

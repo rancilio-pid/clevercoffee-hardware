@@ -4,6 +4,9 @@
  * @brief Vertical display template
  */
 
+#pragma once
+
+
 /**
  * @brief Send data to display
  */

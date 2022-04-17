@@ -4,6 +4,9 @@
  * @brief Timer - ISR for PID calculation and heat realay output
  */
 
+#pragma once
+
+
 #include <Arduino.h>
 
 

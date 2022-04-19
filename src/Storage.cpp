@@ -6,6 +6,7 @@
 
 #include <Arduino.h>
 #include <EEPROM.h>
+#include "defaults.h"
 #include "userConfig.h"
 #include "Storage.h"
 

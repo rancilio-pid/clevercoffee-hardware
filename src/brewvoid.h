@@ -150,7 +150,7 @@ void backflush() {
         Output = 0;
     }
 
-    digitalWrite(PINHEATER, LOW);  // Stop heating
+    digitalWrite(PIN_HEATER, LOW);  // Stop heating
 
     checkbrewswitch();
 
@@ -170,8 +170,8 @@ void backflush() {
 
         case 20:  // portafilter filling
             Serial.println("portafilter filling");
-            digitalWrite(PINVALVE, relayON);
-            digitalWrite(PINPUMP, relayON);
+            digitalWrite(PIN_VALVE, relayON);
+            digitalWrite(PIN_PUMP, relayON);
             backflushState = 21;
 
             break;
@@ -186,8 +186,8 @@ void backflush() {
 
         case 30:  // flushing
             Serial.println("flushing");
-            digitalWrite(PINVALVE, relayOFF);
-            digitalWrite(PINPUMP, relayOFF);
+            digitalWrite(PIN_VALVE, relayOFF);
+            digitalWrite(PIN_PUMP, relayOFF);
             flushCycles++;
             backflushState = 31;
 
@@ -206,8 +206,8 @@ void backflush() {
         case 43:  // waiting for brewswitch off position
             if (brewswitch == LOW) {
                 Serial.println("backflush finished");
-                digitalWrite(PINVALVE, relayOFF);
-                digitalWrite(PINPUMP, relayOFF);
+                digitalWrite(PIN_VALVE, relayOFF);
+                digitalWrite(PIN_PUMP, relayOFF);
                 flushCycles = 0;
                 backflushState = 10;
             }
@@ -265,8 +265,8 @@ void brew() {
 
             case 20:  // preinfusioon
                 Serial.println("Preinfusion");
-                digitalWrite(PINVALVE, relayON);
-                digitalWrite(PINPUMP, relayON);
+                digitalWrite(PIN_VALVE, relayON);
+                digitalWrite(PIN_PUMP, relayON);
                 brewcounter = 21;
 
                 break;
@@ -280,8 +280,8 @@ void brew() {
 
             case 30:  // preinfusion pause
                 Serial.println("preinfusion pause");
-                digitalWrite(PINVALVE, relayON);
-                digitalWrite(PINPUMP, relayOFF);
+                digitalWrite(PIN_VALVE, relayON);
+                digitalWrite(PIN_PUMP, relayOFF);
                 brewcounter = 31;
 
                 break;
@@ -295,8 +295,8 @@ void brew() {
 
             case 40:  // brew running
                 Serial.println("Brew started");
-                digitalWrite(PINVALVE, relayON);
-                digitalWrite(PINPUMP, relayON);
+                digitalWrite(PIN_VALVE, relayON);
+                digitalWrite(PIN_PUMP, relayON);
                 brewcounter = 41;
 
                 break;
@@ -312,8 +312,8 @@ void brew() {
 
             case 42:  // brew finished
                 Serial.println("Brew stopped");
-                digitalWrite(PINVALVE, relayOFF);
-                digitalWrite(PINPUMP, relayOFF);
+                digitalWrite(PIN_VALVE, relayOFF);
+                digitalWrite(PIN_PUMP, relayOFF);
                 brewcounter = 43;
                 brewTime = 0;
 
@@ -321,8 +321,8 @@ void brew() {
 
             case 43:  // waiting for brewswitch off position
                 if (brewswitch == LOW) {
-                    digitalWrite(PINVALVE, relayOFF);
-                    digitalWrite(PINPUMP, relayOFF);
+                    digitalWrite(PIN_VALVE, relayOFF);
+                    digitalWrite(PIN_PUMP, relayOFF);
 
                     // disarmed button
                     currentMillistemp = 0;

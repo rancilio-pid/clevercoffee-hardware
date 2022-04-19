@@ -49,7 +49,7 @@ static const char *langstring_bckfrunning[] = {"Backflush running:", "from"};
 
 static const char *langstring_offlinemod =    "Offline mode";
 
-static const char *langstring_wifirecon =     "Wifi reconnect:";
+// static const char *langstring_wifirecon =     "Wifi reconnect:";
 static const char *langstring_connectwifi1 =  "1: Connect Wifi to:";
 static const char *langstring_nowifi[] = {"No ", "WIFI"};
 

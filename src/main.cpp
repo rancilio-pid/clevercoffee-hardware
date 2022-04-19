@@ -8,11 +8,13 @@
 
 // Includes
 #include <ArduinoOTA.h>
+#include "defaults.h"
+#include "pinmapping.h"
+#include "userConfig.h"  // needs to be configured by the user
+#include "icon.h"
+#include "languages.h"
 #include "Storage.h"
 #include "SysPara.h"
-#include "icon.h"        // user icons for display
-#include "languages.h"   // for language translation
-#include "userConfig.h"  // needs to be configured by the user
 
 // Libraries
 #include <DallasTemperature.h>
@@ -236,7 +238,7 @@ double aggKd = aggTv * aggKp;
 PID bPID(&Input, &Output, &setPoint, aggKp, aggKi, aggKd, PonE, DIRECT);
 
 // Dallas temp sensor
-OneWire oneWire(ONE_WIRE_BUS);  // Setup a oneWire instance to communicate with any OneWire
+OneWire oneWire(PIN_ONEWIRE);  // Setup a oneWire instance to communicate with any OneWire
                                 // devices (not just Maxim/Dallas temperature ICs)
 DallasTemperature sensors(&oneWire);    // Pass our oneWire reference to Dallas Temperature.
 DeviceAddress sensorDeviceAddress;      // arrays to hold device address
@@ -246,7 +248,7 @@ uint16_t temperature = 0;   // internal variable used to read temeprature
 float Temperature_C = 0;    // internal variable that holds the converted temperature in °C
 
 
-ZACwire TempSensor(ONE_WIRE_BUS, 306);  // set OneWire pin to receive signal from the TSic "306"
+ZACwire TempSensor(PIN_ONEWIRE, 306);  // set OneWire pin to receive signal from the TSic "306"
 
 
 // System parameters (current value as pointer to variable, minimum, maximum, optional storage ID)
@@ -408,7 +410,7 @@ const unsigned long intervalDisplay = 500;
             previousMillisPressure = currentMillisPressure;
 
             inputPressure =
-                ((analogRead(PINPRESSURESENSOR) - offset) * maxPressure * 0.0689476) /
+                ((analogRead(PIN_PRESSURESENSOR) - offset) * maxPressure * 0.0689476) /
                 (fullScale - offset);   // pressure conversion and unit
                                         // conversion [psi] -> [bar]
             inputPressureFilter = filter(inputPressure);
@@ -625,13 +627,13 @@ void brewdetection() {
         }
     } else if (Brewdetection == 3) {
         // brewTime counter
-        if ((digitalRead(PINVOLTAGESENSOR) == VoltageSensorON) && brewDetected == 1) {
+        if ((digitalRead(PIN_BREWSWITCH) == VoltageSensorON) && brewDetected == 1) {
             brewTime = millis() - startingTime;
             lastbrewTime = brewTime;
         }
 
         //  OFF: reset brew
-        if ((digitalRead(PINVOLTAGESENSOR) == VoltageSensorOFF) &&(brewDetected == 1 || coolingFlushDetectedQM == true)) {
+        if ((digitalRead(PIN_BREWSWITCH) == VoltageSensorOFF) &&(brewDetected == 1 || coolingFlushDetectedQM == true)) {
             brewDetected = 0;
             timePVStoON = brewTime;  // for QuickMill
             brewTime = 0;
@@ -665,7 +667,7 @@ void brewdetection() {
             case QuickMill:
 
                 if (!coolingFlushDetectedQM) {
-                    int pvs = digitalRead(PINVOLTAGESENSOR);
+                    int pvs = digitalRead(PIN_BREWSWITCH);
 
                     if (pvs == VoltageSensorON && brewDetected == 0 &&
                         brewSteamDetectedQM == 0 && !steamQM_active) {
@@ -708,7 +710,7 @@ void brewdetection() {
             default:
                 previousMillisVoltagesensorreading = millis();
 
-                if (digitalRead(PINVOLTAGESENSOR) == VoltageSensorON && brewDetected == 0) {
+                if (digitalRead(PIN_BREWSWITCH) == VoltageSensorON && brewDetected == 0) {
                     Serial.println("HW Brew - Voltage Sensor -  Start");
                     timeBrewdetection = millis();
                     startingTime = millis();
@@ -776,12 +778,12 @@ int filter(int input) {
  */
 void checkSteamON() {
     // check digital GIPO
-    if (digitalRead(PINSTEAMSWITCH) == HIGH) {
+    if (digitalRead(PIN_STEAMSWITCH) == HIGH) {
         SteamON = 1;
     }
 
     // If switched on via web interface, then SteamFirstON == 1, prevent override
-    if (digitalRead(PINSTEAMSWITCH) == LOW && SteamFirstON == 0) {
+    if (digitalRead(PIN_STEAMSWITCH) == LOW && SteamFirstON == 0) {
         SteamON = 0;
     }
 
@@ -828,7 +830,7 @@ boolean checkSteamOffQM() {
      * thermoblock. Once the pinvolagesenor remains OFF for longer than a
      * pump-pulse time peride the switch is turned off and steam mode finished.
      */
-    if (digitalRead(PINVOLTAGESENSOR) == VoltageSensorON) {
+    if (digitalRead(PIN_BREWSWITCH) == VoltageSensorON) {
         lastTimePVSwasON = millis();
     }
 
@@ -857,7 +859,7 @@ void machinestatevoid() {
                 pidMode = 0;
                 bPID.SetMode(pidMode);
                 Output = 0;
-                digitalWrite(PINHEATER, LOW);  // Stop heating
+                digitalWrite(PIN_HEATER, LOW);  // Stop heating
 
                 // start PID
                 pidMode = 1;
@@ -1313,25 +1315,25 @@ void setup() {
     }
 
     // Initialize Pins
-    pinMode(PINVALVE, OUTPUT);
-    pinMode(PINPUMP, OUTPUT);
-    pinMode(PINHEATER, OUTPUT);
-    pinMode(PINSTEAMSWITCH, INPUT);
-    digitalWrite(PINVALVE, relayOFF);
-    digitalWrite(PINPUMP, relayOFF);
-    digitalWrite(PINHEATER, LOW);
+    pinMode(PIN_VALVE, OUTPUT);
+    pinMode(PIN_PUMP, OUTPUT);
+    pinMode(PIN_HEATER, OUTPUT);
+    pinMode(PIN_STEAMSWITCH, INPUT);
+    digitalWrite(PIN_VALVE, relayOFF);
+    digitalWrite(PIN_PUMP, relayOFF);
+    digitalWrite(PIN_HEATER, LOW);
 
     // IF Voltage sensor selected
     if (BREWDETECTION == 3) {
-        pinMode(PINVOLTAGESENSOR, PINMODEVOLTAGESENSOR);
+        pinMode(PIN_BREWSWITCH, INPUT);
     }
 
-    // IF PINBREWSWITCH & Steam selected
-    if (PINBREWSWITCH > 0) {
-        pinMode(PINBREWSWITCH, INPUT_PULLDOWN);
+    // IF PIN_BREWSWITCH & Steam selected
+    if (PIN_BREWSWITCH > 0) {
+        pinMode(PIN_BREWSWITCH, INPUT_PULLDOWN);
     }
 
-    pinMode(PINSTEAMSWITCH, INPUT_PULLDOWN);
+    pinMode(PIN_STEAMSWITCH, INPUT_PULLDOWN);
 
     #if OLED_DISPLAY != 0
         u8g2.setI2CAddress(oled_i2c * 2);
@@ -1446,7 +1448,7 @@ void loop() {
         // Disable interrupt it OTA is starting, otherwise it will not work
         ArduinoOTA.onStart([]() {
             disableTimer1();
-            digitalWrite(PINHEATER, LOW);  // Stop heating
+            digitalWrite(PIN_HEATER, LOW);  // Stop heating
         });
 
         ArduinoOTA.onError([](ota_error_t error) { enableTimer1(); });
@@ -1510,7 +1512,7 @@ void loop() {
             pidMode = 0;
             bPID.SetMode(pidMode);
             Output = 0;
-            digitalWrite(PINHEATER, LOW);  // Stop heating
+            digitalWrite(PIN_HEATER, LOW);  // Stop heating
         }
     } else {  // no sensorerror, no pid off or no Emergency Stop
         if (pidMode == 0) {

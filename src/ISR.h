@@ -15,9 +15,9 @@ void IRAM_ATTR onTimer(){
     timerAlarmWrite(timer, 10000, true);
 
     if (Output <= isrCounter) {
-        digitalWrite(PINHEATER, LOW);
+        digitalWrite(PIN_HEATER, LOW);
     } else {
-        digitalWrite(PINHEATER, HIGH);
+        digitalWrite(PIN_HEATER, HIGH);
     }
 
     isrCounter += 10; // += 10 because one tick = 10ms

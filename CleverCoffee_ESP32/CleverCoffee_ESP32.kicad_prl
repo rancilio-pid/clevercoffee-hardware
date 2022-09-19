@@ -1,7 +1,7 @@
 {
   "board": {
-    "active_layer": 0,
-    "active_layer_preset": "All Layers",
+    "active_layer": 31,
+    "active_layer_preset": "",
     "auto_track_width": true,
     "hidden_nets": [],
     "high_contrast_mode": 0,
@@ -36,7 +36,6 @@
       8,
       9,
       10,
-      11,
       12,
       13,
       14,
@@ -62,7 +61,7 @@
       35,
       36
     ],
-    "visible_layers": "fffffff_ffffffff",
+    "visible_layers": "ffcfeff_ffffffff",
     "zone_display_mode": 0
   },
   "meta": {
@@ -72,27 +71,15 @@
   "project": {
     "files": [
       {
-        "name": "CleverCoffee_ESP32.kicad_sch",
-        "open": false,
-        "window": {
-          "display": 0,
-          "maximized": false,
-          "pos_x": 254,
-          "pos_y": 52,
-          "size_x": 2564,
-          "size_y": 1608
-        }
-      },
-      {
         "name": "CleverCoffee_ESP32.kicad_pcb",
         "open": false,
         "window": {
           "display": 0,
-          "maximized": false,
-          "pos_x": 265,
+          "maximized": true,
+          "pos_x": 107,
           "pos_y": 59,
-          "size_x": 2435,
-          "size_y": 1621
+          "size_x": 2848,
+          "size_y": 1618
         }
       }
     ]

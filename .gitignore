@@ -2,4 +2,5 @@
 */fp-info-cache
 */*-backups
 */*-bak
-
+_autosave*
+logs

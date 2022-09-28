@@ -3879,7 +3879,7 @@
   (symbol (lib_id "Jumper:SolderJumper_2_Open") (at 127.3556 21.7932 180) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid 861243cf-399d-4bb0-a8b4-33c9e4e5ed9d)
-    (property "Reference" "JP?" (id 0) (at 127.3556 16.0782 0))
+    (property "Reference" "JP3" (id 0) (at 127.3556 16.0782 0))
     (property "Value" "SolderJumper_2_Open" (id 1) (at 127.3556 18.3896 0))
     (property "Footprint" "Jumper:SolderJumper-2_P1.3mm_Open_Pad1.0x1.5mm" (id 2) (at 127.3556 21.7932 0)
       (effects (font (size 1.27 1.27)) hide)
@@ -4422,7 +4422,7 @@
   (symbol (lib_id "Jumper:SolderJumper_2_Open") (at 176.9364 21.8948 180) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid fc7e5eed-d585-4c99-a52a-3167fcb43cc9)
-    (property "Reference" "JP?" (id 0) (at 176.9364 16.1798 0))
+    (property "Reference" "JP4" (id 0) (at 176.9364 16.1798 0))
     (property "Value" "SolderJumper_2_Open" (id 1) (at 176.9364 18.4912 0))
     (property "Footprint" "Jumper:SolderJumper-2_P1.3mm_Open_Pad1.0x1.5mm" (id 2) (at 176.9364 21.8948 0)
       (effects (font (size 1.27 1.27)) hide)
@@ -4673,10 +4673,10 @@
       (reference "JP2") (unit 1) (value "SolderJumper_2_Open") (footprint "Jumper:SolderJumper-2_P1.3mm_Open_Pad1.0x1.5mm")
     )
     (path "/861243cf-399d-4bb0-a8b4-33c9e4e5ed9d"
-      (reference "JP?") (unit 1) (value "SolderJumper_2_Open") (footprint "Jumper:SolderJumper-2_P1.3mm_Open_Pad1.0x1.5mm")
+      (reference "JP3") (unit 1) (value "SolderJumper_2_Open") (footprint "Jumper:SolderJumper-2_P1.3mm_Open_Pad1.0x1.5mm")
     )
     (path "/fc7e5eed-d585-4c99-a52a-3167fcb43cc9"
-      (reference "JP?") (unit 1) (value "SolderJumper_2_Open") (footprint "Jumper:SolderJumper-2_P1.3mm_Open_Pad1.0x1.5mm")
+      (reference "JP4") (unit 1) (value "SolderJumper_2_Open") (footprint "Jumper:SolderJumper-2_P1.3mm_Open_Pad1.0x1.5mm")
     )
     (path "/d3781fd2-01d3-4c58-b8d8-e618723c2415"
       (reference "JTAG1") (unit 1) (value "Conn_ARM_JTAG_SWD_10") (footprint "Connector_PinHeader_2.54mm:PinHeader_2x05_P2.54mm_Vertical")

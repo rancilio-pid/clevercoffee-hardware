@@ -5,9 +5,9 @@
   (paper "A4")
 
   (title_block
-    (title "ESP32 Breakout Board")
-    (date "2022-11-23")
-    (rev "1.1")
+    (title "ESP32 Breakout Board - Minimal")
+    (date "2022-12-23")
+    (rev "1.0")
     (company "CleverCoffee ")
   )
 

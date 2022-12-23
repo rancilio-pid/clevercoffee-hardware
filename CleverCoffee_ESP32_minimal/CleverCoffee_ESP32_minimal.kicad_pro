@@ -420,7 +420,7 @@
       "gencad": "",
       "idf": "",
       "netlist": "",
-      "specctra_dsn": "CleverCoffee_ESP32.dsn",
+      "specctra_dsn": "CleverCoffee_ESP32_minimal.dsn",
       "step": "",
       "vrml": ""
     },

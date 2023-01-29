@@ -6,8 +6,8 @@
 
   (title_block
     (title "ESP32 Breakout Board")
-    (date "2022-11-23")
-    (rev "1.1")
+    (date "2023-01-29")
+    (rev "1.3")
     (company "CleverCoffee ")
   )
 

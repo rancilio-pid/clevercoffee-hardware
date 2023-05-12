@@ -1,7 +1,8 @@
-*/*auto_saved_files#
+*auto_saved_files*
 */fp-info-cache
 */*-backups
 */*-bak
 */*_prl
 _autosave*
 logs
+.DS_Store

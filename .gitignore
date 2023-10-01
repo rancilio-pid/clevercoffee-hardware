@@ -6,3 +6,4 @@
 _autosave*
 logs
 .DS_Store
+*/*.lck

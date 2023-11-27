@@ -2650,7 +2650,7 @@
   (symbol (lib_id "Connector_Generic:Conn_01x02") (at 186.436 77.978 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 3c38a555-ff0c-45eb-8aa7-250fcab089b6)
-    (property "Reference" "B_LED" (at 189.23 77.978 0)
+    (property "Reference" "B_LED1" (at 189.23 77.978 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "Conn_01x02" (at 189.23 80.518 0)
@@ -2667,7 +2667,7 @@
     (instances
       (project "CleverCoffee_ESP32"
         (path "/61f19d07-4fc0-49bf-9b64-21150b236120"
-          (reference "B_LED") (unit 1)
+          (reference "B_LED1") (unit 1)
         )
       )
     )

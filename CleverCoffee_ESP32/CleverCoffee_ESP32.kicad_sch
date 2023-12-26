@@ -1973,6 +1973,10 @@
     (stroke (width 0) (type default))
     (uuid dbe5abda-1032-4271-9c62-fbabce410ff8)
   )
+  (wire (pts (xy 167.8432 74.93) (xy 173.482 74.93))
+    (stroke (width 0) (type default))
+    (uuid dd030b0d-3aa2-4d5a-b0c1-3f321c5704a4)
+  )
   (wire (pts (xy 136.906 61.214) (xy 136.906 64.008))
     (stroke (width 0) (type default))
     (uuid df92f34f-e3f7-406f-8d32-1ee50a09efc8)
@@ -1984,10 +1988,6 @@
   (wire (pts (xy 149.352 32.512) (xy 149.352 33.782))
     (stroke (width 0) (type default))
     (uuid e5ad8c29-b1a6-4294-af0e-a53f620d8884)
-  )
-  (wire (pts (xy 167.894 74.93) (xy 173.482 74.93))
-    (stroke (width 0) (type default))
-    (uuid e88cc82b-6cb8-4e17-8dbf-4f9976bf79b9)
   )
   (wire (pts (xy 138.43 94.742) (xy 148.082 94.742))
     (stroke (width 0) (type default))
@@ -2147,10 +2147,10 @@
       (effects (font (size 1.27 1.27)) (justify right) hide)
     )
   )
-  (global_label "IO19" (shape input) (at 135.128 50.292 180) (fields_autoplaced)
+  (global_label "IO19" (shape input) (at 167.8432 74.93 180) (fields_autoplaced)
     (effects (font (size 1.27 1.27)) (justify right))
     (uuid 1d99bc2b-f44a-4084-87ab-5474878523a9)
-    (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 127.7885 50.292 0)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 160.5037 74.93 0)
       (effects (font (size 1.27 1.27)) (justify right) hide)
     )
   )
@@ -2469,10 +2469,10 @@
       (effects (font (size 1.27 1.27)) (justify left) hide)
     )
   )
-  (global_label "IO36" (shape input) (at 167.894 74.93 180) (fields_autoplaced)
+  (global_label "IO36" (shape input) (at 135.128 50.292 180) (fields_autoplaced)
     (effects (font (size 1.27 1.27)) (justify right))
     (uuid e530cd89-76f2-4719-b709-c1f1c78586ec)
-    (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 161.1266 75.0094 0)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 128.3606 50.3714 0)
       (effects (font (size 1.27 1.27)) (justify right) hide)
     )
   )
@@ -2520,7 +2520,7 @@
   (symbol (lib_id "Device:R") (at 124.714 54.102 180) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 11b9c881-63ff-4cd2-a042-58d58151c637)
-    (property "Reference" "R5" (at 122.174 54.102 90)
+    (property "Reference" "R2" (at 122.174 54.102 90)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "47K Ω" (at 127.254 52.832 90)
@@ -2537,7 +2537,7 @@
     (instances
       (project "CleverCoffee_ESP32"
         (path "/61f19d07-4fc0-49bf-9b64-21150b236120"
-          (reference "R5") (unit 1)
+          (reference "R2") (unit 1)
         )
       )
     )
@@ -2623,7 +2623,7 @@
   (symbol (lib_id "Device:R") (at 118.618 39.37 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 1f52d044-35a1-4971-a033-158db0c09f89)
-    (property "Reference" "R4" (at 121.158 39.37 90)
+    (property "Reference" "R3" (at 121.158 39.37 90)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "47K Ω" (at 116.078 40.64 90)
@@ -2640,7 +2640,7 @@
     (instances
       (project "CleverCoffee_ESP32"
         (path "/61f19d07-4fc0-49bf-9b64-21150b236120"
-          (reference "R4") (unit 1)
+          (reference "R3") (unit 1)
         )
       )
     )
@@ -2934,7 +2934,7 @@
   (symbol (lib_id "Device:R") (at 177.292 77.47 270) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 46251242-c95c-4797-b356-d87b17b864f8)
-    (property "Reference" "R9" (at 176.022 82.55 90)
+    (property "Reference" "R6" (at 176.022 82.55 90)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "220 Ω" (at 174.498 80.264 90)
@@ -2951,7 +2951,7 @@
     (instances
       (project "CleverCoffee_ESP32"
         (path "/61f19d07-4fc0-49bf-9b64-21150b236120"
-          (reference "R9") (unit 1)
+          (reference "R6") (unit 1)
         )
       )
     )
@@ -3373,7 +3373,7 @@
   (symbol (lib_id "Device:R") (at 129.54 94.742 270) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 7504b1df-93c3-4e38-ac33-c9e02caccadc)
-    (property "Reference" "R7" (at 129.54 97.282 90)
+    (property "Reference" "R5" (at 129.54 97.282 90)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "220 Ω" (at 126.746 92.202 90)
@@ -3390,7 +3390,7 @@
     (instances
       (project "CleverCoffee_ESP32"
         (path "/61f19d07-4fc0-49bf-9b64-21150b236120"
-          (reference "R7") (unit 1)
+          (reference "R5") (unit 1)
         )
       )
     )
@@ -3399,7 +3399,7 @@
   (symbol (lib_id "Device:R") (at 177.292 74.93 270) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 7f6dfa4e-743f-4e92-8e0e-e5ffea419a64)
-    (property "Reference" "R8" (at 175.768 70.358 90)
+    (property "Reference" "R4" (at 175.768 70.358 90)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "220 Ω" (at 174.498 72.39 90)
@@ -3416,7 +3416,7 @@
     (instances
       (project "CleverCoffee_ESP32"
         (path "/61f19d07-4fc0-49bf-9b64-21150b236120"
-          (reference "R8") (unit 1)
+          (reference "R4") (unit 1)
         )
       )
     )
@@ -3501,7 +3501,7 @@
   (symbol (lib_id "Device:R") (at 39.624 82.804 270) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 974f5451-7b5e-40f4-aa6d-5561eda54626)
-    (property "Reference" "R1" (at 39.624 85.344 90)
+    (property "Reference" "R7" (at 39.624 85.344 90)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "4K7 Ω" (at 38.354 80.264 90)
@@ -3518,7 +3518,7 @@
     (instances
       (project "CleverCoffee_ESP32"
         (path "/61f19d07-4fc0-49bf-9b64-21150b236120"
-          (reference "R1") (unit 1)
+          (reference "R7") (unit 1)
         )
       )
     )
@@ -3527,7 +3527,7 @@
   (symbol (lib_id "Device:R") (at 39.624 73.914 270) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 9fbc94b3-60c6-4a02-ba9d-386bba8d1852)
-    (property "Reference" "R2" (at 39.624 76.454 90)
+    (property "Reference" "R8" (at 39.624 76.454 90)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "4K7 Ω" (at 38.354 71.374 90)
@@ -3544,7 +3544,7 @@
     (instances
       (project "CleverCoffee_ESP32"
         (path "/61f19d07-4fc0-49bf-9b64-21150b236120"
-          (reference "R2") (unit 1)
+          (reference "R8") (unit 1)
         )
       )
     )
@@ -3737,7 +3737,7 @@
   (symbol (lib_id "Device:R") (at 149.352 37.592 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid ce8ab0fb-4547-4e84-bc5b-45b3de6d0c55)
-    (property "Reference" "R3" (at 151.892 37.592 90)
+    (property "Reference" "R9" (at 151.892 37.592 90)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "47K Ω" (at 146.812 38.862 90)
@@ -3754,7 +3754,7 @@
     (instances
       (project "CleverCoffee_ESP32"
         (path "/61f19d07-4fc0-49bf-9b64-21150b236120"
-          (reference "R3") (unit 1)
+          (reference "R9") (unit 1)
         )
       )
     )
@@ -3797,7 +3797,7 @@
   (symbol (lib_id "Device:R") (at 136.906 57.404 180) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid db6f503a-490e-4e84-b123-cc62ae912591)
-    (property "Reference" "R6" (at 134.366 57.404 90)
+    (property "Reference" "R1" (at 134.366 57.404 90)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "47K Ω" (at 139.446 56.134 90)
@@ -3814,7 +3814,7 @@
     (instances
       (project "CleverCoffee_ESP32"
         (path "/61f19d07-4fc0-49bf-9b64-21150b236120"
-          (reference "R6") (unit 1)
+          (reference "R1") (unit 1)
         )
       )
     )

@@ -6,8 +6,8 @@
 
   (paper "A4")
   (title_block
-    (date "2023-10-11")
-    (rev "1.4")
+    (date "2023-12-26")
+    (rev "1.5")
   )
 
   (layers
@@ -4331,7 +4331,7 @@
   (gr_text "5V" (at 107.35 101.65 270) (layer "F.SilkS") (tstamp d67b5f1f-4b18-40ec-8e87-3311dacd8cea)
     (effects (font (size 0.5 0.5) (thickness 0.1)))
   )
-  (gr_text "79d097e" (at 175.18 90.69 90) (layer "F.SilkS") (tstamp e3a89e43-fdfd-4a57-ab7d-5611d27bee24)
+  (gr_text "29ba717" (at 175.18 90.69 90) (layer "F.SilkS") (tstamp e3a89e43-fdfd-4a57-ab7d-5611d27bee24)
     (effects (font (size 0.85 0.85) (thickness 0.15) bold) (justify left bottom))
   )
   (gr_text "IO19\n" (at 157.47 122.55 90) (layer "F.SilkS") (tstamp eb06a144-afdf-4ab1-88cb-f61a7ceeaa12)

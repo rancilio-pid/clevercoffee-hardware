@@ -4,7 +4,7 @@
 
 KiCAD projects for breakout boards based on the ESP32 DevKitC v4 
 
-* Full-featured PCB with support for pressure and flow sensors, rotary encoder 
+* Full-featured PCB with additional support for rotary encoder and dimmer circuit 
 * Minimal PCB with a smaller footprint and all unused GPIO-Pins on a separate header
 
 <br>

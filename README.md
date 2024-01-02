@@ -4,12 +4,13 @@
 
 KiCAD projects for breakout boards based on the ESP32 DevKitC v4 
 
-* Full-featured PCB with additional support for rotary encoder and dimmer circuit 
 * Minimal PCB with a smaller footprint and all unused GPIO-Pins on a separate header
-* Experimental SMD variant of the minimal PCB with additional headers for the brew and steam buttons
+* Development PCB with additional support for rotary encoder and dimmer circuit
+* Experimental SMD variant of the minimal PCB with additional headers for the optional brew and steam LEDs
+* Experimental SMD variant of the development PCB with a smaller footprint and wider spacing of the headers to be able to mount JST XH plugs
 
 <br>
-If you want to order PCBs yourself please keep in mind that the larger board is still a work in progress and should be regarded as a development platform. The pinmapping for the features that are not yet on the minimal PCB is subject to change at any time.
+If you want to order PCBs yourself please keep in mind that the development boards are still a work in progress. The pinmapping for the features that are not yet on the minimal PCB is subject to change at any time.
 <br>
 <br>
 For the latest revision of the minimal PCB just write us a message on our Discord.

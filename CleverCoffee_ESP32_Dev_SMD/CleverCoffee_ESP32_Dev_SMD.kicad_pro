@@ -34,9 +34,9 @@
         "other_text_thickness": 0.15,
         "other_text_upright": false,
         "pads": {
-          "drill": 1.0,
-          "height": 1.7,
-          "width": 1.7
+          "drill": 0.762,
+          "height": 1.524,
+          "width": 1.524
         },
         "silk_line_width": 0.15,
         "silk_text_italic": false,
@@ -397,7 +397,7 @@
       "pin_to_pin": "warning",
       "power_pin_not_driven": "error",
       "similar_labels": "warning",
-      "simulation_model_issue": "error",
+      "simulation_model_issue": "ignore",
       "unannotated": "error",
       "unit_value_mismatch": "error",
       "unresolved_variable": "error",
@@ -409,7 +409,7 @@
     "pinned_symbol_libs": []
   },
   "meta": {
-    "filename": "CleverCoffee_ESP32_SMD.kicad_pro",
+    "filename": "CleverCoffee_ESP32_Dev_SMD.kicad_pro",
     "version": 1
   },
   "net_settings": {
@@ -491,7 +491,7 @@
       "gencad": "",
       "idf": "",
       "netlist": "",
-      "specctra_dsn": "CleverCoffee_ESP32_SMD.dsn",
+      "specctra_dsn": "CleverCoffee_ESP32_Dev_SMD.dsn",
       "step": "",
       "vrml": ""
     },

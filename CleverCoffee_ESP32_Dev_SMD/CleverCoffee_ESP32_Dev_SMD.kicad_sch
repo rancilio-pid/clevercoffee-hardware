@@ -1424,9 +1424,6 @@
     )
   )
 
-  (junction (at 134.874 42.672) (diameter 0) (color 0 0 0 0)
-    (uuid 04ac6dd6-2100-4feb-9240-23df1fa0687d)
-  )
   (junction (at 124.714 64.008) (diameter 0) (color 0 0 0 0)
     (uuid 05015256-d514-4247-839a-d458a04e7f5d)
   )
@@ -1439,7 +1436,7 @@
   (junction (at 136.906 50.292) (diameter 0) (color 0 0 0 0)
     (uuid 56c7f8d9-6278-42ef-a849-55defe1303fd)
   )
-  (junction (at 121.412 94.742) (diameter 0) (color 0 0 0 0)
+  (junction (at 137.16 90.1192) (diameter 0) (color 0 0 0 0)
     (uuid 5a963826-4dc2-4560-bd25-9d57dfcc9eb5)
   )
   (junction (at 118.5672 45.212) (diameter 0) (color 0 0 0 0)
@@ -1466,10 +1463,7 @@
   (junction (at 33.274 56.642) (diameter 0) (color 0 0 0 0)
     (uuid dcfb379d-ee65-4698-a1c1-11d39e3dc630)
   )
-  (junction (at 134.874 28.702) (diameter 0) (color 0 0 0 0)
-    (uuid eccb823e-dbb1-4bff-b0ca-989d39337518)
-  )
-  (junction (at 138.43 94.742) (diameter 0) (color 0 0 0 0)
+  (junction (at 154.178 90.1192) (diameter 0) (color 0 0 0 0)
     (uuid ffcc937e-ef85-4057-aa1f-bb812a178cb6)
   )
 
@@ -1477,7 +1471,7 @@
     (stroke (width 0) (type default))
     (uuid 003016b3-bba2-43d5-a2ff-bd329daf847c)
   )
-  (wire (pts (xy 115.824 94.742) (xy 121.412 94.742))
+  (wire (pts (xy 131.572 90.1192) (xy 137.16 90.1192))
     (stroke (width 0) (type default))
     (uuid 003a5ded-6df4-4938-8481-594159ba1117)
   )
@@ -1505,11 +1499,11 @@
     (stroke (width 0) (type default))
     (uuid 1330a77e-669a-4456-b1ad-33fe76f652d3)
   )
-  (wire (pts (xy 138.43 87.63) (xy 138.43 94.742))
+  (wire (pts (xy 154.178 83.0072) (xy 154.178 90.1192))
     (stroke (width 0) (type default))
     (uuid 1479803c-ce53-4e72-9736-5d1b08d58570)
   )
-  (wire (pts (xy 145.034 97.282) (xy 148.082 97.282))
+  (wire (pts (xy 151.13 95.1992) (xy 163.83 95.1992))
     (stroke (width 0) (type default))
     (uuid 15abccc6-946f-40b3-b636-23f7e384edf2)
   )
@@ -1529,17 +1523,13 @@
     (stroke (width 0) (type default))
     (uuid 198736ae-3162-413b-87da-0972853fbbdf)
   )
-  (wire (pts (xy 121.412 87.63) (xy 121.412 94.742))
+  (wire (pts (xy 137.16 83.0072) (xy 137.16 90.1192))
     (stroke (width 0) (type default))
     (uuid 1a9647aa-b0e3-4fc0-b8a5-f0ec8cfc5be2)
   )
   (wire (pts (xy 184.658 116.332) (xy 191.516 116.332))
     (stroke (width 0) (type default))
     (uuid 1b5891cc-99c0-4ba6-8992-b33b7f22bfd7)
-  )
-  (wire (pts (xy 148.082 99.822) (xy 144.272 99.822))
-    (stroke (width 0) (type default))
-    (uuid 1b8bd719-4212-4f55-95d2-dd99fe02df60)
   )
   (wire (pts (xy 47.244 54.102) (xy 53.594 54.102))
     (stroke (width 0) (type default))
@@ -1576,6 +1566,10 @@
   (wire (pts (xy 49.022 115.062) (xy 49.022 113.284))
     (stroke (width 0) (type default))
     (uuid 2b99b6c9-94a2-41e4-b76b-36b05af1ab38)
+  )
+  (wire (pts (xy 163.83 100.2792) (xy 160.02 100.2792))
+    (stroke (width 0) (type default))
+    (uuid 2c6570a3-9d42-473f-906e-8befc871aac9)
   )
   (wire (pts (xy 154.432 28.702) (xy 160.02 28.702))
     (stroke (width 0) (type default))
@@ -1617,17 +1611,9 @@
     (stroke (width 0) (type default))
     (uuid 39cb1434-e59b-4f95-8650-9019b6ba3a87)
   )
-  (wire (pts (xy 134.874 28.702) (xy 134.874 31.75))
-    (stroke (width 0) (type default))
-    (uuid 3a15728c-b72c-4b4e-bd57-4b648cc56005)
-  )
   (wire (pts (xy 57.15 171.45) (xy 63.5 171.45))
     (stroke (width 0) (type default))
     (uuid 3a1bb30b-8961-470e-b06c-003d9ad1fff9)
-  )
-  (wire (pts (xy 186.436 77.47) (xy 181.102 77.47))
-    (stroke (width 0) (type default))
-    (uuid 3a411689-0ccc-4c49-8668-2bb921f41c36)
   )
   (wire (pts (xy 42.799 33.655) (xy 42.799 34.925))
     (stroke (width 0) (type default))
@@ -1685,14 +1671,6 @@
     (stroke (width 0) (type default))
     (uuid 4988ff57-16c0-41c8-94f7-4355e21864f4)
   )
-  (wire (pts (xy 182.626 80.01) (xy 186.436 80.01))
-    (stroke (width 0) (type default))
-    (uuid 54aa07ba-fc52-4a4b-9b21-4593a41fb8d3)
-  )
-  (wire (pts (xy 134.874 39.37) (xy 134.874 42.672))
-    (stroke (width 0) (type default))
-    (uuid 569bbbf9-7eec-47d8-bf6c-f79bc404fef4)
-  )
   (wire (pts (xy 148.844 52.832) (xy 153.162 52.832))
     (stroke (width 0) (type default))
     (uuid 5748ac9e-a9bc-41c1-b9a5-30b323031a53)
@@ -1713,7 +1691,7 @@
     (stroke (width 0) (type default))
     (uuid 5ca5bc74-9fb7-4248-ab79-db88a03dc161)
   )
-  (wire (pts (xy 133.35 94.742) (xy 138.43 94.742))
+  (wire (pts (xy 149.098 90.1192) (xy 154.178 90.1192))
     (stroke (width 0) (type default))
     (uuid 5e63104d-40cc-4f32-9238-5e77e9efbaaa)
   )
@@ -1728,6 +1706,14 @@
   (wire (pts (xy 227.33 55.88) (xy 231.14 55.88))
     (stroke (width 0) (type default))
     (uuid 634b71bf-d40f-431c-a2e9-b939a697f40a)
+  )
+  (wire (pts (xy 160.4264 97.7392) (xy 163.83 97.7392))
+    (stroke (width 0) (type default))
+    (uuid 64233f4a-5c18-49be-8cdf-f187df3fccc3)
+  )
+  (wire (pts (xy 141.2748 99.8728) (xy 151.13 99.8728))
+    (stroke (width 0) (type default))
+    (uuid 69f48f05-bd44-4190-b22a-40c9e262d256)
   )
   (wire (pts (xy 259.08 142.24) (xy 266.7 142.24))
     (stroke (width 0) (type default))
@@ -1753,15 +1739,15 @@
     (stroke (width 0) (type default))
     (uuid 746ab817-b8ef-4b5c-b447-fe9089adc25c)
   )
-  (wire (pts (xy 182.626 83.82) (xy 182.626 80.01))
-    (stroke (width 0) (type default))
-    (uuid 7a664b5f-837d-429f-b775-391ee1b7cb87)
-  )
   (wire (pts (xy 113.538 45.212) (xy 118.5672 45.212))
     (stroke (width 0) (type default))
     (uuid 7b6faf78-a0d7-4ec6-b769-15579cbb9bb5)
   )
-  (wire (pts (xy 125.984 87.63) (xy 121.412 87.63))
+  (wire (pts (xy 149.0472 97.3328) (xy 141.2748 97.3328))
+    (stroke (width 0) (type default))
+    (uuid 7d586739-cde8-4d09-b98a-30cfe3c68423)
+  )
+  (wire (pts (xy 141.732 83.0072) (xy 137.16 83.0072))
     (stroke (width 0) (type default))
     (uuid 7f6ffeb9-8e1b-4940-a634-b40b76463017)
   )
@@ -1769,17 +1755,13 @@
     (stroke (width 0) (type default))
     (uuid 81091a28-65c0-4e80-95de-2ab5ae21da16)
   )
-  (wire (pts (xy 121.412 94.742) (xy 125.73 94.742))
+  (wire (pts (xy 137.16 90.1192) (xy 141.478 90.1192))
     (stroke (width 0) (type default))
     (uuid 8231e953-4dba-4349-a18c-6fcae50aca5d)
   )
   (wire (pts (xy 261.62 63.5) (xy 266.7 63.5))
     (stroke (width 0) (type default))
     (uuid 861bd1c5-5c4b-48e6-a6a4-ffdb2226c7ac)
-  )
-  (wire (pts (xy 181.102 74.93) (xy 186.436 74.93))
-    (stroke (width 0) (type default))
-    (uuid 8688f063-f23b-4d9e-b609-4234e1909ff8)
   )
   (wire (pts (xy 80.772 74.422) (xy 92.202 74.422))
     (stroke (width 0) (type default))
@@ -1829,10 +1811,6 @@
     (stroke (width 0) (type default))
     (uuid 9a3f66a5-7d4a-4180-a785-a15739b93d27)
   )
-  (wire (pts (xy 132.334 42.672) (xy 134.874 42.672))
-    (stroke (width 0) (type default))
-    (uuid 9a6db34f-75c5-4788-91e2-a59d6643870a)
-  )
   (wire (pts (xy 118.618 35.56) (xy 118.618 33.528))
     (stroke (width 0) (type default))
     (uuid a0dc6660-f1a0-4efe-9ebb-459801d1a0e1)
@@ -1856,6 +1834,10 @@
   (wire (pts (xy 49.784 59.182) (xy 53.594 59.182))
     (stroke (width 0) (type default))
     (uuid ac35e67d-bb63-4877-bab8-f0072669daaf)
+  )
+  (wire (pts (xy 160.02 100.2792) (xy 160.02 102.5652))
+    (stroke (width 0) (type default))
+    (uuid acefc772-718f-46a8-99e3-4b1cc84e3c73)
   )
   (wire (pts (xy 227.33 60.96) (xy 231.14 60.96))
     (stroke (width 0) (type default))
@@ -1905,7 +1887,7 @@
     (stroke (width 0) (type default))
     (uuid c1b86b85-6ec4-40b3-b371-26c98636ab6e)
   )
-  (wire (pts (xy 167.894 77.47) (xy 173.482 77.47))
+  (wire (pts (xy 128.0668 99.8728) (xy 133.6548 99.8728))
     (stroke (width 0) (type default))
     (uuid c1c4c86d-880f-4877-83b1-f4159a876989)
   )
@@ -1929,10 +1911,6 @@
     (stroke (width 0) (type default))
     (uuid c4524153-a428-41a4-8d58-499d48d5ebf0)
   )
-  (wire (pts (xy 134.874 26.67) (xy 134.874 28.702))
-    (stroke (width 0) (type default))
-    (uuid c6315360-8211-4000-a3f0-02647e3f1e1c)
-  )
   (wire (pts (xy 261.62 71.12) (xy 266.7 71.12))
     (stroke (width 0) (type default))
     (uuid c7ed31dc-b1b6-4ead-abad-3a055196871a)
@@ -1940,6 +1918,10 @@
   (wire (pts (xy 124.714 64.008) (xy 124.714 65.024))
     (stroke (width 0) (type default))
     (uuid c9137470-b41b-47d0-9186-69b3761a309e)
+  )
+  (wire (pts (xy 151.13 99.8728) (xy 151.13 95.1992))
+    (stroke (width 0) (type default))
+    (uuid c9ebb450-aee3-48d9-ba42-5d3278e8d39e)
   )
   (wire (pts (xy 33.909 34.925) (xy 42.799 34.925))
     (stroke (width 0) (type default))
@@ -1957,7 +1939,7 @@
     (stroke (width 0) (type default))
     (uuid d3636c16-9f8f-4d0f-83b6-adce608568b0)
   )
-  (wire (pts (xy 134.874 28.702) (xy 144.272 28.702))
+  (wire (pts (xy 136.4488 28.702) (xy 144.272 28.702))
     (stroke (width 0) (type default))
     (uuid d5717924-5fe0-4a18-b4fb-6ba7ae6ca961)
   )
@@ -1965,15 +1947,19 @@
     (stroke (width 0) (type default))
     (uuid d72e26d3-f2d5-46d4-a7ba-375bdf75d8b7)
   )
-  (wire (pts (xy 133.604 87.63) (xy 138.43 87.63))
+  (wire (pts (xy 149.0472 92.6592) (xy 149.0472 97.3328))
+    (stroke (width 0) (type default))
+    (uuid d9a4f459-4214-4770-82dc-fa6672d6ba9f)
+  )
+  (wire (pts (xy 149.352 83.0072) (xy 154.178 83.0072))
     (stroke (width 0) (type default))
     (uuid dbddb569-3923-4f63-99cd-fba8bd01ec9e)
   )
-  (wire (pts (xy 134.874 42.672) (xy 149.352 42.672))
+  (wire (pts (xy 132.334 42.672) (xy 149.352 42.672))
     (stroke (width 0) (type default))
     (uuid dbe5abda-1032-4271-9c62-fbabce410ff8)
   )
-  (wire (pts (xy 167.8432 74.93) (xy 173.482 74.93))
+  (wire (pts (xy 128.016 97.3328) (xy 133.6548 97.3328))
     (stroke (width 0) (type default))
     (uuid dd030b0d-3aa2-4d5a-b0c1-3f321c5704a4)
   )
@@ -1989,7 +1975,7 @@
     (stroke (width 0) (type default))
     (uuid e5ad8c29-b1a6-4294-af0e-a53f620d8884)
   )
-  (wire (pts (xy 138.43 94.742) (xy 148.082 94.742))
+  (wire (pts (xy 154.178 90.1192) (xy 163.83 90.1192))
     (stroke (width 0) (type default))
     (uuid e98f2066-e10f-44b3-b93f-e2ca5e65918e)
   )
@@ -2008,6 +1994,10 @@
   (wire (pts (xy 259.08 129.54) (xy 266.7 129.54))
     (stroke (width 0) (type default))
     (uuid ee445e65-6860-49d9-899e-b7b52e4c0f16)
+  )
+  (wire (pts (xy 163.83 92.6592) (xy 149.0472 92.6592))
+    (stroke (width 0) (type default))
+    (uuid eea3ed05-002f-49e5-b374-2581c52f33c1)
   )
   (wire (pts (xy 227.33 78.74) (xy 231.14 78.74))
     (stroke (width 0) (type default))
@@ -2033,10 +2023,6 @@
     (stroke (width 0) (type default))
     (uuid f90147ef-3a01-434d-b0e3-499f7abbc8c7)
   )
-  (wire (pts (xy 144.272 99.822) (xy 144.272 104.648))
-    (stroke (width 0) (type default))
-    (uuid f9b9498a-92c5-430b-8dec-86b1a3018a9f)
-  )
   (wire (pts (xy 129.794 139.954) (xy 129.794 143.764))
     (stroke (width 0) (type default))
     (uuid fad6d2e3-6a31-47c0-804c-1692e8b66720)
@@ -2050,10 +2036,6 @@
     (uuid fd4bbdfe-7981-45bc-8ff1-0f723de426a9)
   )
 
-  (text "Status LED" (at 147.955 90.932 0)
-    (effects (font (size 1.27 1.27)) (justify left bottom))
-    (uuid 1848fb17-5179-40b4-bf82-55e641590875)
-  )
   (text "i2c Bus\n" (at 40.894 46.482 0)
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid 2e300f79-d030-4fc3-9484-46b4b748f664)
@@ -2084,7 +2066,7 @@
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid b93a89c1-c4a1-44a0-a517-c77a3ee92cf3)
   )
-  (text "Brew LED\nSteam LED" (at 186.69 72.898 0)
+  (text "Status LED\nBrew LED\nSteam LED" (at 161.0868 85.1916 0)
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid c2c7f369-22ab-415d-9ecd-85f624c1c20e)
   )
@@ -2133,10 +2115,10 @@
       (effects (font (size 1.27 1.27)) (justify left) hide)
     )
   )
-  (global_label "IO1" (shape input) (at 167.894 77.47 180) (fields_autoplaced)
+  (global_label "IO1" (shape input) (at 128.0668 99.8728 180) (fields_autoplaced)
     (effects (font (size 1.27 1.27)) (justify right))
     (uuid 14be39cf-81d7-461f-89fe-de31bb1899e2)
-    (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 162.3361 77.3906 0)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 122.5089 99.7934 0)
       (effects (font (size 1.27 1.27)) (justify right) hide)
     )
   )
@@ -2147,10 +2129,10 @@
       (effects (font (size 1.27 1.27)) (justify right) hide)
     )
   )
-  (global_label "IO19" (shape input) (at 167.8432 74.93 180) (fields_autoplaced)
+  (global_label "IO19" (shape input) (at 128.016 97.3328 180) (fields_autoplaced)
     (effects (font (size 1.27 1.27)) (justify right))
     (uuid 1d99bc2b-f44a-4084-87ab-5474878523a9)
-    (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 160.5037 74.93 0)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 120.6765 97.3328 0)
       (effects (font (size 1.27 1.27)) (justify right) hide)
     )
   )
@@ -2217,10 +2199,10 @@
       (effects (font (size 1.27 1.27)) hide)
     )
   )
-  (global_label "IO26" (shape input) (at 115.824 94.742 180) (fields_autoplaced)
+  (global_label "IO26" (shape input) (at 131.572 90.1192 180) (fields_autoplaced)
     (effects (font (size 1.27 1.27)) (justify right))
     (uuid 4866f262-db04-432c-90e8-19f252cce7e2)
-    (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 109.0566 94.8214 0)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 124.8046 90.1986 0)
       (effects (font (size 1.27 1.27)) (justify right) hide)
     )
   )
@@ -2509,7 +2491,7 @@
     (pin "1" (uuid fb147212-ee92-4be6-9694-4867749a0c02))
     (pin "2" (uuid 4605c378-93d7-4c1e-9212-92472e556f4a))
     (instances
-      (project "CleverCoffee_ESP32"
+      (project "CleverCoffee_ESP32_Dev_SMD"
         (path "/61f19d07-4fc0-49bf-9b64-21150b236120"
           (reference "HT_RL1") (unit 1)
         )
@@ -2526,7 +2508,7 @@
     (property "Value" "47K Ω" (at 127.254 52.832 90)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" (at 126.492 54.102 90)
+    (property "Footprint" "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder" (at 126.492 54.102 90)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (at 124.714 54.102 0)
@@ -2535,7 +2517,7 @@
     (pin "1" (uuid ac50a692-2d76-40e7-92f3-8e84c02b7199))
     (pin "2" (uuid 12ae18d0-c37d-46db-9661-fb379f50ccd3))
     (instances
-      (project "CleverCoffee_ESP32"
+      (project "CleverCoffee_ESP32_Dev_SMD"
         (path "/61f19d07-4fc0-49bf-9b64-21150b236120"
           (reference "R2") (unit 1)
         )
@@ -2544,7 +2526,7 @@
   )
 
   (symbol (lib_id "Connector_Generic:Conn_01x03") (at 97.282 74.422 0) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
+    (in_bom yes) (on_board yes) (dnp no)
     (uuid 126ccd0e-610f-4fa4-8021-30873a398967)
     (property "Reference" "W_SENS1" (at 99.314 73.5135 0)
       (effects (font (size 1.27 1.27)) (justify left))
@@ -2558,11 +2540,11 @@
     (property "Datasheet" "~" (at 97.282 74.422 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid f96b1cf9-e791-4080-95d0-97a5ca590834))
-    (pin "2" (uuid 88f5a0c2-cbc1-4840-9752-880eb7e2412b))
-    (pin "3" (uuid 42a8d8e8-d0a5-4798-9f8d-badcea8614a1))
+    (pin "1" (uuid 842e9cbe-f854-4503-b6cf-88b4ff5db4e4))
+    (pin "2" (uuid 9d287c1c-0667-4283-b81c-5d54b2de6cb7))
+    (pin "3" (uuid de296d7e-c8bc-4510-8d93-6c5957095737))
     (instances
-      (project "CleverCoffee_ESP32"
+      (project "CleverCoffee_ESP32_Dev_SMD"
         (path "/61f19d07-4fc0-49bf-9b64-21150b236120"
           (reference "W_SENS1") (unit 1)
         )
@@ -2587,7 +2569,7 @@
     )
     (pin "1" (uuid 88da2490-1490-4a2b-8130-c5d1bf932264))
     (instances
-      (project "CleverCoffee_ESP32"
+      (project "CleverCoffee_ESP32_Dev_SMD"
         (path "/61f19d07-4fc0-49bf-9b64-21150b236120"
           (reference "#PWR0114") (unit 1)
         )
@@ -2612,7 +2594,7 @@
     )
     (pin "1" (uuid 8e9a7bbd-b150-4732-86f7-73d47aae530c))
     (instances
-      (project "CleverCoffee_ESP32"
+      (project "CleverCoffee_ESP32_Dev_SMD"
         (path "/61f19d07-4fc0-49bf-9b64-21150b236120"
           (reference "#PWR0123") (unit 1)
         )
@@ -2629,7 +2611,7 @@
     (property "Value" "47K Ω" (at 116.078 40.64 90)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" (at 116.84 39.37 90)
+    (property "Footprint" "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder" (at 116.84 39.37 90)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (at 118.618 39.37 0)
@@ -2638,34 +2620,9 @@
     (pin "1" (uuid 376f47d8-d743-4f8a-b2a0-fa3780c50eb8))
     (pin "2" (uuid d2ebd50f-c2e9-4f44-8086-6139a8a97cce))
     (instances
-      (project "CleverCoffee_ESP32"
+      (project "CleverCoffee_ESP32_Dev_SMD"
         (path "/61f19d07-4fc0-49bf-9b64-21150b236120"
           (reference "R3") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "power:GND") (at 182.626 83.82 0) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no)
-    (uuid 2e39843d-0e18-49c9-a404-c4539f05f58e)
-    (property "Reference" "#PWR0131" (at 182.626 90.17 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Value" "GND" (at 182.753 88.2142 0)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Footprint" "" (at 182.626 83.82 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "" (at 182.626 83.82 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid 8fd6b421-fd42-4b9c-9ec5-7fe6ad287c38))
-    (instances
-      (project "CleverCoffee_ESP32"
-        (path "/61f19d07-4fc0-49bf-9b64-21150b236120"
-          (reference "#PWR0131") (unit 1)
         )
       )
     )
@@ -2689,7 +2646,7 @@
     (pin "1" (uuid ac352874-0bdc-4d76-b1c9-4f4195090069))
     (pin "2" (uuid 1db8be26-ddc2-46fb-87be-d4f835079912))
     (instances
-      (project "CleverCoffee_ESP32"
+      (project "CleverCoffee_ESP32_Dev_SMD"
         (path "/61f19d07-4fc0-49bf-9b64-21150b236120"
           (reference "V_IN1") (unit 1)
         )
@@ -2714,7 +2671,7 @@
     )
     (pin "1" (uuid f26382be-46da-4bec-8908-e381a2d44f7b))
     (instances
-      (project "CleverCoffee_ESP32"
+      (project "CleverCoffee_ESP32_Dev_SMD"
         (path "/61f19d07-4fc0-49bf-9b64-21150b236120"
           (reference "#PWR0129") (unit 1)
         )
@@ -2743,7 +2700,7 @@
     (pin "4" (uuid 858a53dc-9b6f-4245-b50c-9cec68a94487))
     (pin "5" (uuid 8bfca49a-e27b-4885-aeec-9582efc04a7d))
     (instances
-      (project "CleverCoffee_ESP32"
+      (project "CleverCoffee_ESP32_Dev_SMD"
         (path "/61f19d07-4fc0-49bf-9b64-21150b236120"
           (reference "SCALE1") (unit 1)
         )
@@ -2760,7 +2717,7 @@
     (property "Value" "220 μF" (at 45.72 30.8226 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "Capacitor_THT:CP_Radial_D8.0mm_P3.80mm" (at 43.7642 33.655 0)
+    (property "Footprint" "Capacitor_SMD:CP_Elec_6.3x7.7" (at 43.7642 33.655 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (at 42.799 29.845 0)
@@ -2769,7 +2726,7 @@
     (pin "1" (uuid 66a63530-21d0-4c46-9871-3b13e24c24f3))
     (pin "2" (uuid 4cb73d54-77e7-453b-a17a-2f3ae460d5f4))
     (instances
-      (project "CleverCoffee_ESP32"
+      (project "CleverCoffee_ESP32_Dev_SMD"
         (path "/61f19d07-4fc0-49bf-9b64-21150b236120"
           (reference "C1") (unit 1)
         )
@@ -2777,55 +2734,30 @@
     )
   )
 
-  (symbol (lib_id "Connector_Generic:Conn_01x03") (at 191.516 77.47 0) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
-    (uuid 3c38a555-ff0c-45eb-8aa7-250fcab089b6)
-    (property "Reference" "BS_LED1" (at 194.31 76.2 0)
-      (effects (font (size 1.27 1.27)) (justify left))
-    )
-    (property "Value" "Conn_01x02" (at 194.31 78.74 0)
-      (effects (font (size 1.27 1.27)) (justify left))
-    )
-    (property "Footprint" "Connector_PinSocket_2.54mm:PinSocket_1x03_P2.54mm_Vertical" (at 191.516 77.47 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "~" (at 191.516 77.47 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid fc960978-a831-4959-870d-5fafa74035ef))
-    (pin "2" (uuid 845e1e79-dfba-42ff-b6a3-ce71af6a3ebb))
-    (pin "3" (uuid ef18c9e5-c762-46b6-8cb7-ff85ee3dbe2b))
-    (instances
-      (project "CleverCoffee_ESP32"
-        (path "/61f19d07-4fc0-49bf-9b64-21150b236120"
-          (reference "BS_LED1") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "Connector_Generic:Conn_01x03") (at 153.162 97.282 0) (unit 1)
+  (symbol (lib_id "Connector_Generic:Conn_01x05") (at 168.91 95.1992 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 3ea8d2cf-7530-4a82-a273-79f8f10932b0)
-    (property "Reference" "S_LED1" (at 155.194 97.6435 0)
+    (property "Reference" "SBS_LED1" (at 171.45 93.9292 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Value" "Conn_01x03" (at 155.194 100.4186 0)
+    (property "Value" "Conn_01x05" (at 171.45 96.4692 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "Connector_PinSocket_2.54mm:PinSocket_1x03_P2.54mm_Vertical" (at 153.162 97.282 0)
+    (property "Footprint" "Connector_PinSocket_2.54mm:PinSocket_1x05_P2.54mm_Vertical" (at 168.91 95.1992 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (property "Datasheet" "~" (at 153.162 97.282 0)
+    (property "Datasheet" "~" (at 168.91 95.1992 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid 2e4733f3-4e8b-4e5e-925b-b5644b76781f))
-    (pin "2" (uuid 536419fe-819a-4d3c-9b52-9160c63d12e4))
-    (pin "3" (uuid c8292b9f-32db-423f-adc5-3243b704bcbc))
+    (pin "1" (uuid 7e223d3f-b71b-45f8-b097-7c3b83a2ff0b))
+    (pin "2" (uuid cf7d399a-92ba-47d8-9a56-a281c40109c8))
+    (pin "3" (uuid e61a1159-2c27-48c0-90ed-9522c3baeb37))
+    (pin "4" (uuid eff643fe-42db-467c-a795-83f47d14b86e))
+    (pin "5" (uuid 7c14bdd3-d206-4f88-918b-3664c90420c7))
     (instances
-      (project "CleverCoffee_ESP32"
+      (project "CleverCoffee_ESP32_Dev_SMD"
         (path "/61f19d07-4fc0-49bf-9b64-21150b236120"
-          (reference "S_LED1") (unit 1)
+          (reference "SBS_LED1") (unit 1)
         )
       )
     )
@@ -2848,7 +2780,7 @@
     )
     (pin "1" (uuid 0a4ab0d7-2d3c-40a7-9477-512b0229bb88))
     (instances
-      (project "CleverCoffee_ESP32"
+      (project "CleverCoffee_ESP32_Dev_SMD"
         (path "/61f19d07-4fc0-49bf-9b64-21150b236120"
           (reference "#PWR0120") (unit 1)
         )
@@ -2873,7 +2805,7 @@
     )
     (pin "1" (uuid 6ed302b6-5631-442c-94af-0acb81455ebc))
     (instances
-      (project "CleverCoffee_ESP32"
+      (project "CleverCoffee_ESP32_Dev_SMD"
         (path "/61f19d07-4fc0-49bf-9b64-21150b236120"
           (reference "#PWR0116") (unit 1)
         )
@@ -2898,7 +2830,7 @@
     )
     (pin "1" (uuid bc7a7efd-5c66-4ff2-b49e-3211c0136f86))
     (instances
-      (project "CleverCoffee_ESP32"
+      (project "CleverCoffee_ESP32_Dev_SMD"
         (path "/61f19d07-4fc0-49bf-9b64-21150b236120"
           (reference "#PWR0106") (unit 1)
         )
@@ -2923,7 +2855,7 @@
     )
     (pin "1" (uuid 4b2118cf-fb52-4113-a818-0a42fecbb1e6))
     (instances
-      (project "CleverCoffee_ESP32"
+      (project "CleverCoffee_ESP32_Dev_SMD"
         (path "/61f19d07-4fc0-49bf-9b64-21150b236120"
           (reference "#PWR0119") (unit 1)
         )
@@ -2931,53 +2863,27 @@
     )
   )
 
-  (symbol (lib_id "Device:R") (at 177.292 77.47 270) (unit 1)
+  (symbol (lib_id "Device:R") (at 137.4648 99.8728 270) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 46251242-c95c-4797-b356-d87b17b864f8)
-    (property "Reference" "R6" (at 176.022 82.55 90)
+    (property "Reference" "R6" (at 136.1948 104.9528 90)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Value" "220 Ω" (at 174.498 80.264 90)
+    (property "Value" "220 Ω" (at 134.6708 102.6668 90)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" (at 177.292 75.692 90)
+    (property "Footprint" "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder" (at 137.4648 98.0948 90)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (property "Datasheet" "~" (at 177.292 77.47 0)
+    (property "Datasheet" "~" (at 137.4648 99.8728 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid 7c739b5b-c103-4bb3-9410-db5971eb7182))
-    (pin "2" (uuid b68fffc1-1640-4800-bfc4-6b7b6b717804))
+    (pin "1" (uuid 52c84504-39c5-4390-a0ec-2856bf373bac))
+    (pin "2" (uuid 7324055f-dcce-4871-b101-4e95c31d3249))
     (instances
-      (project "CleverCoffee_ESP32"
+      (project "CleverCoffee_ESP32_Dev_SMD"
         (path "/61f19d07-4fc0-49bf-9b64-21150b236120"
           (reference "R6") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "Device:C") (at 134.874 35.56 0) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no)
-    (uuid 46545d54-891c-4eba-bc9c-c8b40a02f612)
-    (property "Reference" "C3" (at 128.524 36.83 0)
-      (effects (font (size 1.27 1.27)) (justify left))
-    )
-    (property "Value" "100 nF" (at 126.238 33.02 0)
-      (effects (font (size 1.27 1.27)) (justify left))
-    )
-    (property "Footprint" "Capacitor_THT:C_Axial_L5.1mm_D3.1mm_P7.50mm_Horizontal" (at 135.8392 39.37 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "~" (at 134.874 35.56 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid e4164967-fc7a-4eaf-b83d-0c4e1e1b976b))
-    (pin "2" (uuid 7affce2f-bfb4-4e7c-9092-a0567756885c))
-    (instances
-      (project "CleverCoffee_ESP32"
-        (path "/61f19d07-4fc0-49bf-9b64-21150b236120"
-          (reference "C3") (unit 1)
         )
       )
     )
@@ -3000,7 +2906,7 @@
     )
     (pin "1" (uuid fcf34c6d-2910-4a3a-8066-7cb01f935782))
     (instances
-      (project "CleverCoffee_ESP32"
+      (project "CleverCoffee_ESP32_Dev_SMD"
         (path "/61f19d07-4fc0-49bf-9b64-21150b236120"
           (reference "#PWR0115") (unit 1)
         )
@@ -3025,7 +2931,7 @@
     )
     (pin "1" (uuid 8e8eb6f4-e97c-48dd-9a93-a18b088f3f99))
     (instances
-      (project "CleverCoffee_ESP32"
+      (project "CleverCoffee_ESP32_Dev_SMD"
         (path "/61f19d07-4fc0-49bf-9b64-21150b236120"
           (reference "#PWR0127") (unit 1)
         )
@@ -3054,7 +2960,7 @@
     (pin "4" (uuid feee76ae-81d8-4d9d-9fb6-ca13a3506366))
     (pin "5" (uuid 6e2ac8cd-fe13-4e1c-86bb-00695252e0d9))
     (instances
-      (project "CleverCoffee_ESP32"
+      (project "CleverCoffee_ESP32_Dev_SMD"
         (path "/61f19d07-4fc0-49bf-9b64-21150b236120"
           (reference "ROTARY1") (unit 1)
         )
@@ -3079,7 +2985,7 @@
     )
     (pin "1" (uuid fa819a6e-c42e-434c-8836-9986bfe2d2ee))
     (instances
-      (project "CleverCoffee_ESP32"
+      (project "CleverCoffee_ESP32_Dev_SMD"
         (path "/61f19d07-4fc0-49bf-9b64-21150b236120"
           (reference "#PWR0134") (unit 1)
         )
@@ -3103,7 +3009,7 @@
       (effects (font (size 1.27 1.27)) hide)
     )
     (instances
-      (project "CleverCoffee_ESP32"
+      (project "CleverCoffee_ESP32_Dev_SMD"
         (path "/61f19d07-4fc0-49bf-9b64-21150b236120"
           (reference "#LOGO1") (unit 1)
         )
@@ -3128,7 +3034,7 @@
     )
     (pin "1" (uuid e3af0169-e202-4982-b748-2b424b868d29))
     (instances
-      (project "CleverCoffee_ESP32"
+      (project "CleverCoffee_ESP32_Dev_SMD"
         (path "/61f19d07-4fc0-49bf-9b64-21150b236120"
           (reference "#PWR0124") (unit 1)
         )
@@ -3156,7 +3062,7 @@
     (pin "3" (uuid 7518961f-f498-426b-b9ad-aeb1a39a2ffa))
     (pin "4" (uuid 5559560e-630e-4289-8169-1bf242a7998f))
     (instances
-      (project "CleverCoffee_ESP32"
+      (project "CleverCoffee_ESP32_Dev_SMD"
         (path "/61f19d07-4fc0-49bf-9b64-21150b236120"
           (reference "DIMMER1") (unit 1)
         )
@@ -3184,7 +3090,7 @@
     (pin "3" (uuid 237b8c56-6400-4290-a669-4d2b67b86c71))
     (pin "4" (uuid 98becb9b-6eb3-42db-8b24-6832d10f9c65))
     (instances
-      (project "CleverCoffee_ESP32"
+      (project "CleverCoffee_ESP32_Dev_SMD"
         (path "/61f19d07-4fc0-49bf-9b64-21150b236120"
           (reference "I2C1") (unit 1)
         )
@@ -3209,7 +3115,7 @@
     )
     (pin "1" (uuid af627cbe-f4aa-4841-b8f3-877e1411c91c))
     (instances
-      (project "CleverCoffee_ESP32"
+      (project "CleverCoffee_ESP32_Dev_SMD"
         (path "/61f19d07-4fc0-49bf-9b64-21150b236120"
           (reference "#PWR0102") (unit 1)
         )
@@ -3234,7 +3140,7 @@
     )
     (pin "1" (uuid c9a44b84-9b89-4c69-849d-fe354be8f928))
     (instances
-      (project "CleverCoffee_ESP32"
+      (project "CleverCoffee_ESP32_Dev_SMD"
         (path "/61f19d07-4fc0-49bf-9b64-21150b236120"
           (reference "#PWR0122") (unit 1)
         )
@@ -3242,24 +3148,24 @@
     )
   )
 
-  (symbol (lib_id "power:+5V") (at 145.034 97.282 90) (unit 1)
+  (symbol (lib_id "power:+5V") (at 160.4264 97.7392 90) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 60b85b22-658b-4c07-be22-5b5c6938f1c5)
-    (property "Reference" "#PWR0107" (at 148.844 97.282 0)
+    (property "Reference" "#PWR0107" (at 164.2364 97.7392 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (property "Value" "+5V" (at 137.414 97.282 90)
+    (property "Value" "+5V" (at 152.8064 97.7392 90)
       (effects (font (size 1.27 1.27)) (justify right))
     )
-    (property "Footprint" "" (at 145.034 97.282 0)
+    (property "Footprint" "" (at 160.4264 97.7392 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (property "Datasheet" "" (at 145.034 97.282 0)
+    (property "Datasheet" "" (at 160.4264 97.7392 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid e29471ff-8d0c-4a59-866e-28b3e61fe634))
+    (pin "1" (uuid d6165def-4f66-49a9-bc6d-28f47e587c1d))
     (instances
-      (project "CleverCoffee_ESP32"
+      (project "CleverCoffee_ESP32_Dev_SMD"
         (path "/61f19d07-4fc0-49bf-9b64-21150b236120"
           (reference "#PWR0107") (unit 1)
         )
@@ -3287,7 +3193,7 @@
     (pin "3" (uuid 1b9b573e-9433-4ec5-b5e7-e3f102fdbb20))
     (pin "4" (uuid a99014e4-e0f1-4de2-9fc5-7b2c702c6628))
     (instances
-      (project "CleverCoffee_ESP32"
+      (project "CleverCoffee_ESP32_Dev_SMD"
         (path "/61f19d07-4fc0-49bf-9b64-21150b236120"
           (reference "PV_RL1") (unit 1)
         )
@@ -3312,7 +3218,7 @@
     )
     (pin "1" (uuid 67bb5526-3cd9-47db-af76-7f4877db2389))
     (instances
-      (project "CleverCoffee_ESP32"
+      (project "CleverCoffee_ESP32_Dev_SMD"
         (path "/61f19d07-4fc0-49bf-9b64-21150b236120"
           (reference "#PWR0112") (unit 1)
         )
@@ -3337,7 +3243,7 @@
     )
     (pin "1" (uuid b3825ad2-d78c-4afb-8b96-c11a448c7e28))
     (instances
-      (project "CleverCoffee_ESP32"
+      (project "CleverCoffee_ESP32_Dev_SMD"
         (path "/61f19d07-4fc0-49bf-9b64-21150b236120"
           (reference "#PWR0104") (unit 1)
         )
@@ -3362,7 +3268,7 @@
     )
     (pin "1" (uuid b053e14e-b81b-432c-81b5-ae776b18ff1b))
     (instances
-      (project "CleverCoffee_ESP32"
+      (project "CleverCoffee_ESP32_Dev_SMD"
         (path "/61f19d07-4fc0-49bf-9b64-21150b236120"
           (reference "#PWR0105") (unit 1)
         )
@@ -3370,51 +3276,25 @@
     )
   )
 
-  (symbol (lib_id "Device:R") (at 129.54 94.742 270) (unit 1)
+  (symbol (lib_id "Device:R") (at 145.288 90.1192 270) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 7504b1df-93c3-4e38-ac33-c9e02caccadc)
-    (property "Reference" "R5" (at 129.54 97.282 90)
+    (property "Reference" "R4" (at 145.288 92.6592 90)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Value" "220 Ω" (at 126.746 92.202 90)
+    (property "Value" "220 Ω" (at 142.494 87.5792 90)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" (at 129.54 92.964 90)
+    (property "Footprint" "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder" (at 145.288 88.3412 90)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (property "Datasheet" "~" (at 129.54 94.742 0)
+    (property "Datasheet" "~" (at 145.288 90.1192 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid 473b590f-364a-48ed-ab4c-542cccacd20b))
-    (pin "2" (uuid bf1712c8-01c9-41bc-87b3-18b001e90d19))
+    (pin "1" (uuid 48eeb30a-44e3-4ae6-847b-e1ebf2079627))
+    (pin "2" (uuid 4ad40b58-6950-4620-a245-ae17b566e4ca))
     (instances
-      (project "CleverCoffee_ESP32"
-        (path "/61f19d07-4fc0-49bf-9b64-21150b236120"
-          (reference "R5") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "Device:R") (at 177.292 74.93 270) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no)
-    (uuid 7f6dfa4e-743f-4e92-8e0e-e5ffea419a64)
-    (property "Reference" "R4" (at 175.768 70.358 90)
-      (effects (font (size 1.27 1.27)) (justify left))
-    )
-    (property "Value" "220 Ω" (at 174.498 72.39 90)
-      (effects (font (size 1.27 1.27)) (justify left))
-    )
-    (property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" (at 177.292 73.152 90)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "~" (at 177.292 74.93 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid 935e5833-311b-4914-825e-155fb8ec962c))
-    (pin "2" (uuid 20a727db-3232-4d29-8f02-1322999cb324))
-    (instances
-      (project "CleverCoffee_ESP32"
+      (project "CleverCoffee_ESP32_Dev_SMD"
         (path "/61f19d07-4fc0-49bf-9b64-21150b236120"
           (reference "R4") (unit 1)
         )
@@ -3422,24 +3302,50 @@
     )
   )
 
-  (symbol (lib_id "power:GND") (at 144.272 104.648 0) (unit 1)
+  (symbol (lib_id "Device:R") (at 137.4648 97.3328 270) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no)
+    (uuid 7f6dfa4e-743f-4e92-8e0e-e5ffea419a64)
+    (property "Reference" "R5" (at 135.9408 92.7608 90)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+    (property "Value" "220 Ω" (at 134.6708 94.7928 90)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+    (property "Footprint" "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder" (at 137.4648 95.5548 90)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "~" (at 137.4648 97.3328 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (pin "1" (uuid d40564cd-a214-4989-9215-443096d1e242))
+    (pin "2" (uuid 9ecf0172-c712-456c-8677-1a51f4887c51))
+    (instances
+      (project "CleverCoffee_ESP32_Dev_SMD"
+        (path "/61f19d07-4fc0-49bf-9b64-21150b236120"
+          (reference "R5") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_id "power:GND") (at 160.02 102.5652 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 837310d0-6a75-453d-83cf-63f4ab5d7a9a)
-    (property "Reference" "#PWR0139" (at 144.272 110.998 0)
+    (property "Reference" "#PWR0139" (at 160.02 108.9152 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (property "Value" "GND" (at 144.2212 108.7628 0)
+    (property "Value" "GND" (at 159.9692 106.68 0)
       (effects (font (size 1.27 1.27)))
     )
-    (property "Footprint" "" (at 144.272 104.648 0)
+    (property "Footprint" "" (at 160.02 102.5652 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (property "Datasheet" "" (at 144.272 104.648 0)
+    (property "Datasheet" "" (at 160.02 102.5652 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid 9d74cd64-ba65-4111-8c63-9b2cd6f248ee))
+    (pin "1" (uuid de349673-e509-4509-a49c-0c4eb04f7473))
     (instances
-      (project "CleverCoffee_ESP32"
+      (project "CleverCoffee_ESP32_Dev_SMD"
         (path "/61f19d07-4fc0-49bf-9b64-21150b236120"
           (reference "#PWR0139") (unit 1)
         )
@@ -3447,25 +3353,25 @@
     )
   )
 
-  (symbol (lib_id "Jumper:SolderJumper_2_Open") (at 129.794 87.63 180) (unit 1)
+  (symbol (lib_id "Jumper:SolderJumper_2_Open") (at 145.542 83.0072 180) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 861243cf-399d-4bb0-a8b4-33c9e4e5ed9d)
-    (property "Reference" "JP1" (at 129.794 81.915 0)
+    (property "Reference" "JP1" (at 145.542 77.2922 0)
       (effects (font (size 1.27 1.27)))
     )
-    (property "Value" "SolderJumper_2_Open" (at 129.794 84.2264 0)
+    (property "Value" "SolderJumper_2_Open" (at 145.542 79.6036 0)
       (effects (font (size 1.27 1.27)))
     )
-    (property "Footprint" "Jumper:SolderJumper-2_P1.3mm_Open_Pad1.0x1.5mm" (at 129.794 87.63 0)
+    (property "Footprint" "Jumper:SolderJumper-2_P1.3mm_Open_Pad1.0x1.5mm" (at 145.542 83.0072 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (property "Datasheet" "~" (at 129.794 87.63 0)
+    (property "Datasheet" "~" (at 145.542 83.0072 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "1" (uuid aa4d1d72-ad48-4aa1-b9f7-02a884bb13e1))
-    (pin "2" (uuid 7aa65936-934d-4799-b528-34a75f86415b))
+    (pin "1" (uuid f02b4c4b-561d-4895-878f-8d867d8568eb))
+    (pin "2" (uuid b0ae03d3-ca03-466c-8b83-9bc77cf2d4d9))
     (instances
-      (project "CleverCoffee_ESP32"
+      (project "CleverCoffee_ESP32_Dev_SMD"
         (path "/61f19d07-4fc0-49bf-9b64-21150b236120"
           (reference "JP1") (unit 1)
         )
@@ -3473,24 +3379,24 @@
     )
   )
 
-  (symbol (lib_id "power:GND") (at 134.874 26.67 180) (unit 1)
+  (symbol (lib_id "power:GND") (at 136.4488 28.702 270) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 8a425bc4-2b70-4b54-b386-801fdff7394d)
-    (property "Reference" "#PWR0130" (at 134.874 20.32 0)
+    (property "Reference" "#PWR0130" (at 130.0988 28.702 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (property "Value" "GND" (at 134.874 21.082 90)
+    (property "Value" "GND" (at 130.8608 28.702 90)
       (effects (font (size 1.27 1.27)))
     )
-    (property "Footprint" "" (at 134.874 26.67 0)
+    (property "Footprint" "" (at 136.4488 28.702 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (property "Datasheet" "" (at 134.874 26.67 0)
+    (property "Datasheet" "" (at 136.4488 28.702 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (pin "1" (uuid a078e538-4ef4-485a-a159-19bc64cf8039))
     (instances
-      (project "CleverCoffee_ESP32"
+      (project "CleverCoffee_ESP32_Dev_SMD"
         (path "/61f19d07-4fc0-49bf-9b64-21150b236120"
           (reference "#PWR0130") (unit 1)
         )
@@ -3507,7 +3413,7 @@
     (property "Value" "4K7 Ω" (at 38.354 80.264 90)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" (at 39.624 81.026 90)
+    (property "Footprint" "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder" (at 39.624 81.026 90)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (at 39.624 82.804 0)
@@ -3516,7 +3422,7 @@
     (pin "1" (uuid 7c86afc0-fa8d-4b02-8721-39c366385a5c))
     (pin "2" (uuid 252ae65e-bacc-4cf7-891a-4f557248484e))
     (instances
-      (project "CleverCoffee_ESP32"
+      (project "CleverCoffee_ESP32_Dev_SMD"
         (path "/61f19d07-4fc0-49bf-9b64-21150b236120"
           (reference "R7") (unit 1)
         )
@@ -3533,7 +3439,7 @@
     (property "Value" "4K7 Ω" (at 38.354 71.374 90)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" (at 39.624 72.136 90)
+    (property "Footprint" "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder" (at 39.624 72.136 90)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (at 39.624 73.914 0)
@@ -3542,7 +3448,7 @@
     (pin "1" (uuid e027d42a-39f7-4945-b569-7c4fea7b2a5b))
     (pin "2" (uuid 97e29a32-32ab-4f1b-befe-57b9530c91ef))
     (instances
-      (project "CleverCoffee_ESP32"
+      (project "CleverCoffee_ESP32_Dev_SMD"
         (path "/61f19d07-4fc0-49bf-9b64-21150b236120"
           (reference "R8") (unit 1)
         )
@@ -3567,7 +3473,7 @@
     )
     (pin "1" (uuid d7d4c118-c46a-4b85-85fc-ea8070a81162))
     (instances
-      (project "CleverCoffee_ESP32"
+      (project "CleverCoffee_ESP32_Dev_SMD"
         (path "/61f19d07-4fc0-49bf-9b64-21150b236120"
           (reference "#PWR01") (unit 1)
         )
@@ -3594,7 +3500,7 @@
     (pin "2" (uuid 69057a9c-6d26-40eb-b0ae-27f1ad8728d1))
     (pin "3" (uuid c08d29a9-1296-42b2-af51-0deb5fcd9f0b))
     (instances
-      (project "CleverCoffee_ESP32"
+      (project "CleverCoffee_ESP32_Dev_SMD"
         (path "/61f19d07-4fc0-49bf-9b64-21150b236120"
           (reference "T_SENS1") (unit 1)
         )
@@ -3624,7 +3530,7 @@
     (pin "5" (uuid f9e3dea7-5fbc-43c6-9812-a1849f923171))
     (pin "6" (uuid 33778086-7699-41b5-86b8-bd69c9a4f6b7))
     (instances
-      (project "CleverCoffee_ESP32"
+      (project "CleverCoffee_ESP32_Dev_SMD"
         (path "/61f19d07-4fc0-49bf-9b64-21150b236120"
           (reference "BPSW_SW1") (unit 1)
         )
@@ -3649,7 +3555,7 @@
     )
     (pin "1" (uuid afb35c6e-7b10-421a-9700-1fbc0b385595))
     (instances
-      (project "CleverCoffee_ESP32"
+      (project "CleverCoffee_ESP32_Dev_SMD"
         (path "/61f19d07-4fc0-49bf-9b64-21150b236120"
           (reference "#PWR0118") (unit 1)
         )
@@ -3674,7 +3580,7 @@
     )
     (pin "1" (uuid 9df71784-274d-4e78-8a4f-1c3fd4d89c66))
     (instances
-      (project "CleverCoffee_ESP32"
+      (project "CleverCoffee_ESP32_Dev_SMD"
         (path "/61f19d07-4fc0-49bf-9b64-21150b236120"
           (reference "#PWR0108") (unit 1)
         )
@@ -3699,7 +3605,7 @@
     )
     (pin "1" (uuid 9441d711-8456-456d-9746-ceaf2e0ea7b3))
     (instances
-      (project "CleverCoffee_ESP32"
+      (project "CleverCoffee_ESP32_Dev_SMD"
         (path "/61f19d07-4fc0-49bf-9b64-21150b236120"
           (reference "#PWR0111") (unit 1)
         )
@@ -3726,7 +3632,7 @@
     (pin "2" (uuid 9502c5e4-e1a4-4e3a-97f8-dac4769149ce))
     (pin "3" (uuid 0c067093-48bd-404e-b1d7-048d19c65e48))
     (instances
-      (project "CleverCoffee_ESP32"
+      (project "CleverCoffee_ESP32_Dev_SMD"
         (path "/61f19d07-4fc0-49bf-9b64-21150b236120"
           (reference "JP2") (unit 1)
         )
@@ -3743,7 +3649,7 @@
     (property "Value" "47K Ω" (at 146.812 38.862 90)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" (at 147.574 37.592 90)
+    (property "Footprint" "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder" (at 147.574 37.592 90)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (at 149.352 37.592 0)
@@ -3752,7 +3658,7 @@
     (pin "1" (uuid 96f12a10-1f97-4eb7-b408-82e9c51c1d73))
     (pin "2" (uuid 6f7ed515-e0b0-4b3e-8482-3dd9d693403c))
     (instances
-      (project "CleverCoffee_ESP32"
+      (project "CleverCoffee_ESP32_Dev_SMD"
         (path "/61f19d07-4fc0-49bf-9b64-21150b236120"
           (reference "R9") (unit 1)
         )
@@ -3786,7 +3692,7 @@
     (pin "8" (uuid c9ce9e3b-f962-4bef-8a5a-0d4d85bc7886))
     (pin "9" (uuid f856943b-a0ba-4bf0-8610-69b31d3358c6))
     (instances
-      (project "CleverCoffee_ESP32"
+      (project "CleverCoffee_ESP32_Dev_SMD"
         (path "/61f19d07-4fc0-49bf-9b64-21150b236120"
           (reference "JTAG1") (unit 1)
         )
@@ -3803,7 +3709,7 @@
     (property "Value" "47K Ω" (at 139.446 56.134 90)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" (at 138.684 57.404 90)
+    (property "Footprint" "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder" (at 138.684 57.404 90)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (at 136.906 57.404 0)
@@ -3812,7 +3718,7 @@
     (pin "1" (uuid 36f5935f-b8a9-4be1-acfd-057d00d517ea))
     (pin "2" (uuid b52a745f-6772-4d89-8cb7-35f7920cf17e))
     (instances
-      (project "CleverCoffee_ESP32"
+      (project "CleverCoffee_ESP32_Dev_SMD"
         (path "/61f19d07-4fc0-49bf-9b64-21150b236120"
           (reference "R1") (unit 1)
         )
@@ -3837,7 +3743,7 @@
     )
     (pin "1" (uuid a0d96252-4a3a-439e-8958-44de5dde231b))
     (instances
-      (project "CleverCoffee_ESP32"
+      (project "CleverCoffee_ESP32_Dev_SMD"
         (path "/61f19d07-4fc0-49bf-9b64-21150b236120"
           (reference "#PWR0110") (unit 1)
         )
@@ -3862,7 +3768,7 @@
     )
     (pin "1" (uuid 17c5389e-9e6a-49d5-81c7-60cabf2d0d35))
     (instances
-      (project "CleverCoffee_ESP32"
+      (project "CleverCoffee_ESP32_Dev_SMD"
         (path "/61f19d07-4fc0-49bf-9b64-21150b236120"
           (reference "#PWR0113") (unit 1)
         )
@@ -3887,7 +3793,7 @@
     )
     (pin "1" (uuid 51e1c19d-f8a7-4a1a-b1e8-cef5ae8d7825))
     (instances
-      (project "CleverCoffee_ESP32"
+      (project "CleverCoffee_ESP32_Dev_SMD"
         (path "/61f19d07-4fc0-49bf-9b64-21150b236120"
           (reference "#PWR0143") (unit 1)
         )
@@ -3912,7 +3818,7 @@
     )
     (pin "1" (uuid 94480c9e-66a9-431a-8dc8-5970af34bfe4))
     (instances
-      (project "CleverCoffee_ESP32"
+      (project "CleverCoffee_ESP32_Dev_SMD"
         (path "/61f19d07-4fc0-49bf-9b64-21150b236120"
           (reference "#PWR0101") (unit 1)
         )
@@ -3937,7 +3843,7 @@
     )
     (pin "1" (uuid 2c30544c-4f32-4f7d-8fa3-5d33bfdbbd29))
     (instances
-      (project "CleverCoffee_ESP32"
+      (project "CleverCoffee_ESP32_Dev_SMD"
         (path "/61f19d07-4fc0-49bf-9b64-21150b236120"
           (reference "#PWR0140") (unit 1)
         )
@@ -3999,7 +3905,7 @@
     (pin "8" (uuid d56b711c-c796-4d6e-8ada-9e8d2a36ed0c))
     (pin "9" (uuid fb072953-3447-40e8-b199-840f0880a260))
     (instances
-      (project "CleverCoffee_ESP32"
+      (project "CleverCoffee_ESP32_Dev_SMD"
         (path "/61f19d07-4fc0-49bf-9b64-21150b236120"
           (reference "ESP32") (unit 1)
         )
@@ -4024,7 +3930,7 @@
     )
     (pin "1" (uuid d19f195f-6930-47f7-86d4-ce911c9199d0))
     (instances
-      (project "CleverCoffee_ESP32"
+      (project "CleverCoffee_ESP32_Dev_SMD"
         (path "/61f19d07-4fc0-49bf-9b64-21150b236120"
           (reference "#PWR0144") (unit 1)
         )
@@ -4049,7 +3955,7 @@
     )
     (pin "1" (uuid 57aced9d-42a1-4f32-aa6f-55461973149f))
     (instances
-      (project "CleverCoffee_ESP32"
+      (project "CleverCoffee_ESP32_Dev_SMD"
         (path "/61f19d07-4fc0-49bf-9b64-21150b236120"
           (reference "#PWR0135") (unit 1)
         )
@@ -4066,7 +3972,7 @@
     (property "Value" "100 nF" (at 64.77 31.7116 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "Capacitor_THT:C_Axial_L5.1mm_D3.1mm_P7.50mm_Horizontal" (at 62.8142 33.655 0)
+    (property "Footprint" "Capacitor_SMD:C_1206_3216Metric_Pad1.33x1.80mm_HandSolder" (at 62.8142 33.655 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (at 61.849 29.845 0)
@@ -4075,7 +3981,7 @@
     (pin "1" (uuid cce56f92-7beb-4eb6-a1c0-25d72e86eac6))
     (pin "2" (uuid 19c0b89a-ebaf-4913-a963-4661d34c4f22))
     (instances
-      (project "CleverCoffee_ESP32"
+      (project "CleverCoffee_ESP32_Dev_SMD"
         (path "/61f19d07-4fc0-49bf-9b64-21150b236120"
           (reference "C2") (unit 1)
         )
@@ -4100,7 +4006,7 @@
     )
     (pin "1" (uuid ca32ef65-d356-4d51-b136-903edfb35d88))
     (instances
-      (project "CleverCoffee_ESP32"
+      (project "CleverCoffee_ESP32_Dev_SMD"
         (path "/61f19d07-4fc0-49bf-9b64-21150b236120"
           (reference "#PWR0109") (unit 1)
         )

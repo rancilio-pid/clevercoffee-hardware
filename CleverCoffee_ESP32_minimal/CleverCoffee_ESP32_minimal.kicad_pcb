@@ -171,8 +171,8 @@
 		(at 103.77 108.3)
 		(descr "Through hole straight socket strip, 1x02, 2.54mm pitch, single row (from Kicad 4.0.7), script generated")
 		(tags "Through hole socket strip THT 1x02 2.54mm single row")
-		(property "Reference" "HT_RL1"
-			(at 4.81 1.19 -90)
+		(property "Reference" "HT_RL"
+			(at 4.81 1.19 270)
 			(unlocked yes)
 			(layer "F.SilkS")
 			(uuid "2a5df374-cd47-4b4e-80cc-2efb76c8fee3")
@@ -436,8 +436,8 @@
 		(at 103.77 96.595)
 		(descr "Through hole straight socket strip, 1x04, 2.54mm pitch, single row (from Kicad 4.0.7), script generated")
 		(tags "Through hole socket strip THT 1x04 2.54mm single row")
-		(property "Reference" "PV_RL1"
-			(at 4.79 3.78 -90)
+		(property "Reference" "PV_RL"
+			(at 4.79 3.78 270)
 			(unlocked yes)
 			(layer "F.SilkS")
 			(uuid "35fac65d-4f9c-42b8-9bbb-57cd3a974b64")
@@ -1267,7 +1267,7 @@
 		(at 147.54 128.5 90)
 		(descr "Through hole straight socket strip, 1x05, 2.54mm pitch, single row (from Kicad 4.0.7), script generated")
 		(tags "Through hole socket strip THT 1x05 2.54mm single row")
-		(property "Reference" "SCALE1"
+		(property "Reference" "SCALE"
 			(at 4.64 4.81 180)
 			(layer "F.SilkS")
 			(uuid "831dd636-7f6c-4011-91e8-2f94f66ca675")
@@ -1564,7 +1564,7 @@
 		(at 162.57 128.51 180)
 		(descr "Through hole straight socket strip, 2x08, 2.54mm pitch, double cols (from Kicad 4.0.7), script generated")
 		(tags "Through hole socket strip THT 2x08 2.54mm double row")
-		(property "Reference" "GPIO1"
+		(property "Reference" "GPIO"
 			(at -1.28 20.55 180)
 			(layer "F.SilkS")
 			(uuid "94e5f98c-109f-4189-acb9-0b979101de90")
@@ -2274,7 +2274,7 @@
 		(at 129.24 128.5 90)
 		(descr "Through hole straight socket strip, 1x03, 2.54mm pitch, single row (from Kicad 4.0.7), script generated")
 		(tags "Through hole socket strip THT 1x03 2.54mm single row")
-		(property "Reference" "T_SENS1"
+		(property "Reference" "T_SENS"
 			(at 4.74 2.82 0)
 			(layer "F.SilkS")
 			(uuid "552eabab-c839-4c6e-a5ec-aaf99bba2506")
@@ -3739,7 +3739,7 @@
 		(at 138.39 128.5 90)
 		(descr "Through hole straight socket strip, 1x03, 2.54mm pitch, single row (from Kicad 4.0.7), script generated")
 		(tags "Through hole socket strip THT 1x03 2.54mm single row")
-		(property "Reference" "W_SENS1"
+		(property "Reference" "W_SENS"
 			(at 4.74 2.7 0)
 			(layer "F.SilkS")
 			(uuid "e1ef8bdd-0588-4ddc-96cf-b8b3d064c2c4")
@@ -4464,7 +4464,7 @@
 		(at 110.94 128.5 90)
 		(descr "Through hole straight socket strip, 1x02, 2.54mm pitch, single row (from Kicad 4.0.7), script generated")
 		(tags "Through hole socket strip THT 1x02 2.54mm single row")
-		(property "Reference" "V_IN1"
+		(property "Reference" "V_IN"
 			(at 4.75 1.49 0)
 			(unlocked yes)
 			(layer "F.SilkS")
@@ -5007,8 +5007,8 @@
 		(at 103.765 114.92)
 		(descr "Through hole straight socket strip, 1x03, 2.54mm pitch, single row (from Kicad 4.0.7), script generated")
 		(tags "Through hole socket strip THT 1x03 2.54mm single row")
-		(property "Reference" "S_LED1"
-			(at 4.815 2.3 -90)
+		(property "Reference" "S_LED"
+			(at 4.815 2.3 270)
 			(unlocked yes)
 			(layer "F.SilkS")
 			(uuid "8152e6f5-b60f-4c0c-ac89-7de02362ab60")
@@ -5390,8 +5390,8 @@
 		(at 173.92 121.62 180)
 		(descr "Through hole straight socket strip, 1x06, 2.54mm pitch, single row (from Kicad 4.0.7), script generated")
 		(tags "Through hole socket strip THT 1x06 2.54mm single row")
-		(property "Reference" "BPSW_SW1"
-			(at 4.8 6.12 -90)
+		(property "Reference" "BPSW_SW"
+			(at 4.8 6.12 270)
 			(layer "F.SilkS")
 			(uuid "3c93b69d-2837-40a7-ae4a-f54325d075b9")
 			(effects
@@ -9157,7 +9157,7 @@
 		(at 117.54 128.5 90)
 		(descr "Through hole straight socket strip, 1x04, 2.54mm pitch, single row (from Kicad 4.0.7), script generated")
 		(tags "Through hole socket strip THT 1x04 2.54mm single row")
-		(property "Reference" "I2C1"
+		(property "Reference" "I2C"
 			(at 4.74 3.82 0)
 			(layer "F.SilkS")
 			(uuid "3c5bd129-5de8-482d-8c71-2b56173d72ca")
@@ -10769,7 +10769,7 @@
 			)
 		)
 	)
-	(gr_text "CleverCoffee ESP32 Min \nRev 1.5 29ba717"
+	(gr_text "CleverCoffee ESP32 Min \nRev 1.6 56cb1c6"
 		(at 173.94 94.09 90)
 		(layer "F.SilkS")
 		(uuid "491ea417-6fa1-486c-b2a0-3235adf71449")

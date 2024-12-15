@@ -121,7 +121,7 @@
         "max_error": 0.005,
         "min_clearance": 0.0,
         "min_connection": 0.0,
-        "min_copper_edge_clearance": 0.0,
+        "min_copper_edge_clearance": 0.25,
         "min_hole_clearance": 0.25,
         "min_hole_to_hole": 0.25,
         "min_microvia_diameter": 0.2,
@@ -653,7 +653,7 @@
   "sheets": [
     [
       "61f19d07-4fc0-49bf-9b64-21150b236120",
-      "Stammblatt"
+      "Root"
     ]
   ],
   "text_variables": {}

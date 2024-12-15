@@ -635,7 +635,7 @@
       "meta": {
         "version": 0
       },
-      "model_mode": 0,
+      "model_mode": 4,
       "workbook_filename": ""
     },
     "page_layout_descr_file": "",
@@ -653,7 +653,7 @@
   "sheets": [
     [
       "61f19d07-4fc0-49bf-9b64-21150b236120",
-      "Root"
+      "Stammblatt"
     ]
   ],
   "text_variables": {}

@@ -572,7 +572,7 @@
 		(at 147.54 128.5 90)
 		(descr "Through hole straight socket strip, 1x05, 2.54mm pitch, single row (from Kicad 4.0.7), script generated")
 		(tags "Through hole socket strip THT 1x05 2.54mm single row")
-		(property "Reference" "SCALE1"
+		(property "Reference" "SCALE"
 			(at 4.64 5.27 180)
 			(layer "F.SilkS")
 			(uuid "74134d93-af3e-488f-9200-9ddaae8925ca")
@@ -858,7 +858,7 @@
 		(at 138.39 128.5 90)
 		(descr "Through hole straight socket strip, 1x03, 2.54mm pitch, single row (from Kicad 4.0.7), script generated")
 		(tags "Through hole socket strip THT 1x03 2.54mm single row")
-		(property "Reference" "W_SENS1"
+		(property "Reference" "W_SENS"
 			(at 4.74 3.18 180)
 			(layer "F.SilkS")
 			(uuid "6f86bee1-c872-4b18-85ed-5658d744e162")
@@ -1712,7 +1712,7 @@
 		(at 173.92 121.62 180)
 		(descr "Through hole straight socket strip, 1x06, 2.54mm pitch, single row (from Kicad 4.0.7), script generated")
 		(tags "Through hole socket strip THT 1x06 2.54mm single row")
-		(property "Reference" "BPSW_SW1"
+		(property "Reference" "BPSW_SW"
 			(at 4.69 6.6 90)
 			(layer "F.SilkS")
 			(uuid "31f4d47a-9498-48a2-8762-bb6900052a3e")
@@ -2009,7 +2009,7 @@
 		(at 162.57 128.51 180)
 		(descr "Through hole straight socket strip, 2x08, 2.54mm pitch, double cols (from Kicad 4.0.7), script generated")
 		(tags "Through hole socket strip THT 2x08 2.54mm double row")
-		(property "Reference" "GPIO1"
+		(property "Reference" "GPIO"
 			(at -1.26 20.48 0)
 			(layer "F.SilkS")
 			(uuid "070f2ea0-b307-41a1-adf5-b6a593d428e7")
@@ -3495,7 +3495,7 @@
 		(at 117.54 128.5 90)
 		(descr "Through hole straight socket strip, 1x04, 2.54mm pitch, single row (from Kicad 4.0.7), script generated")
 		(tags "Through hole socket strip THT 1x04 2.54mm single row")
-		(property "Reference" "I2C1"
+		(property "Reference" "I2C"
 			(at 4.74 4.3 180)
 			(layer "F.SilkS")
 			(uuid "cf03debe-c74a-4e0a-9827-5a931becef73")
@@ -3866,7 +3866,7 @@
 		(at 110.94 128.5 90)
 		(descr "Through hole straight socket strip, 1x02, 2.54mm pitch, single row (from Kicad 4.0.7), script generated")
 		(tags "Through hole socket strip THT 1x02 2.54mm single row")
-		(property "Reference" "V_IN1"
+		(property "Reference" "V_IN"
 			(at 4.75 1.96 180)
 			(layer "F.SilkS")
 			(uuid "977b2cf2-4fba-40b4-850b-badb574bb7a2")
@@ -4215,7 +4215,7 @@
 		(at 129.24 128.5 90)
 		(descr "Through hole straight socket strip, 1x03, 2.54mm pitch, single row (from Kicad 4.0.7), script generated")
 		(tags "Through hole socket strip THT 1x03 2.54mm single row")
-		(property "Reference" "T_SENS1"
+		(property "Reference" "T_SENS"
 			(at 4.74 3.29 180)
 			(layer "F.SilkS")
 			(uuid "4f5161d2-eff3-4145-a228-4c79b306e78e")
@@ -5261,7 +5261,7 @@
 		(at 103.77 96.6)
 		(descr "Through hole straight socket strip, 1x04, 2.54mm pitch, single row (from Kicad 4.0.7), script generated")
 		(tags "Through hole socket strip THT 1x04 2.54mm single row")
-		(property "Reference" "PV_RL1"
+		(property "Reference" "PV_RL"
 			(at 4.79 4.25 270)
 			(unlocked yes)
 			(layer "F.SilkS")
@@ -5736,7 +5736,7 @@
 		(at 103.76 114.92)
 		(descr "Through hole straight socket strip, 1x03, 2.54mm pitch, single row (from Kicad 4.0.7), script generated")
 		(tags "Through hole socket strip THT 1x03 2.54mm single row")
-		(property "Reference" "S_LED1"
+		(property "Reference" "S_LED"
 			(at 4.82 2.77 270)
 			(unlocked yes)
 			(layer "F.SilkS")
@@ -6431,7 +6431,7 @@
 		(at 103.77 108.3)
 		(descr "Through hole straight socket strip, 1x02, 2.54mm pitch, single row (from Kicad 4.0.7), script generated")
 		(tags "Through hole socket strip THT 1x02 2.54mm single row")
-		(property "Reference" "HT_RL1"
+		(property "Reference" "HT_RL"
 			(at 4.81 1.67 270)
 			(unlocked yes)
 			(layer "F.SilkS")

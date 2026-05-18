@@ -9068,7 +9068,7 @@
 			)
 		)
 	)
-	(gr_text "CleverCoffee ESP32 Min SMD\nRev 1.2 9670c55"
+	(gr_text "CleverCoffee ESP32 Min SMD\nRev 1.2 e8bcc5d"
 		(at 173.94 94.09 90)
 		(layer "F.SilkS")
 		(uuid "491ea417-6fa1-486c-b2a0-3235adf71449")

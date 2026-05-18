@@ -454,254 +454,6 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "Jumper:SolderJumper_3_Open"
-			(pin_names
-				(offset 0)
-				(hide yes)
-			)
-			(exclude_from_sim no)
-			(in_bom no)
-			(on_board yes)
-			(property "Reference" "JP"
-				(at -2.54 -2.54 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "SolderJumper_3_Open"
-				(at 0 2.794 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" "~"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Description" "Solder Jumper, 3-pole, open"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_keywords" "Solder Jumper SPDT"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_fp_filters" "SolderJumper*Open*"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(symbol "SolderJumper_3_Open_0_1"
-				(polyline
-					(pts
-						(xy -2.54 0) (xy -2.032 0)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -1.016 1.016) (xy -1.016 -1.016)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(arc
-					(start -1.016 -1.016)
-					(mid -2.0276 0)
-					(end -1.016 1.016)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(arc
-					(start -1.016 -1.016)
-					(mid -2.0276 0)
-					(end -1.016 1.016)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type outline)
-					)
-				)
-				(rectangle
-					(start -0.508 1.016)
-					(end 0.508 -1.016)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type outline)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0 -1.27) (xy 0 -1.016)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(arc
-					(start 1.016 1.016)
-					(mid 2.0276 0)
-					(end 1.016 -1.016)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(arc
-					(start 1.016 1.016)
-					(mid 2.0276 0)
-					(end 1.016 -1.016)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type outline)
-					)
-				)
-				(polyline
-					(pts
-						(xy 1.016 1.016) (xy 1.016 -1.016)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 2.54 0) (xy 2.032 0)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "SolderJumper_3_Open_1_1"
-				(pin passive line
-					(at -5.08 0 0)
-					(length 2.54)
-					(name "A"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 0 -3.81 90)
-					(length 2.54)
-					(name "C"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 5.08 0 180)
-					(length 2.54)
-					(name "B"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "3"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
 		(symbol "Relay_SolidState:34.81-7048"
 			(exclude_from_sim no)
 			(in_bom yes)
@@ -3181,6 +2933,18 @@
 		)
 		(uuid "d7e814df-acbd-44dd-941a-c2924c3a0d85")
 	)
+	(text "Bridge solder jumpers to \"Pull-Down\", \nset Switch Mode to \"Normally open\".\nFor normally-closed switches,\nConnect switch input to GND,\nbridge jumpers to \"Pull-Up\"."
+		(exclude_from_sim no)
+		(at 27.94 55.118 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+				(color 0 0 255 1)
+			)
+			(justify left bottom)
+		)
+		(uuid "e1869e92-ab1a-428f-be98-d5d17bdd73d7")
+	)
 	(junction
 		(at 87.63 153.67)
 		(diameter 0)
@@ -3308,7 +3072,7 @@
 	)
 	(wire
 		(pts
-			(xy 57.15 105.41) (xy 66.04 105.41)
+			(xy 57.15 116.84) (xy 66.04 116.84)
 		)
 		(stroke
 			(width 0)
@@ -3352,7 +3116,7 @@
 	)
 	(wire
 		(pts
-			(xy 36.83 105.41) (xy 41.91 105.41)
+			(xy 34.29 116.84) (xy 41.91 116.84)
 		)
 		(stroke
 			(width 0)
@@ -3616,7 +3380,7 @@
 	)
 	(wire
 		(pts
-			(xy 36.83 80.01) (xy 41.91 80.01)
+			(xy 34.29 91.44) (xy 41.91 91.44)
 		)
 		(stroke
 			(width 0)
@@ -3660,7 +3424,7 @@
 	)
 	(wire
 		(pts
-			(xy 57.15 130.81) (xy 64.77 130.81)
+			(xy 57.15 142.24) (xy 64.77 142.24)
 		)
 		(stroke
 			(width 0)
@@ -3682,7 +3446,7 @@
 	)
 	(wire
 		(pts
-			(xy 36.83 130.81) (xy 41.91 130.81)
+			(xy 34.29 142.24) (xy 41.91 142.24)
 		)
 		(stroke
 			(width 0)
@@ -3902,7 +3666,7 @@
 	)
 	(wire
 		(pts
-			(xy 57.15 80.01) (xy 64.77 80.01)
+			(xy 57.15 91.44) (xy 64.77 91.44)
 		)
 		(stroke
 			(width 0)
@@ -3979,7 +3743,7 @@
 	)
 	(wire
 		(pts
-			(xy 36.83 54.61) (xy 41.91 54.61)
+			(xy 34.29 66.04) (xy 41.91 66.04)
 		)
 		(stroke
 			(width 0)
@@ -4045,7 +3809,7 @@
 	)
 	(wire
 		(pts
-			(xy 57.15 54.61) (xy 63.5 54.61)
+			(xy 57.15 66.04) (xy 63.5 66.04)
 		)
 		(stroke
 			(width 0)
@@ -4166,7 +3930,7 @@
 	)
 	(global_label "Water_SW"
 		(shape input)
-		(at 64.77 80.01 0)
+		(at 64.77 91.44 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -4176,7 +3940,7 @@
 		)
 		(uuid "11905cfe-d1b2-45dc-bb81-94117e2444df")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 76.5846 80.01 0)
+			(at 76.5846 91.44 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4210,7 +3974,7 @@
 	)
 	(global_label "Brew_SW"
 		(shape input)
-		(at 66.04 105.41 0)
+		(at 66.04 116.84 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -4220,7 +3984,7 @@
 		)
 		(uuid "4954c5d7-b697-4124-8eb2-5d9411170b9b")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 77.0496 105.41 0)
+			(at 77.0496 116.84 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4232,7 +3996,7 @@
 	)
 	(global_label "Power_SW"
 		(shape input)
-		(at 63.5 54.61 0)
+		(at 63.5 66.04 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -4242,7 +4006,7 @@
 		)
 		(uuid "83cfafc9-e088-4bf1-911b-33b35918f555")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 75.738 54.61 0)
+			(at 75.738 66.04 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4298,7 +4062,7 @@
 	)
 	(global_label "Steam_SW"
 		(shape input)
-		(at 64.77 130.81 0)
+		(at 64.77 142.24 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -4308,7 +4072,7 @@
 		)
 		(uuid "c494bddc-b851-438f-9cd4-db8c631414ab")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 77.1704 130.81 0)
+			(at 77.1704 142.24 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4415,7 +4179,7 @@
 	)
 	(symbol
 		(lib_id "power:+3.3V")
-		(at 33.02 100.33 0)
+		(at 34.29 116.84 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -4423,7 +4187,7 @@
 		(dnp no)
 		(uuid "0c0f0b33-88f8-4156-b49b-45e58515840a")
 		(property "Reference" "#PWR06"
-			(at 33.02 104.14 0)
+			(at 38.1 116.84 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4432,7 +4196,7 @@
 			)
 		)
 		(property "Value" "+3.3V"
-			(at 30.226 95.504 0)
+			(at 29.464 119.634 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4441,7 +4205,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 33.02 100.33 0)
+			(at 34.29 116.84 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4450,7 +4214,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 33.02 100.33 0)
+			(at 34.29 116.84 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4459,7 +4223,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 33.02 100.33 0)
+			(at 34.29 116.84 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4553,6 +4317,71 @@
 		)
 	)
 	(symbol
+		(lib_id "power:+3.3V")
+		(at 34.29 142.24 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "1b166c86-c179-45f3-940b-9c14f3af507b")
+		(property "Reference" "#PWR08"
+			(at 38.1 142.24 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3.3V"
+			(at 29.464 145.034 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 34.29 142.24 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 34.29 142.24 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 34.29 142.24 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "b03eafb9-ac3c-4ccd-8d79-6b380378d080")
+		)
+		(instances
+			(project "ESP32_minimal_full_featured_powered"
+				(path "/15f4ac9b-6451-43d7-be31-9fb65895f47d"
+					(reference "#PWR08")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Relay_SolidState:34.81-7048")
 		(at 152.4 72.39 180)
 		(unit 1)
@@ -4623,80 +4452,6 @@
 			(project "ESP32_minimal_full_featured"
 				(path "/15f4ac9b-6451-43d7-be31-9fb65895f47d"
 					(reference "Pump_SSR")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Jumper:SolderJumper_3_Open")
-		(at 33.02 130.81 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom no)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "36169fa7-a72b-4d4e-93fd-e8e6591948a0")
-		(property "Reference" "JP5"
-			(at 30.48 130.8099 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "SolderJumper_3_Open"
-			(at 30.48 132.0799 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-		(property "Footprint" ""
-			(at 33.02 130.81 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 33.02 130.81 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Solder Jumper, 3-pole, open"
-			(at 33.02 130.81 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "3"
-			(uuid "4680fcd0-8fd9-4b90-9a29-f8e83c78501d")
-		)
-		(pin "2"
-			(uuid "5963050d-e563-4362-9d1b-db3cc75e07a8")
-		)
-		(pin "1"
-			(uuid "3a71f742-e2fe-467e-b0fd-b102e8cbe6eb")
-		)
-		(instances
-			(project ""
-				(path "/15f4ac9b-6451-43d7-be31-9fb65895f47d"
-					(reference "JP5")
 					(unit 1)
 				)
 			)
@@ -4853,7 +4608,7 @@
 	)
 	(symbol
 		(lib_id "Switch:SW_DIP_x02")
-		(at 49.53 82.55 0)
+		(at 49.53 93.98 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -4862,7 +4617,7 @@
 		(fields_autoplaced yes)
 		(uuid "524ed874-081b-49e1-8ea7-ae45ee5de082")
 		(property "Reference" "Water_Switch"
-			(at 49.53 74.4601 0)
+			(at 49.53 85.8901 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4870,7 +4625,7 @@
 			)
 		)
 		(property "Value" "SW_DIP_x02"
-			(at 49.53 76.3811 0)
+			(at 49.53 87.8111 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4879,7 +4634,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 49.53 82.55 0)
+			(at 49.53 93.98 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4888,7 +4643,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 49.53 82.55 0)
+			(at 49.53 93.98 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4897,7 +4652,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 49.53 82.55 0)
+			(at 49.53 93.98 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4996,17 +4751,16 @@
 		)
 	)
 	(symbol
-		(lib_id "power:GND")
-		(at 33.02 135.89 0)
+		(lib_id "power:+3.3V")
+		(at 34.29 66.04 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "5701efc9-61c4-4db3-8ef1-12896c3f207b")
-		(property "Reference" "#PWR08"
-			(at 33.02 142.24 0)
+		(uuid "58d4195b-6553-4cd4-b21d-0986926c4bdf")
+		(property "Reference" "#PWR05"
+			(at 38.1 66.04 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5014,16 +4768,17 @@
 				(hide yes)
 			)
 		)
-		(property "Value" "GND"
-			(at 33.02 140.97 0)
+		(property "Value" "+3.3V"
+			(at 29.464 68.834 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify left)
 			)
 		)
 		(property "Footprint" ""
-			(at 33.02 135.89 0)
+			(at 34.29 66.04 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5032,7 +4787,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 33.02 135.89 0)
+			(at 34.29 66.04 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5041,7 +4796,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 33.02 135.89 0)
+			(at 34.29 66.04 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5049,12 +4804,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "50c8babe-8ce7-4560-aff8-852c9d83f401")
+			(uuid "3a26ef30-6a79-4242-8559-0100cd3e86ea")
 		)
 		(instances
-			(project "ESP32_minimal_full_featured"
+			(project "ESP32_minimal_full_featured_powered"
 				(path "/15f4ac9b-6451-43d7-be31-9fb65895f47d"
-					(reference "#PWR08")
+					(reference "#PWR05")
 					(unit 1)
 				)
 			)
@@ -5062,7 +4817,7 @@
 	)
 	(symbol
 		(lib_id "Switch:SW_DIP_x02")
-		(at 49.53 57.15 0)
+		(at 49.53 68.58 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -5071,7 +4826,7 @@
 		(fields_autoplaced yes)
 		(uuid "5ec0b1f0-42a0-4a48-9d53-5baa2c7ea251")
 		(property "Reference" "Power_Switch"
-			(at 49.53 49.0601 0)
+			(at 49.53 60.4901 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5079,7 +4834,7 @@
 			)
 		)
 		(property "Value" "SW_DIP_x02"
-			(at 49.53 50.9811 0)
+			(at 49.53 62.4111 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5088,7 +4843,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 49.53 57.15 0)
+			(at 49.53 68.58 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5097,7 +4852,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 49.53 57.15 0)
+			(at 49.53 68.58 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5106,7 +4861,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 49.53 57.15 0)
+			(at 49.53 68.58 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5135,138 +4890,8 @@
 		)
 	)
 	(symbol
-		(lib_id "power:+3.3V")
-		(at 33.02 74.93 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "65646140-f7c4-401d-80cc-c636c712e620")
-		(property "Reference" "#PWR010"
-			(at 33.02 78.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "+3.3V"
-			(at 33.02 69.85 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 33.02 74.93 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 33.02 74.93 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 33.02 74.93 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "6625a26a-b604-45b9-b1c5-fa461dcf3814")
-		)
-		(instances
-			(project "ESP32_minimal_full_featured"
-				(path "/15f4ac9b-6451-43d7-be31-9fb65895f47d"
-					(reference "#PWR010")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:+3.3V")
-		(at 33.02 125.73 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "67198677-6a3f-48d3-ad2a-4c0fef30c223")
-		(property "Reference" "#PWR011"
-			(at 33.02 129.54 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "+3.3V"
-			(at 33.02 120.65 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 33.02 125.73 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 33.02 125.73 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 33.02 125.73 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "91c1e407-59e6-4030-8d23-d826ab348f4f")
-		)
-		(instances
-			(project "ESP32_minimal_full_featured"
-				(path "/15f4ac9b-6451-43d7-be31-9fb65895f47d"
-					(reference "#PWR011")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Switch:SW_DIP_x02")
-		(at 49.53 133.35 0)
+		(at 49.53 144.78 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -5275,7 +4900,7 @@
 		(fields_autoplaced yes)
 		(uuid "7751a53d-ddb7-4102-8981-6a5c5a03521e")
 		(property "Reference" "Steam_Switch"
-			(at 49.53 125.2601 0)
+			(at 49.53 136.6901 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5283,7 +4908,7 @@
 			)
 		)
 		(property "Value" "SW_DIP_x02"
-			(at 49.53 127.1811 0)
+			(at 49.53 138.6111 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5292,7 +4917,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 49.53 133.35 0)
+			(at 49.53 144.78 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5301,7 +4926,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 49.53 133.35 0)
+			(at 49.53 144.78 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5310,7 +4935,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 49.53 133.35 0)
+			(at 49.53 144.78 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5539,145 +5164,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Jumper:SolderJumper_3_Open")
-		(at 33.02 54.61 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom no)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "91983882-afbe-4709-a40d-fe45fbdefe01")
-		(property "Reference" "JP4"
-			(at 30.48 53.3399 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "SolderJumper_3_Open"
-			(at 30.48 55.8799 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-		(property "Footprint" ""
-			(at 33.02 54.61 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 33.02 54.61 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Solder Jumper, 3-pole, open"
-			(at 33.02 54.61 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "3"
-			(uuid "afd1a912-1f7c-4737-a920-46f871e0505a")
-		)
-		(pin "2"
-			(uuid "6e22bf31-e158-4003-bd84-c0b1460d66e0")
-		)
-		(pin "1"
-			(uuid "551c1539-7a3a-46bc-a635-ac5415cbd5f4")
-		)
-		(instances
-			(project "ESP32_minimal_full_featured"
-				(path "/15f4ac9b-6451-43d7-be31-9fb65895f47d"
-					(reference "JP4")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:GND")
-		(at 33.02 110.49 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "977932c6-ca07-4686-ab89-a314287e75d4")
-		(property "Reference" "#PWR05"
-			(at 33.02 116.84 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 33.02 115.57 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 33.02 110.49 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 33.02 110.49 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 33.02 110.49 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "23cce4d0-5e24-4668-8459-a10106073bf8")
-		)
-		(instances
-			(project "ESP32_minimal_full_featured"
-				(path "/15f4ac9b-6451-43d7-be31-9fb65895f47d"
-					(reference "#PWR05")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "power:Earth_Protective")
 		(at 87.63 161.29 0)
 		(unit 1)
@@ -5818,7 +5304,7 @@
 	)
 	(symbol
 		(lib_id "Switch:SW_DIP_x02")
-		(at 49.53 107.95 0)
+		(at 49.53 119.38 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -5826,7 +5312,7 @@
 		(dnp no)
 		(uuid "9f256bec-8684-40c7-94de-7b266269cb22")
 		(property "Reference" "Brew_Switch"
-			(at 49.53 99.8601 0)
+			(at 49.53 111.2901 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5834,7 +5320,7 @@
 			)
 		)
 		(property "Value" "SW_DIP_x02"
-			(at 49.53 101.7811 0)
+			(at 49.53 113.2111 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5843,7 +5329,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 49.53 107.95 0)
+			(at 49.53 119.38 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5852,7 +5338,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 49.53 107.95 0)
+			(at 49.53 119.38 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5861,7 +5347,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 49.53 107.95 0)
+			(at 49.53 119.38 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6168,71 +5654,6 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 33.02 59.69 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "ba30f62f-84b0-421d-a1b4-bb6c9b920806")
-		(property "Reference" "#PWR013"
-			(at 33.02 66.04 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 33.02 64.77 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 33.02 59.69 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 33.02 59.69 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 33.02 59.69 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "6f872dfc-2007-4466-9a7a-9bc4fda54949")
-		)
-		(instances
-			(project "ESP32_minimal_full_featured"
-				(path "/15f4ac9b-6451-43d7-be31-9fb65895f47d"
-					(reference "#PWR013")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:GND")
 		(at 165.1 69.85 90)
 		(unit 1)
 		(exclude_from_sim no)
@@ -6359,219 +5780,6 @@
 			(project "ESP32_minimal_full_featured"
 				(path "/15f4ac9b-6451-43d7-be31-9fb65895f47d"
 					(reference "Thermal_Safety")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Jumper:SolderJumper_3_Open")
-		(at 33.02 80.01 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom no)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "cedbb86b-554a-417d-a6be-5f419d3b905f")
-		(property "Reference" "JP2"
-			(at 30.48 78.7399 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "SolderJumper_3_Open"
-			(at 30.48 81.2799 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-		(property "Footprint" ""
-			(at 33.02 80.01 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 33.02 80.01 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Solder Jumper, 3-pole, open"
-			(at 33.02 80.01 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "3"
-			(uuid "554a9248-d529-4d2a-b29b-9044cf2bcb4d")
-		)
-		(pin "2"
-			(uuid "b3b9c11f-8dcf-4ba8-a771-ad3e788c9c27")
-		)
-		(pin "1"
-			(uuid "baafe67f-c610-42ee-9426-649e17771fab")
-		)
-		(instances
-			(project "ESP32_minimal_full_featured"
-				(path "/15f4ac9b-6451-43d7-be31-9fb65895f47d"
-					(reference "JP2")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Jumper:SolderJumper_3_Open")
-		(at 33.02 105.41 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom no)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "da4d241e-8b7b-4929-86ca-c2182bd6a4b5")
-		(property "Reference" "JP3"
-			(at 30.48 104.1399 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "SolderJumper_3_Open"
-			(at 30.48 106.6799 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-		(property "Footprint" ""
-			(at 33.02 105.41 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 33.02 105.41 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Solder Jumper, 3-pole, open"
-			(at 33.02 105.41 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "3"
-			(uuid "e369cab0-6748-4254-a3dd-1cae065ed36b")
-		)
-		(pin "2"
-			(uuid "10369567-b585-4265-a939-d754e4192a58")
-		)
-		(pin "1"
-			(uuid "ec391b73-2fee-46ee-86c0-a8cc27f1dec6")
-		)
-		(instances
-			(project "ESP32_minimal_full_featured"
-				(path "/15f4ac9b-6451-43d7-be31-9fb65895f47d"
-					(reference "JP3")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:GND")
-		(at 33.02 85.09 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "dd552a93-a709-4510-b22d-b2d4e3829018")
-		(property "Reference" "#PWR07"
-			(at 33.02 91.44 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 33.02 90.17 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 33.02 85.09 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 33.02 85.09 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 33.02 85.09 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "d4e820f3-5efb-4e71-8785-d880e742869b")
-		)
-		(instances
-			(project "ESP32_minimal_full_featured"
-				(path "/15f4ac9b-6451-43d7-be31-9fb65895f47d"
-					(reference "#PWR07")
 					(unit 1)
 				)
 			)
@@ -6802,16 +6010,15 @@
 	)
 	(symbol
 		(lib_id "power:+3.3V")
-		(at 33.02 49.53 0)
+		(at 34.29 91.44 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "feda9e06-7fa7-434c-b70a-16ed090db0c5")
-		(property "Reference" "#PWR012"
-			(at 33.02 53.34 0)
+		(uuid "f40d48f5-f87d-45d8-931a-98f6d848837c")
+		(property "Reference" "#PWR07"
+			(at 38.1 91.44 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6820,15 +6027,16 @@
 			)
 		)
 		(property "Value" "+3.3V"
-			(at 33.02 44.45 0)
+			(at 29.464 94.234 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify left)
 			)
 		)
 		(property "Footprint" ""
-			(at 33.02 49.53 0)
+			(at 34.29 91.44 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6837,7 +6045,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 33.02 49.53 0)
+			(at 34.29 91.44 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6846,7 +6054,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 33.02 49.53 0)
+			(at 34.29 91.44 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6854,12 +6062,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "e1952624-e3f1-4a0a-9f55-454175dc74d4")
+			(uuid "e5ae8482-6a4b-43e0-a231-671c6fd544c6")
 		)
 		(instances
-			(project "ESP32_minimal_full_featured"
+			(project "ESP32_minimal_full_featured_powered"
 				(path "/15f4ac9b-6451-43d7-be31-9fb65895f47d"
-					(reference "#PWR012")
+					(reference "#PWR07")
 					(unit 1)
 				)
 			)

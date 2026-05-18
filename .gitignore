@@ -13,3 +13,4 @@ logs
 # KiCad local history exclusions
 fp-info-cache
 *-backups/
+.history

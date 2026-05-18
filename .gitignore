@@ -9,3 +9,7 @@ logs
 */*.lck
 */*.ses
 */*.dsn
+
+# KiCad local history exclusions
+fp-info-cache
+*-backups/

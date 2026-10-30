@@ -11,6 +11,145 @@
 		(company "CleverCoffee ")
 	)
 	(lib_symbols
+		(symbol "+3.3V_1"
+			(power global)
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "#PWR"
+				(at 0 -3.81 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "+3.3V"
+				(at 0 3.556 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Power symbol creates a global label with name \"+3.3V\""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "global power"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "+3.3V_1_0_1"
+				(polyline
+					(pts
+						(xy -0.762 1.27) (xy 0 2.54)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 2.54) (xy 0.762 1.27)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 0) (xy 0 2.54)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "+3.3V_1_1_1"
+				(pin power_in line
+					(at 0 0 90)
+					(length 0)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 		(symbol "Conn_01x04_1"
 			(pin_names
 				(offset 1.016)
@@ -4502,16 +4641,6 @@
 	)
 	(wire
 		(pts
-			(xy 226.822 63.5) (xy 231.14 63.5)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "45752652-008c-45c6-a865-5008c2887984")
-	)
-	(wire
-		(pts
 			(xy 227.33 68.58) (xy 231.14 68.58)
 		)
 		(stroke
@@ -5562,6 +5691,16 @@
 	)
 	(wire
 		(pts
+			(xy 227.33 63.5) (xy 231.14 63.5)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f02c4f7a-0d5d-4b9a-86e9-fbedf5f45c5f")
+	)
+	(wire
+		(pts
 			(xy 261.62 76.2) (xy 266.7 76.2)
 		)
 		(stroke
@@ -6097,7 +6236,7 @@
 	)
 	(global_label "CLK/UP"
 		(shape input)
-		(at 226.822 63.5 180)
+		(at 227.33 63.5 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -6107,7 +6246,7 @@
 		)
 		(uuid "56e33085-cf74-4566-8fb6-e82dbd20b7d1")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 221.2641 63.4206 0)
+			(at 221.7721 63.4206 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8648,6 +8787,7 @@
 		)
 	)
 	(symbol
+		(lib_name "+3.3V_1")
 		(lib_id "power:+3.3V")
 		(at 266.7 83.82 270)
 		(unit 1)
@@ -8703,7 +8843,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Power symbol creates a global label with name \"+3.3V\""
 			(at 266.7 83.82 0)
 			(hide yes)
 			(show_name no)
